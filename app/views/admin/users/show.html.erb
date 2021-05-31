@@ -11,7 +11,12 @@
         <th><%= @user.profession %></th>
         <th><%= @user.introduction %></th>
       </table>
-      <%= link_to "#{@user.name}のプロフィールを編集する", edit_admin_user_path(@user)%>
+      <div class="row">
+        <%= link_to "#{@user.name}のプロフィールを編集する", edit_admin_user_path(@user) %>
+      </div>
+      <div class="row">
+        <%= link_to "ユーザー一覧ページに戻る", admin_users_path %>
+      </div>
     </div>
   </div>
 </div>
