@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   scope module: :users do
     root to: 'homes#top'
+    
   end
 
 end
