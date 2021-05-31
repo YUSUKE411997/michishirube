@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
     case resource
     when User
       root_path
+    when Admin
+      admin_users_path
     end
   end
 

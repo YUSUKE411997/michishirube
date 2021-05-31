@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   scope module: :users do
     root to: 'homes#top'
     resources :users, only: [:show, :edit, :update]
-    
   end
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+  end 
 
 end

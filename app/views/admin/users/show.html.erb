@@ -1,0 +1,17 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <h1><%= @user.name %>の詳細ページ</h1>
+    </div>
+    <div>
+      <table>
+        <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100 %></th>
+        <th><%= @user.name %></th>
+        <th><%= @user.age %></th>
+        <th><%= @user.profession %></th>
+        <th><%= @user.introduction %></th>
+      </table>
+      <%= link_to "#{@user.name}のプロフィールを編集する", edit_admin_user_path(@user)%>
+    </div>
+  </div>
+</div>
