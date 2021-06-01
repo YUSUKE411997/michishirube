@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-
+  before_action :authenticate_admin!
 
   def index
     @users = User.all
@@ -22,6 +22,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :age, :profession, :introduction, :profile_image)
+    params.require(:user).permit(:name, :age, :profession, :introduction, :profile_image, :is_valid)
   end
 end

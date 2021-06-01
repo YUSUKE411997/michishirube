@@ -19,7 +19,11 @@
             <td><%= user.id %></td>
             <td><%= link_to user.name, admin_user_path(user) %></td>
             <td>投稿数をあとで</td>
-            <td>ステータスをあとで</td>
+            <% if user.is_valid == true %>
+              <td>有効会員</td>
+            <% else %>
+              <td>退会済み</td>
+            <% end %>
           </tr>
           <% end %>
         </tbody>
