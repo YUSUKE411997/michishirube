@@ -1,0 +1,36 @@
+<div>
+  <div class="container">
+    <h1>投稿一覧ページ</h1>
+    <div class="row">
+      <%= form_with model: @post,metod: :post, local: true do |f| %>
+      <%= f.label "投稿種類" %>
+      <p>気ままに投稿  <%= f.radio_button :type, "気ままに投稿" %></p>
+      <p>やってみたい投稿  <%= f.radio_button :type, "やってみたいを投稿" %></p>
+      <p>やってみた投稿  <%= f.radio_button :type, "やってみたを投稿" %></p>
+      <%= f.label "タイトル" %>
+      <%= f.text_field :title %><br>
+      <%= f.label "内容" %>
+      <%= f.text_area :body %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit '送信' %>
+      <% end %>
+    </div>
+    <div>
+      <h2>投稿一覧</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>投稿種類</th>
+            <th>投稿タイトル</th>
+            <th>投稿内容</th>
+            <th>コメント数</th>
+            <th>いいね数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render 'index', posts: @posts %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

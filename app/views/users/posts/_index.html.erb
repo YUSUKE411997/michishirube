@@ -1,0 +1,9 @@
+<% posts.each do |post| %>
+  <tr>
+    <td><%= post.type %></td>
+    <td><%= link_to post.title, post_path(post.id) %></td>
+    <td><%= post.body %></td>
+    <td>コメント数</td>
+    <td>いいね数</td>
+  </tr>
+<% end %>
