@@ -1,4 +1,5 @@
 class Users::PostsController < ApplicationController
+  
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -13,6 +14,8 @@ class Users::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments
   end
 
   def destroy

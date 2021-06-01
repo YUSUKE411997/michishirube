@@ -16,12 +16,16 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
     patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
-    resources :posts, only: [:index, :show, :create, :destroy]
+    resources :posts, only: [:index, :show, :create, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
     # ここがわからん
     get 'types' => 'posts#type_index' 
   end

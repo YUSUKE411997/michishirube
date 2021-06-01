@@ -3,14 +3,52 @@
     <div class="row">
       <h1>投稿詳細ページ</h1>
     </div>
-    <td><%= @user.name %></td>
-    <td><%= @post.type %></td>
-    <td><%= @post.title %></td>
-    <td><%= @post.body %></td>
-    <td>コメント一覧</td>
-    <td>いいねカウント</td>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>投稿種類</th>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th>コメント数</th>
+          <th>いいね数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @post.user.name %></td>
+          <td><%= @post.type %></td>
+          <td><%= @post.title %></td>
+          <td><%= @post.body %></td>
+          <td><%= @post.comments.count %>件</td>
+          <td>いいねカウント</td>
+        </tr>
+      </tbody>
+      <h2>コメント</h2>
+    </table>
     <% if @post.user == current_user %>
     <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
     <% end %>
+    <table class="table">
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= link_to comment.user.name, user_path(comment.user.id) %></td>
+          <td><%= comment.content %></td>
+          <td><%= comment_created(comment) %></td>
+          <% if comment.user.id == current_user.id %>
+            <td><%= link_to "コメントを削除", post_comment_path(comment.post.id,comment.id), method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    <div class="row">
+      <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <%= f.label "コメント内容"%>
+        <%= f.text_area :content %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.submit 'コメントする', class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
