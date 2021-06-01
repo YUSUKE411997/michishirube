@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]
-    get 'types' => 'posts#type_index'
+    # ここがわからん
+    get 'types' => 'posts#type_index' 
   end
 
 end

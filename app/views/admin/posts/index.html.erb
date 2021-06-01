@@ -18,6 +18,7 @@
           <% @posts.each do |post| %>
             <tr>
               <td><%= post.user.name %></td>
+              <!--ここがわからない-->
               <td><%= link_to post.type, admin_types_path %></td>
               <td><%= link_to post.title, admin_post_path(post) %></td>
               <td><%= post.body %></td>

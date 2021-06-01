@@ -4,7 +4,8 @@ class Admin::PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
   end
-
+  
+  # ここがわからん
   def type_index
     type_name = Post.find_by(type: params[:typd])
     @posts = Post.where(type: type_name).pluck(:id)
