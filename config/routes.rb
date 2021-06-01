@@ -13,7 +13,13 @@ Rails.application.routes.draw do
 
   scope module: :users do
     root to: 'homes#top'
-    
+    resources :users, only: [:show, :edit, :update]
+    get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
+    patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
+  end
+
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
 end

@@ -1,0 +1,33 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <h1>ユーザー一覧</h1>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザーID</th>
+            <th>ユーザー名</th>
+            <th>投稿数</th>
+            <th>ユーザーステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td>投稿数をあとで</td>
+            <% if user.is_valid == true %>
+              <td>有効会員</td>
+            <% else %>
+              <td>退会済み</td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

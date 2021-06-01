@@ -1,0 +1,15 @@
+<div>
+  <div class="container">
+    <h1>マイページ</h1>
+    <div class="row">
+      <table>
+        <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100 %></th>
+        <th><%= @user.name %></th>
+        <th><%= @user.age %></th>
+        <th><%= @user.profession %></th>
+        <th><%= @user.introduction %></th>
+      </table>
+      <%= link_to "プロフィールを変更", edit_user_path(@user) %>
+    </div>
+  </div>
+</div>
