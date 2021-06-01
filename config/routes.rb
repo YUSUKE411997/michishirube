@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
+    get 'types' => 'posts#type_index'
   end
 
   namespace :admin do
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
-    # ここがわからん
     get 'types' => 'posts#type_index' 
   end
 
