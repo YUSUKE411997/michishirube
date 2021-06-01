@@ -1,9 +1,8 @@
 <div>
   <div class="container">
-    <div class="row">
-      <h1>投稿一覧</h1>
-    </div>
-    <div>
+    <h1>投稿種類ページ</h1>
+  </div>
+  <div>
       <table class="table">
         <thead>
           <tr>
@@ -11,7 +10,6 @@
             <th>投稿種類</th>
             <th>タイトル</th>
             <th>投稿内容</th>
-            <th>コメント数</th>
             <th>投稿日時</th>
           </tr>
         </thead>
@@ -19,16 +17,13 @@
           <% @posts.each do |post| %>
             <tr>
               <td><%= post.user.name %></td>
-              <!--ここがわからない-->
-              <td><%= link_to post.type, admin_types_path(type: post.type) %></td>
+              <td><%= post.type %></td>
               <td><%= link_to post.title, admin_post_path(post) %></td>
               <td><%= post.body %></td>
-              <td><%= post.comments.count %>件</td>
               <td><%= post_created(post) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-  </div>
 </div>

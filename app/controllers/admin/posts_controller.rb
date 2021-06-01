@@ -5,10 +5,9 @@ class Admin::PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
   end
 
-  # ここがわからん
   def type_index
-    type_name = Post.find_by(type: params[:typd])
-    @posts = Post.where(type: type_name).pluck(:id)
+    type_name = Post.find_by(type: params[:type])
+    @posts = Post.where(type: type_name.type)
   end
 
   def show

@@ -5,6 +5,11 @@ class Users::PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
   end
+  
+  def type_index
+    type_name = Post.find_by(type: params[:type])
+    @posts = Post.where(type: type_name.type)
+  end
 
   def create
     @post = Post.new(post_params)
