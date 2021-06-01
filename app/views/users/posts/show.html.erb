@@ -34,6 +34,7 @@
         <tr>
           <td><%= link_to comment.user.name, user_path(comment.user.id) %></td>
           <td><%= comment.content %></td>
+          <td><%= comment_created(comment) %></td>
           <% if comment.user.id == current_user.id %>
             <td><%= link_to "コメントを削除", post_comment_path(comment.post.id,comment.id), method: :delete %></td>
           <% end %>

@@ -9,12 +9,14 @@
       <td><%= post_created(@post) %></td>
       <td><%= link_to "投稿を削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %></td>
     </table>
+    <h2>コメント一覧</h2>
     <table class="table">
       <% @comments.each do |comment| %>
         <tr>
           <td><%= link_to comment.user.name, user_path(comment.user.id) %></td>
           <td><%= comment.content %></td>
-            <td><%= link_to "コメントを削除", post_comment_path(comment.post.id,comment.id), method: :delete %></td>
+          <td><%= comment_created(comment)%></td>
+          <td><%= link_to "コメントを削除", admin_post_comment_path(comment.post.id,comment.id), method: :delete %></td>
         </tr>
       <% end %>
     </table>
