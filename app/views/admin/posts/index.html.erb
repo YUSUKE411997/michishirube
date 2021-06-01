@@ -20,7 +20,7 @@
             <tr>
               <td><%= post.user.name %></td>
               <!--ここがわからない-->
-              <td><%= link_to post.type, admin_types_path %></td>
+              <td><%= link_to post.type, admin_types_path(type: post.type) %></td>
               <td><%= link_to post.title, admin_post_path(post) %></td>
               <td><%= post.body %></td>
               <td><%= post.comments.count %>件</td>
