@@ -13,13 +13,18 @@ Rails.application.routes.draw do
 
   scope module: :users do
     root to: 'homes#top'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+      get :followers, on: :member
+    end
     get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
     patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
     resources :posts, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'
   end
 
@@ -28,7 +33,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
-    get 'types' => 'posts#type_index' 
+    get 'types' => 'posts#type_index'
   end
 
 end

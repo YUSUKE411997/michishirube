@@ -27,6 +27,14 @@ class Users::UsersController < ApplicationController
     flash[:notice] = "退会を確認しました"
     redirect_to root_path
   end
+  
+  def follows
+    @users = User.find(params[:id]).followings
+  end 
+  
+  def followers
+    @users = User.find(params[:id]).followers
+  end
 
   private
 
