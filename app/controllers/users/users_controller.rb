@@ -1,5 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -26,11 +27,26 @@ class Users::UsersController < ApplicationController
     flash[:notice] = "退会を確認しました"
     redirect_to root_path
   end
+  
+  def follows
+    @users = User.find(params[:id]).followings
+  end 
+  
+  def followers
+    @users = User.find(params[:id]).followers
+  end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :age, :profession, :introduction, :profile_image,:is_valid)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
 end
