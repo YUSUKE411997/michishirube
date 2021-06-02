@@ -18,7 +18,7 @@
             <tr>
               <td><%= post.user.name %></td>
               <td><%= post.type %></td>
-              <td><%= link_to post.title, admin_post_path(post) %></td>
+              <td><%= link_to post.title, post_path(post) %></td>
               <td><%= post.body %></td>
               <td><%= post_created(post) %></td>
             </tr>
