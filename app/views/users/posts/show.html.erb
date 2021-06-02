@@ -21,14 +21,23 @@
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
           <td><%= @post.comments.count %>件</td>
-          <td>いいねカウント</td>
+            <td>
+              <% if user_signed_in? %>
+                <%# if @post.liked_by?(current_user) %>
+                  <%= link_to "🖤", post_likes_path(@post), method: :delete %>
+                <%# else %>
+                  <%= link_to "💖", post_likes_path(@post), method: :post %>
+                <%# end %>
+              <% end %>
+              <%= @post.likes.count %>
+            </td>
         </tr>
       </tbody>
-      <h2>コメント</h2>
     </table>
     <% if @post.user == current_user %>
     <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
     <% end %>
+    <h2>コメント</h2>
     <table class="table">
       <% @comments.each do |comment| %>
         <tr>

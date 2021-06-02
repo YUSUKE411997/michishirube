@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
     resources :posts, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
     end
     get 'types' => 'posts#type_index'
   end
