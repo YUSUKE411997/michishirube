@@ -8,19 +8,20 @@
         <tr>
           <th>ユーザー名</th>
           <th>投稿種類</th>
-          <th>タイトル</th>
-          <th>内容</th>
           <th>コメント数</th>
           <th>いいね数</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><%= @post.user.name %></td>
-          <td><%= @post.type %></td>
-          <td><%= @post.title %></td>
-          <td><%= @post.body %></td>
-          <td><%= @post.comments.count %>件</td>
+          <td>
+            <%= link_to user_path(@post.user) do %>
+              <%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg" %><br>
+              <%= @post.user.name %>
+            <% end %>
+            </td>
+            <td><%= @post.type %></td>
+            <td><%= @post.comments.count %>件</td>
             <td>
               <% if user_signed_in? %>
                 <% if @post.liked_by?(current_user) %>
@@ -32,17 +33,33 @@
               <%= @post.likes.count %>
             </td>
         </tr>
+        <tr>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+        <tr>
+          <td><%= @post.title %></td>
+          <td><%= @post.body %></td>
+        </tr>
       </tbody>
     </table>
     <% if @post.user == current_user %>
       <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
     <% end %>
-    <h2>コメント</h2>
+<!----------------------------------------------------下記はコメント関連の記述------------------------------------------------------------>
+    <h2 class="mt-5">コメント</h2>
     <table class="table">
       <% @comments.each do |comment| %>
         <tr>
-          <td><%= link_to comment.user.name, user_path(comment.user.id) %></td>
+          <td>
+            <%= link_to user_path(comment.user) do %>
+              <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg", size: "50x50" %><br>
+              <%= comment.user.name %>
+            <% end %>
+          </td>
           <td><%= comment.content %></td>
+        </tr>
+        <tr>
           <td><%= comment_created(comment) %></td>
           <% if comment.user == current_user %>
             <td><%= link_to "コメントを削除", post_comment_path(comment.post.id,comment.id), method: :delete %></td>
