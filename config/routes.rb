@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   scope module: :users do
     root to: 'homes#top'
+    get 'search' => 'searches#search'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get 'search' => 'searches#search'
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
