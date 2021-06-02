@@ -12,4 +12,8 @@ class Post < ApplicationRecord
   belongs_to :user
 
   validates :user_id, :title, :body, :type, presence: true
+  
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end

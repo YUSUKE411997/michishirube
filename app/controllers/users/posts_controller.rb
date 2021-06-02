@@ -7,8 +7,8 @@ class Users::PostsController < ApplicationController
   end
 
   def type_index
-    type_name = Post.find_by(type: params[:type])
-    @posts = Post.where(type: type_name.type)
+    @type_name = Post.find_by(type: params[:type])
+    @posts = Post.where(type: @type_name.type)
   end
 
   def create
