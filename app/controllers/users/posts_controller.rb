@@ -13,8 +13,12 @@ class Users::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      @posts = Post.all.order(created_at: :desc)
+      render :index
+    end 
   end
 
   def show

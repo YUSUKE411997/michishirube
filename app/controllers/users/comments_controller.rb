@@ -3,8 +3,14 @@ class Users::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save
-    redirect_back(fallback_location: root_path)
+
+    if @comment.save
+      redirect_back(fallback_location: root_path)
+    else
+      @post = Post.find_by(id: @comment.post_id)
+      @comments = @post.comments
+      render 'users/posts/show'
+    end
   end
 
   def destroy

@@ -35,7 +35,7 @@
       </tbody>
     </table>
     <% if @post.user == current_user %>
-    <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
+      <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
     <% end %>
     <h2>コメント</h2>
     <table class="table">
@@ -44,20 +44,23 @@
           <td><%= link_to comment.user.name, user_path(comment.user.id) %></td>
           <td><%= comment.content %></td>
           <td><%= comment_created(comment) %></td>
-          <% if comment.user.id == current_user.id %>
+          <% if comment.user == current_user %>
             <td><%= link_to "コメントを削除", post_comment_path(comment.post.id,comment.id), method: :delete %></td>
           <% end %>
         </tr>
       <% end %>
     </table>
-    <div class="row">
-      <%= form_with(model: [@post, @comment], local: true) do |f| %>
-        <%= f.label "コメント内容"%>
-        <%= f.text_area :content %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.submit 'コメントする', class: "btn btn-success" %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="row">
+        <%= form_with(model: [@post, @comment], local: true) do |f| %>
+          <%= render 'layouts/error', model: @comment %>
+          <%= f.label "コメント内容"%>
+          <%= f.text_area :content %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <%= f.submit 'コメントする', class: "btn btn-success" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

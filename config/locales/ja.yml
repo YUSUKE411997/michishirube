@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: タイトル
+        body: 内容
+      comment:
+        content: コメント
+        
