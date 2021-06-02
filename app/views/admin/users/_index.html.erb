@@ -1,0 +1,26 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ユーザーID</th>
+        <th>ユーザー名</th>
+        <th>投稿数</th>
+        <th>ユーザーステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name, admin_user_path(user) %></td>
+        <td><%= user.posts.count %></td>
+        <% if user.is_valid == true %>
+          <td>有効会員</td>
+        <% else %>
+          <td>退会済み</td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
