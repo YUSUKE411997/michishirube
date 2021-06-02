@@ -5,9 +5,9 @@ class Admin::SearchesController < ApplicationController
     @word = params[:word]
     @range = params[:range]
     if @range == "投稿"
-      @posts = Post.search(params[:word])
+      @posts = Post.search(params[:word]).order(created_at: :desc)
     else
-      @users = User.search(params[:word])
+      @users = User.search(params[:word]).order(created_at: :desc)
     end
   end
 end
