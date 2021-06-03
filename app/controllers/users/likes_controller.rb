@@ -5,6 +5,7 @@ class Users::LikesController < ApplicationController
     post = Post.find(params[:post_id])
     like = current_user.likes.new(post_id: post.id)
     like.save
+    post.create_notification_like!(current_user)
     redirect_back(fallback_location: root_path)
   end
   
