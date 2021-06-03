@@ -1,0 +1,23 @@
+<%# visitor = notification.visitor %>
+<%# visited = notification.visited %>
+<div>
+  <strong>
+    <%= notification.visitor.name %>さんが
+    <% case notification.action %>
+    <% when 'follow' then %>
+      <%= "あなたをフォローしました" %>
+    <% when 'like' then %>
+      <%= "あなたの投稿にいいねしました" %>
+    <% when 'comment' then %>
+      <% if notification.post.user_id == notification.visited.id %>
+        あなたの投稿
+      <% else %>
+        <%= notification.post.user.name + "さんの投稿" %>
+      <% end %>
+      にコメントしました
+    <% end %>
+  </strong>
+  <p class="small.text-muted.text-right">
+    <%= time_ago_in_words(notification.created_at) %>前
+  </p>
+</div>
