@@ -33,7 +33,6 @@ class Post < ApplicationRecord
         visited_id: user_id,
         action: 'like'
         )
-
     # 自分の投稿に自分がいいねした場合、通知済み
       if notification.visitor_id == notification.visited_id
         notification.checked = true
