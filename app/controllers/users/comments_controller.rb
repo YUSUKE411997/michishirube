@@ -3,20 +3,19 @@ class Users::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @post = @comment.post
+    @post = Post.find_by(id: @comment.post_id)
+    @comments = @post.comments
     if @comment.save
       @post.create_notification_comment!(current_user, @comment.id)
-      redirect_back(fallback_location: root_path)
     else
-      @post = Post.find_by(id: @comment.post_id)
-      @comments = @post.comments
       render 'users/posts/show'
     end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_back(fallback_location: root_path)
+    @comment = Comment.find(params[:id]).destroy
+    @post = Post.find_by(id: @comment.post_id)
+    @comments = @post.comments
   end
 
   private
