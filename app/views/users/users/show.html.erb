@@ -11,7 +11,7 @@
       <%= "フォロワー一覧　#{@user.followers.count}人" %><br>
       <% end %>
       <%= link_to "プロフィールを変更", edit_user_path(@user) %>
-      <%= render 'users/posts/index', posts: @user.posts %>
+      <%= render 'users/posts/index', posts: @posts %>
     <% else %>
 <!------------------------------------他人のユーザーページ--------------------------------------->
       <h1><%= @user.name %>さんのページ</h1>
@@ -27,7 +27,7 @@
       <% else %>
         <p><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
       <% end %>
-      <%= render 'users/posts/index', posts: @user.posts %>
+      <%= render 'users/posts/index', posts: @posts %>
     <% end %>
     </div>
   </div>
