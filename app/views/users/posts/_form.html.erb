@@ -1,0 +1,13 @@
+<%= form_with model: post,metod: :post, local: true do |f| %>
+  <%= render 'layouts/error', model: post %>
+  <%= f.label "投稿種類" %>
+  <p>気ままに投稿  <%= f.radio_button :type, "気ままに投稿" %></p>
+  <p>やってみたい投稿  <%= f.radio_button :type, "やってみたいを投稿" %></p>
+  <p>やってみた投稿  <%= f.radio_button :type, "やってみたを投稿" %></p>
+  <%= f.label "タイトル" %>
+  <%= f.text_field :title %><br>
+  <%= f.label "内容" %>
+  <%= f.text_area :body %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit '送信' %>
+<% end %>

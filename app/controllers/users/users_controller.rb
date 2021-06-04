@@ -4,6 +4,7 @@ class Users::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -27,11 +28,11 @@ class Users::UsersController < ApplicationController
     flash[:notice] = "退会を確認しました"
     redirect_to root_path
   end
-  
+
   def follows
     @users = User.find(params[:id]).followings
-  end 
-  
+  end
+
   def followers
     @users = User.find(params[:id]).followers
   end

@@ -2,13 +2,13 @@ class Users::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.page(params[:page]).order(created_at: :desc)
     @post = Post.new
   end
 
   def type_index
     @type_name = Post.find_by(type: params[:type])
-    @posts = Post.where(type: @type_name.type).order(created_at: :desc)
+    @posts = Post.where(type: @type_name.type).page(params[:page]).order(created_at: :desc)
   end
 
   def create

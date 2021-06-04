@@ -28,6 +28,8 @@ header {
   height: 200px;
   background-color: #DDDDDD;
   padding: 15px;
+  margin-bottom: 3%;
+
 }
 
 header > h2 {
@@ -48,4 +50,10 @@ header > li{
 .fa-exclamation {
   position: absolute;
   color: #FF8C00;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 5% 0;
 }
