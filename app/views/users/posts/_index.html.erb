@@ -19,7 +19,7 @@
         </td>
         <td><%= link_to post.type, types_path(type: post.type) %></td>
         <td><%= link_to post.title, post_path(post.id) %></td>
-        <td><%= post.body %></td>
+        <td><%= truncate(post.body) %></td>
         <td><%= post.comments.count %>件</td>
         <td>💖<%= post.likes.count %></td>
         <td><%= post_created(post) %></td>

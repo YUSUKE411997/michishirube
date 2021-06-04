@@ -16,3 +16,36 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 200px;
+  background-color: #DDDDDD;
+  padding: 15px;
+}
+
+header > h2 {
+  display: inline-block;
+  width: 70%;
+}
+
+header > li{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.search-form {
+  text-align: right;
+  padding: 10px 50px 0 0;
+}
+
+.fa-exclamation {
+  position: absolute;
+  color: #FF8C00;
+}
