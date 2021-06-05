@@ -3,8 +3,9 @@
   <div class="container">
     <h3>タグリスト</h3>
     <% @tag_lists.each do |tag_list| %>
-      <%= link_to tag_list.tag_name, tag_posts_path(tag_list.id)%>
-      <%= tag_list.posts.count %>
+      <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
+      <%= "#{tag_list.tag_name} (#{tag_list.posts.count})" %>
+      <% end %>
     <% end %>
     <h1>投稿一覧ページ</h1>
     <div class="row">
