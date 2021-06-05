@@ -20,12 +20,13 @@ class Users::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    tag_list = params[:post][:tag_name].split(nil)
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @post.save
-      @post.save_tag(tag_list)
+       @post.save_tag(tag_list)
       redirect_to posts_path
     else
-      @posts = Post.all.order(created_at: :desc)
+      @tag_lists = Tag.all
+      @posts = Post.page(params[:page]).order(created_at: :desc)
       render :index
     end
   end

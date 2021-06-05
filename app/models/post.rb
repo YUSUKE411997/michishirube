@@ -68,7 +68,7 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+  タグ付け機能
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
@@ -83,4 +83,13 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+  
+  # def save_tag(taglist)
+  #   taglist.each do |list|
+  #     if Tag.find_by(tag_name: list)
+  #       list.destroy
+  #     end
+  #   end
+  # end
+  
 end

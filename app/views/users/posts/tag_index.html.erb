@@ -4,10 +4,8 @@
     <%#= link_to tag_list.tag_name, tag_posts_path(tag_list.id) %>
     <%#= tag_list.posts.count %>
   <%# end %>
-
   <div class="mt-3 mb-3">
     タグが <strong><%= @tag.tag_name %></strong> の投稿一覧
   </div>
-
   <%= render 'users/posts/index', posts: @posts %>
 </div>
