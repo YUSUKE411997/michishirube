@@ -37,6 +37,11 @@ class Users::UsersController < ApplicationController
     @users = User.find(params[:id]).followers
   end
 
+  def user_likes
+    @user = User.find(params[:id])
+    @likes = @user.user_likes.page(params[:page]).order(created_at: :desc)
+  end
+
   private
 
   def user_params

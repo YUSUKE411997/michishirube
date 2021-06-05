@@ -1,3 +1,34 @@
 // Place all the styles related to the users/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-show {
+  padding: 0 20px;
+}
+
+.profile-table {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.image-name {
+  width: 100%;
+  height: 250px;
+  background-color: #A4C6FF;
+  border-radius: 50px;
+}
+.profile-span {
+  display: block;
+}
+
+.profile_image {
+  border-radius:30px;
+}
+
+.profile-edit {
+  display: inline-block;
+}
+// .button-map {
+//   margin-left: 100px;
+// }

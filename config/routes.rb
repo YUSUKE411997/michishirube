@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
+      get :user_likes, on: :member
     end
     get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
     patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw

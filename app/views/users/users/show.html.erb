@@ -1,26 +1,35 @@
 <div>
   <div class="container">
-<!------------------------------------マイページ---------------------------------------------->
     <% if @user == current_user %>
-      <h1>マイページ</h1>
-      <%= render 'layouts/profile', user: @user %>
-      <%= link_to follows_user_path do %>
-      <%= "フォロー一覧　#{@user.followings.count}人" %><br>
-      <% end %>
-      <%= link_to followers_user_path do %>
-      <%= "フォロワー一覧　#{@user.followers.count}人" %><br>
-      <% end %>
-      <%= link_to "プロフィールを変更", edit_user_path(@user) %>
-      <%= render 'users/posts/index', posts: @posts %>
-    <% else %>
-<!------------------------------------他人のユーザーページ--------------------------------------->
-      <h1><%= @user.name %>さんのページ</h1>
-      <%= render 'layouts/profile', user: @user %>
-      <div id="<%= @user.id %>_follow">
-        <%= render 'users/relationships/relationship', user: @user %>
+    <div>
+      <h1 class="profile-edit">マイページ</h1>
+      <%= link_to "プロフィールを変更", edit_user_path(@user), class: "profile-edit" %>
       </div>
-      <%= render 'users/posts/index', posts: @posts %>
+    <% else %>
+      <h1><%= @user.name %>さんのページ</h1>
     <% end %>
-    </div>
+    <% if @user == current_user %>
+      <button>
+        <%= link_to follows_user_path, class: "btn btn-light" do %>
+          <%= "フォロー　#{@user.followings.count}" %><br>
+        <% end %>
+      </button>
+      <button>
+        <%= link_to followers_user_path, class: "btn btn-light" do %>
+          <%= "フォロワー　#{@user.followers.count}" %><br>
+        <% end %>
+      </button>
+    <% else %>
+      <span id="<%= @user.id %>_follow">
+        <%= render 'users/relationships/relationship', user: @user %>
+      </span>
+    <% end %>
+    <button>
+      <%= link_to user_likes_user_path, class: "btn btn-light" do %>
+        いいね<%= @user.user_likes.count %>
+      <% end %>
+    </button>
+    <%= render 'layouts/profile', user: @user %>
+    <%= render 'users/posts/index', posts: @posts %>
   </div>
 </div>

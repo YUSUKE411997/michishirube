@@ -1,7 +1,11 @@
-<table>
-  <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg" %></th>
-  <th><%= user.name %></th>
-  <th><%= user.age %>才</th>
-  <th><%= user.profession %></th>
-  <th><%= user.introduction %></th>
-</table>
+<div class="profile-table">
+  <div class="image-name">
+    <span class="profile-span profile-image pt-3"><%= attachment_image_tag user, :profile_image, :fill, 180, 180, fallback: "profile/no_image.jpg", size: "180x180" %></span>
+    <span class="profile-span pt-2"><%= user.name %></span>
+  </div>
+  <% if user.age.present? %>
+    <span class="profile-span"><%= user.age %>才</span>
+  <% end %>
+  <span class="profile-span"><%= user.profession %></span>
+  <span class="profile-span"><%= user.introduction %></span>
+</div>
