@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
   belongs_to :user
 
   validates :user_id, :title, :body, :type, presence: true
@@ -65,5 +67,20 @@ class Post < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+  end
+  
+  def save_tag(sent_tags)
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
+    old_tags = current_tags - sent_tags
+    new_tags = sent_tags - current_tags
+    
+    old_tags.each do |old_tag|
+      self.tags.delete Tag.find_by(tag_name: old_tag)
+    end
+    
+    new_tags.each do |new_tag|
+      new_post_tag = Tag.find_or_create_by(tag_name: new_tag)
+      self.tags << new_post_tag
+    end
   end
 end

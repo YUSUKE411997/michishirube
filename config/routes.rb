@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    resources :tags do
+      get 'posts', to: 'posts#tag_index'
+    end
     resources :notifications, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'

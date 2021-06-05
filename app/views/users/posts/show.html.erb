@@ -38,6 +38,12 @@
         </tr>
       </tbody>
     </table>
+    
+    <% @post_tags.each do |post_tag| %>
+      <%= link_to post_tag.tag_name, tag_posts_path(post_tag.id) %>
+      <%= post_tag.posts.count %>
+    <% end %>
+    
     <% if @post.user == current_user %>
       <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
     <% end %>
