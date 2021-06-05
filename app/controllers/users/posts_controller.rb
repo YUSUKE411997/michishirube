@@ -4,6 +4,7 @@ class Users::PostsController < ApplicationController
   def index
     @posts = Post.page(params[:page]).order(created_at: :desc)
     @post = Post.new
+    @tag_lists = Tag.all
   end
 
   def type_index
@@ -11,9 +12,17 @@ class Users::PostsController < ApplicationController
     @posts = Post.where(type: @type_name.type).page(params[:page]).order(created_at: :desc)
   end
 
+  def tag_index
+    @tag_lists = Tag.page(params[:page]).order(created_at: :desc)
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.page(params[:page]).order(created_at: :desc)
+  end
+
   def create
     @post = Post.new(post_params)
+    tag_list = params[:post][:tag_name].split(nil)
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to posts_path
     else
       @posts = Post.all.order(created_at: :desc)
@@ -25,6 +34,7 @@ class Users::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments
+    @post_tags = @post.tags
   end
 
   def destroy

@@ -8,6 +8,9 @@
   <%= f.text_field :title %><br>
   <%= f.label "内容" %>
   <%= f.text_area :body %>
+  <%= f.label "タグ" %>
+  <p>スペースを入力で複数のタグをつける事ができます</p>
+  <%= f.text_field :tag_name %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit '送信' %>
 <% end %>

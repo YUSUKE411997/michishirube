@@ -1,5 +1,11 @@
 <div>
+
   <div class="container">
+    <h3>タグリスト</h3>
+    <% @tag_lists.each do |tag_list| %>
+      <%= link_to tag_list.tag_name, tag_posts_path(tag_list.id)%>
+      <%= tag_list.posts.count %>
+    <% end %>
     <h1>投稿一覧ページ</h1>
     <div class="row">
     <% if user_signed_in? %>
