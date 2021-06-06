@@ -1,6 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :whithdraw]
 
   def show
     @user = User.find(params[:id])
@@ -42,6 +42,19 @@ class Users::UsersController < ApplicationController
     @likes = @user.user_likes.page(params[:page]).order(created_at: :desc)
   end
 
+  def user_type
+    @type_name = params[:type]
+    @user = User.find(params[:id])
+    case @type_name
+      when "気ままに"
+        @posts = @user.posts.where(type: 0).page(params[:page]).order(created_at: :desc)
+      when "やってみたい"
+        @posts = @user.posts.where(type: 1).page(params[:page]).order(created_at: :desc)
+      when "やってみた"
+        @posts = @user.posts.where(type: 2).page(params[:page]).order(created_at: :desc)
+    end
+  end
+
   private
 
   def user_params
@@ -51,7 +64,7 @@ class Users::UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to user_path(current_user)
+      redirect_to root_path
     end
   end
 
