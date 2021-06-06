@@ -4,7 +4,7 @@ class Users::PostsController < ApplicationController
   def index
     @posts = Post.page(params[:page]).order(created_at: :desc)
     @post = Post.new
-    @tag_lists = Tag.all
+    @tag_lists = Tag.all.order(yomi: :desc)
   end
 
   def type_index

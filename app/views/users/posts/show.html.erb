@@ -3,50 +3,54 @@
     <div class="row">
       <h1>投稿詳細ページ</h1>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ユーザー名</th>
-          <th>投稿種類</th>
-          <th>コメント数</th>
-          <th>いいね数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to user_path(@post.user) do %>
-              <%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg" %><br>
-              <%= @post.user.name %>
-            <% end %>
-          </td>
-          <td><%= @post.type %></td>
-          <td id="comment_count"><%= @post.comments.count %>件</td>
-          <td>
-            <div id="like_button">
-              <%= render 'users/likes/like', post: @post %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>タイトル</th>
-          <th>内容</th>
-        </tr>
-        <tr>
-          <td><%= @post.title %></td>
-          <td><%= @post.body %></td>
-        </tr>
-      </tbody>
-    </table>
-    
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザー名</th>
+            <th>投稿種類</th>
+            <th>コメント数</th>
+            <th>いいね</th>
+            <th>投稿時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@post.user) do %>
+                <%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg" %><br>
+                <%= @post.user.name %>
+              <% end %>
+            </td>
+            <td><%= @post.type %></td>
+            <td id="comment_count"><%= @post.comments.count %>件</td>
+            <td>
+              <div id="like_button">
+                <%= render 'users/likes/like', post: @post %>
+              </div>
+            </td>
+            <td><%= post_created(@post) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="title">
+        <strong><%= @post.title %></strong>
+      </div>
+      <div class="body">
+        <p><%= @post.body %></p>
+      </div>
+    </div>
+
     <% @post_tags.each do |post_tag| %>
-      <%= link_to post_tag.tag_name, tag_posts_path(post_tag.id) %>
-      <%= post_tag.tag_name%>
-      <%= post_tag.posts.count %>
+      <%= link_to tag_posts_path(post_tag.id) do %>
+        <%= post_tag.tag_name%>
+      <% end %>
     <% end %>
-    
+
     <% if @post.user == current_user %>
-      <td><%= link_to "削除する", post_path(@post), method: :delete %></td>
+      <td><%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger" %></td>
     <% end %>
 <!----------------------------------------------------下記はコメント関連の記述------------------------------------------------------------>
     <div id="comment_area">
