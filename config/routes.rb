@@ -27,9 +27,14 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    resources :rooms, only: [:index, :show] do
+      resource :messages, only: [:create, :destroy]
+    end
     resources :tags do
       get 'posts', to: 'posts#tag_index'
     end
+    # resources :messages, only: [:show, :create, :destroy]
+    # resources :rooms, only: [:create, :index, :show]
     resources :notifications, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'

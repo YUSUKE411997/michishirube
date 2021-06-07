@@ -1,0 +1,39 @@
+<div>
+  <div class="container">
+    <h2><%= @user.name %>とのメッセージ</h2>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= current_user.name %></th>
+            <th><%= @user.name %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @messages.each do |message| %>
+            <% if message.user_id == current_user.id %>
+              <tr>
+                <td style="text-align: right;">
+                  <%= message.content %><br>
+                  <%= message_created(message)%>
+                </td>
+              </tr>
+            <% else %>
+            <tr>
+              <td style="text-align: left;">
+                <%= message.content %><br>
+                <%= message_created(message)%>
+              </td>
+            </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= form_with(model:[@room, @message], local: true) do |f| %>
+        <%= f.text_field :content %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit "送信"%>
+      <% end %>
+    </div>
+  </div>
+</div>
