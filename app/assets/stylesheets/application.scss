@@ -34,7 +34,7 @@ header {
 
 header > h2 {
   display: inline-block;
-  width: 70%;
+  width: 65%;
 }
 
 header > li{
@@ -47,9 +47,11 @@ header > li{
   padding: 10px 50px 0 0;
 }
 
-.fa-exclamation {
+.notification-count {
   position: absolute;
-  color: #FF8C00;
+  color: #FF4F02;
+  padding-left: 4px;
+  font-size: 14px;
 }
 
 .pagination {

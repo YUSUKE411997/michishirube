@@ -1,14 +1,15 @@
 <div>
 
   <div class="container">
-    <h3>タグリスト</h3>
-    <% @tag_lists.each do |tag_list| %>
-      <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
-      <%= "#{tag_list.tag_name} (#{tag_list.posts.count})" %>
+    <div class="mb-5">
+      <h3>タグリスト</h3>
+      <% @tag_lists.each do |tag_list| %>
+        <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
+        <%= "#{tag_list.tag_name} (#{tag_list.posts.count})" %>
+        <% end %>
       <% end %>
-    <% end %>
-    <h1>投稿一覧ページ</h1>
-    <div class="row">
+    </div>
+    <div class="row mb-5">
     <% if user_signed_in? %>
       <%= render 'form', post: @post %>
     <% end %>

@@ -1,6 +1,9 @@
-<div>
+<div class="mb-5">
   <strong>
-    <%= notification.visitor.name %>さんが
+    <%= attachment_image_tag notification.visitor, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
+    <%= link_to user_path(notification.visitor_id) do %>
+    <%= notification.visitor.name %>
+    <% end %>さんが
     <% case notification.action %>
     <% when 'follow' then %>
       <%= "あなたをフォローしました" %>
@@ -13,9 +16,11 @@
         <%= notification.post.user.name + "さんの投稿" %>
       <% end %>
       にコメントしました
+      <p><%= notification.post.title %></p>
+      <p><%= notification.comment.content %></p>
     <% end %>
   </strong>
-  <p class="small.text-muted.text-right">
+  <div>
     <%= time_ago_in_words(notification.created_at) %>前
-  </p>
+  </div>
 </div>

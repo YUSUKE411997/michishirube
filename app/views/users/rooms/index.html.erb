@@ -1,0 +1,10 @@
+<div>
+  <div class="container">
+    <h1>メッセージ</h1>
+    <% @rooms.each do |room| %>
+    <tr>
+      <p><%= link_to room.user.name, room_path(room.user) %></p>
+    </tr>
+    <% end %>
+  </div>
+</div>
