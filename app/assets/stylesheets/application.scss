@@ -25,11 +25,20 @@
 
 header {
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-color: #DDDDDD;
   padding: 15px;
   margin-bottom: 3%;
+}
 
+body {
+  // background: radial-gradient(rgba(128, 0, 0, .4), rgba(0, 0, 0, .4)),
+  // url(profile/watercolour-4116932_1280.png);
+  // background-size: cover;
+  // color: #f8f9fa;
+//   background-image: url('profile');
+// background-size: cover;
+height: 140vh;
 }
 
 header > h2 {

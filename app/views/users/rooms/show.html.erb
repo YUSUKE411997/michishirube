@@ -1,5 +1,6 @@
 <div>
   <div class="container">
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %>
     <h2><%= @user.name %>とのメッセージ</h2>
     <div class="row">
       <table class="table">
@@ -14,13 +15,15 @@
             <% if message.user_id == current_user.id %>
               <tr>
                 <td style="text-align: right;">
-                  <%= message.content %><br>
+                  <%= message.content %>
+                  <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
                   <%= message_created(message)%>
                 </td>
               </tr>
             <% else %>
             <tr>
               <td style="text-align: left;">
+                <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
                 <%= message.content %><br>
                 <%= message_created(message)%>
               </td>
