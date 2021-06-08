@@ -73,17 +73,17 @@ class Post < ApplicationRecord
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
     new_tags = sent_tags - current_tags
-    
+
     old_tags.each do |old_tag|
       self.tags.delete Tag.find_by(tag_name: old_tag)
     end
-    
+
     new_tags.each do |new_tag|
       new_post_tag = Tag.find_or_create_by(tag_name: new_tag)
       self.tags << new_post_tag
     end
   end
-  
+
   # def save_tag(tag_list)
   #   Tag.select(:tag_name).where.not()
   # end

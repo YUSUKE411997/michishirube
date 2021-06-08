@@ -11,4 +11,5 @@ module ApplicationHelper
   def message_created(message)
     message.created_at.strftime("%Y/%m/%d %H:%M")
   end
+  
 end
