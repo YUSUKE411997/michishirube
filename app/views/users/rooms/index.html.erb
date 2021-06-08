@@ -1,14 +1,15 @@
 <div>
   <div class="container">
     <h1>メッセージ</h1>
-    <% @rooms.each do |room| %>
+    <% @user_rooms.each do |user_room| %>
     <tr>
-      <p><%= link_to room_path(room.user) do %>
-      <%= attachment_image_tag room.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
-      <%= room.user.name %>
+      <p><%= link_to room_path(user_room.user) do %>
+      <%= attachment_image_tag user_room.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
+      <%= user_room.user.name %>
       <% end %></p>
-      <%= (room.room.messages.last).content %><br>
-      <%= (room.room.messages.last).created_at.strftime("%Y/%m/%d %H:%M") %>
+      <%= (user_room.room.messages.last).content %><br>
+      <%= user_room.room.messages.where(checked: false).where.not(user: current_user).count %>
+      <%= (user_room.room.messages.last).created_at.strftime("%Y/%m/%d %H:%M") %>
     </tr>
     <% end %>
   </div>

@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_074810) do
     t.integer "user_id"
     t.integer "room_id"
     t.text "content"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
@@ -71,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_074810) do
     t.integer "type", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "impressions_count", default: 0
   end
 
   create_table "relationships", force: :cascade do |t|
