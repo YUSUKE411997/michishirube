@@ -1,9 +1,6 @@
 <div>
   <div class="container">
     <%= render 'profile', user: @user %>
-    <% unless @user == current_user %>
-      <%= link_to "メッセージ", room_path(@user.id) %>
-    <% end %>
     <h4>投稿</h4>
     <%= render 'users/posts/index', posts: @posts %>
   </div>
