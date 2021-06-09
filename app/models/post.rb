@@ -21,7 +21,7 @@ class Post < ApplicationRecord
   end
 
   def self.search(word)
-    where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%", "%#{word}%"])
+    where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
   end
 
 # いいね通知

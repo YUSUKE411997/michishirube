@@ -16,6 +16,7 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
 
 * {
   margin: 0;
@@ -32,13 +33,8 @@ header {
 }
 
 body {
-  // background: radial-gradient(rgba(128, 0, 0, .4), rgba(0, 0, 0, .4)),
-  // url(profile/watercolour-4116932_1280.png);
-  // background-size: cover;
-  // color: #f8f9fa;
-//   background-image: url('profile');
-// background-size: cover;
-height: 140vh;
+  height: 140vh;
+  font-family: "M PLUS Rounded 1c";
 }
 
 header > h2 {
