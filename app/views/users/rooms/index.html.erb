@@ -1,16 +1,20 @@
 <div>
-  <div class="container">
+  <div class="container message-index">
     <h1>メッセージ</h1>
+    <table>
     <% @user_rooms.each do |user_room| %>
-    <tr>
-      <p><%= link_to room_path(user_room.user) do %>
-      <%= attachment_image_tag user_room.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
-      <%= user_room.user.name %>
-      <% end %></p>
-      <%= (user_room.room.messages.last).content %><br>
-      <%= user_room.room.messages.where(checked: false).where.not(user: current_user).count %>
-      <%= (user_room.room.messages.last).created_at.strftime("%Y/%m/%d %H:%M") %>
+    <tr class="message-box">
+      <td class="message-user">
+        <%= link_to user_path(user_room.user) do %>
+          <%= attachment_image_tag user_room.user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %><br>
+          <%= user_room.user.name %>
+        <% end %>
+      </td>
+      <td class="message-content"><%= link_to room_path(user_room.user) do %><%= (user_room.room.messages.last).content %><% end %><td>
+      <td class="message-false"><%= user_room.room.messages.where(checked: false).where.not(user: current_user).count %></td>
+      <td class="message-time"><%= time_ago_in_words(user_room.room.messages.last.created_at) %>前</td>
     </tr>
     <% end %>
+    </table>
   </div>
 </div>
