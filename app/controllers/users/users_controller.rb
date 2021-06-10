@@ -37,6 +37,11 @@ class Users::UsersController < ApplicationController
     @users = User.find(params[:id]).followers
   end
 
+  def timeline
+    followings_users = current_user.followings
+    @posts = Post.where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
+  end
+
   def user_likes
     @user = User.find(params[:id])
     @likes = @user.user_likes.page(params[:page]).order(created_at: :desc)

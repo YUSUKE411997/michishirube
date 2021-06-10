@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :followers, on: :member
       get :user_likes, on: :member
       get :user_type, on: :member
+      get :timeline, on: :member
     end
     get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
     patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
