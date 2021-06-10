@@ -10,9 +10,13 @@
           <%= user_room.user.name %>
         <% end %>
       </td>
-      <td class="message-content"><%= link_to room_path(user_room.user) do %><%= (user_room.room.messages.last).content %><% end %><td>
-      <td class="message-false"><%= user_room.room.messages.where(checked: false).where.not(user: current_user).count %></td>
-      <td class="message-time"><%= time_ago_in_words(user_room.room.messages.last.created_at) %>前</td>
+      <% if user_room.room.messages.blank? %>
+        <td>メッセージのやりとりはありません</td>
+      <% else %>
+        <td class="message-content"><%= link_to room_path(user_room.user) do %><%= (user_room.room.messages.last).content %><% end %><td>
+        <td class="message-false"><%= user_room.room.messages.where(checked: false).where.not(user: current_user).count %></td>
+        <td class="message-time"><%= time_ago_in_words(user_room.room.messages.last.created_at) %>前</td>
+      <% end %>
     </tr>
     <% end %>
     </table>
