@@ -24,6 +24,11 @@ class Post < ApplicationRecord
     where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
   end
 
+  def self.create_ranks(type)
+    posts_type = Post.where(type: type)
+    posts_type.sort_by {|post| post.likes.count}.reverse
+  end
+
 # いいね通知
   def create_notification_like!(current_user)
     # いいねされているか検索
