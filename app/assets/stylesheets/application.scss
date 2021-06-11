@@ -17,7 +17,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
-
+@import url("https://fonts.googleapis.com/earlyaccess/hannari.css");
 * {
   margin: 0;
   padding: 0;
@@ -26,20 +26,33 @@
 
 header {
   width: 100%;
-  height: 150px;
-  background-color: #DDDDDD;
+  height: 140px;
   padding: 15px;
-  margin-bottom: 3%;
+  // background: linear-gradient(-135deg, #BAD3FF, #0099FF);
+  background-color: white;
 }
 
 body {
-  height: 140vh;
   font-family: "M PLUS Rounded 1c";
+  background-image: image-url('olga-thelavart-vS3idIiYxX0-unsplash.jpg');
+}
+
+.container-box {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo {
+  background-image: image-url('cooltext386397971327508.png');
+  width: 30%;
+  height: 35px;
+  padding: 20px 0 0 40px;
 }
 
 header > h2 {
   display: inline-block;
-  width: 55%;
+  width: 40%;
 }
 
 header > li{
@@ -68,4 +81,40 @@ header > li{
 button {
   border-radius: 6px;
   margin-right: 10px;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: gray;
+  margin-top: auto;
+}
+
+.header-message {
+  position: absolute;
+  color: #FF4F02;
+  padding-left: 4px;
+  font-size: 14px;
+}
+
+.header-button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 14px;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 9px;   /* 余白       */
+  background    : #FFDAB9;     /* 背景色     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #FFDAB9;    /* 枠の指定 */
+  width: 7.7%;
+}
+.header-button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  background    : #ffffff;     /* 文字色     */
 }

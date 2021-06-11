@@ -3,12 +3,12 @@
   <p><%= f.radio_button :type, "気ままに投稿" %>  気ままに投稿</p>
   <p><%= f.radio_button :type, "やってみたいを投稿" %>  やってみたい投稿</p>
   <p><%= f.radio_button :type, "やってみたを投稿" %>  やってみた投稿</p>
-  <%= f.label "タイトル" %>
+  <%= f.label "タイトル",  class: "form-left" %>
   <%= f.text_field :title %><br>
-  <%= f.label "内容" %>
+  <%= f.label "内容",  class: "form-left" %>
   <%= f.text_area :body %>
   <p class="tag-sample">スペースを入力で複数のタグをつける事ができます</p>
-  <%= f.label "タグ" %>
+  <%= f.label "タグ",  class: "form-left" %>
   <%= f.text_field :tag_name %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit '送信' %>

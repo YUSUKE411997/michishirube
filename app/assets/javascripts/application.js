@@ -30,3 +30,37 @@ $(document).on('turbolinks:load', function() {
     loadingHtml: '読み込み中'
   });
 });
+
+// $(document).on('turbolinks:load', function(){
+//   $('.image-top').hide().fadeIn(2800);
+// });
+
+$(document).on('turbolinks:load', function(){
+  $('.p-top').hide().fadeIn(2000);
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.p-bottom').hide().fadeIn(6000);
+});
+
+// $(document).on('turbolinks:load', function() {
+//     $(this).click(function(){
+//         $('.form-page').toggleClass("active");
+//     });
+// });
+
+$(document).on('turbolinks:load', (function() {
+  $('.post-button').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('.form-page').fadeToggle();
+    event.preventDefault();
+  });
+}));
+
+$(document).on('turbolinks:load', (function() {
+  $('.tag-button').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('.tag-lists').fadeToggle();
+    event.preventDefault();
+  });
+}));

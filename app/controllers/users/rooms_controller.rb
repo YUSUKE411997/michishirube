@@ -3,7 +3,7 @@ class Users::RoomsController < ApplicationController
 
   def index
     current_rooms = UserRoom.select(:room_id).where(user_id: current_user.id)
-    @user_rooms = UserRoom.where(room_id: current_rooms).where.not(user_id: current_user.id)
+    @user_rooms = UserRoom.where(room_id: current_rooms).where.not(user_id: current_user.id).includes(:user, :room)
   end
 
   def show
@@ -18,7 +18,7 @@ class Users::RoomsController < ApplicationController
     else
       @room = user_rooms.room
     end
-    @messages = @room.messages
+    @messages = @room.messages.includes(:user)
     @message = Message.new(room_id: @room.id)
 
 

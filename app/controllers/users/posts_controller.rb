@@ -2,20 +2,20 @@ class Users::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.page(params[:page]).order(created_at: :desc)
+    @posts = Post.includes(:user, :comments, :likes).page(params[:page]).order(created_at: :desc)
     @post = Post.new
     @tag_lists = Tag.all.order(yomi: :desc)
   end
 
   def type_index
     @type_name = Post.find_by(type: params[:type])
-    @posts = Post.where(type: @type_name.type).page(params[:page]).order(created_at: :desc)
+    @posts = Post.includes(:user, :comments, :likes).where(type: @type_name.type).page(params[:page]).order(created_at: :desc)
   end
 
   def tag_index
     @tag_lists = Tag.page(params[:page]).order(created_at: :desc)
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.page(params[:page]).order(created_at: :desc)
+    @posts = @tag.posts.includes(:user).page(params[:page]).order(created_at: :desc)
   end
 
   def create
@@ -34,7 +34,7 @@ class Users::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.includes(:user)
     @post_tags = @post.tags
   end
 

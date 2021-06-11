@@ -4,7 +4,7 @@ class Users::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).order(created_at: :desc)
+    @posts = @user.posts.includes(:comments, :likes).page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -39,12 +39,12 @@ class Users::UsersController < ApplicationController
 
   def timeline
     followings_users = current_user.followings
-    @posts = Post.where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
+    @posts = Post.includes(:user).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
   end
 
   def user_likes
     @user = User.find(params[:id])
-    @likes = @user.user_likes.page(params[:page]).order(created_at: :desc)
+    @posts = @user.user_likes.includes(:user).page(params[:page]).order(created_at: :desc)
   end
 
   def user_type

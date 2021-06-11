@@ -1,37 +1,31 @@
-<!--<table class="table">-->
-  <thead>
-    <tr>
-      <th></th>
-      <th>投稿種類</th>
-      <th>投稿タイトル</th>
-      <th>投稿内容</th>
-      <th>コメント数</th>
-      <th>いいね数</th>
-      <th>投稿時間</th>
-    </tr>
-  </thead>
-  <div class="jscroll">
-  <tbody>
+<div class="post-head">
+    <p class="post-top-list"></p>
+    <p class="post-top-list">投稿種類</p>
+    <p class="post-top-list">投稿タイトル</p>
+    <p class="post-top-content">投稿内容</p>
+    <p class="post-top-list">コメント数</p>
+    <p class="post-top-list">いいね数</p>
+    <p class="post-top-list">投稿時間</p>
+</div>
+<div class="jscroll">
+  <div class="post-body">
     <% posts.each do |post| %>
-      <tr>
-        <td><%= link_to user_path(post.user) do %>
+      <div class="row">
+        <p class="post-bottom-list"><%= link_to user_path(post.user) do %>
           <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
           <%= post.user.name.truncate(10) %>
           <% end %>
-        </td>
-        <td><%= link_to post.type, types_path(type: post.type) %></td>
-        <td><%= link_to post.title.truncate(12), post_path(post.id) %></td>
-        <td><%= post.body.truncate(25) %></td>
-        <td><%= post.comments.count %>件</td>
-        <td>💖<%= post.likes.count %></td>
-        <td><%= post_created(post) %></td>
-      </tr>
+        </p>
+        <p class="post-bottom-list"><%= link_to post.type, types_path(type: post.type) %></p>
+        <p class="post-bottom-list"><%= link_to post.title.truncate(12), post_path(post.id) %></p>
+        <p class="post-bottom-content"><%= post.body.truncate(25) %></p>
+        <p class="post-bottom-list"><%= post.comments.size %>件</p>
+        <p class="post-bottom-list">💖<%= post.likes.size %></p>
+        <p class="post-bottom-list"><%= post_created(post) %></p>
+      </div>
     <% end %>
     <div>
-      <%= link_to_next_page @posts, '次のページ', class: "next"%>
+      <%= link_to_next_page posts, '次のページ', class: "next"%>
     </div>
-  </tbody>
   </div>
-<!--</table>-->
-  <%#= paginate posts %>
-
+</div>
