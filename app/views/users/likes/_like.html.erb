@@ -1,8 +1,12 @@
 <% if user_signed_in? %>
   <% if post.liked_by?(current_user) %>
-    <%= link_to "🖤", post_likes_path(post), method: :delete, remote: true %>
+    <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
   <% else %>
-    <%= link_to "💖", post_likes_path(post), method: :post, remote: true %>
+    <%= link_to post_likes_path(post), method: :post, remote: true do %>
+    <i class="far fa-heart"></i>
+    <% end %>
   <% end %>
 <% end %>
 <%= post.likes.count %>

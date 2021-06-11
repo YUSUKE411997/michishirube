@@ -1,6 +1,6 @@
 <div>
   <div class="container">
-    <div>
+    <div class="post-show-box">
       <div class="post-show-top">
         <p class="post-show-list">
           <p class="post-show-list"><%= link_to @post.type, types_path(type: @post.type) %></p>
@@ -15,6 +15,7 @@
         <p><%= @post.body %></p>
       </div>
       <div class="post-show-bottom">
+        <i class="far fa-comments"></i>
         <p id="comment_count"><%= @post.comments.count %>件</p>
         <div class="post-show-list">
           <div id="like_button">

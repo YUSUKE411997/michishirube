@@ -62,12 +62,16 @@
 .post-show-top {
   width: 100%;
   text-align: center;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .post-show-content > strong {
   text-align: left;
   font-size: 28px;
+}
+
+.post-show-content > p {
+  font-size: 20px;
 }
 
 .post-show-bottom {
@@ -78,9 +82,15 @@
 .post-show-bottom > .post-show-list {
   display: inline-block;
   padding-left: 20px;
+  font-size: 18px;
 }
 
 #comment_count {
   display: inline-block;
 }
 
+.post-show-box {
+  border: solid 2px;
+  padding: 10px 10px;
+  border-radius: 15px;
+}

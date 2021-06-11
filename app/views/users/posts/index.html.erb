@@ -5,6 +5,7 @@
       <button class="btn btn-primary post-button">投稿▼</button>
       <div class="tag-lists">
         <% @tag_lists.each do |tag_list| %>
+        <i class="fas fa-tags"></i>
         <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
           <%= "#{tag_list.tag_name} (#{tag_list.posts.size})" %>
         <% end %>
