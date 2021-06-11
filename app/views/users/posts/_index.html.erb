@@ -1,4 +1,4 @@
-<table class="table">
+<!--<table class="table">-->
   <thead>
     <tr>
       <th></th>
@@ -10,6 +10,7 @@
       <th>投稿時間</th>
     </tr>
   </thead>
+  <div class="jscroll">
   <tbody>
     <% posts.each do |post| %>
       <tr>
@@ -26,8 +27,11 @@
         <td><%= post_created(post) %></td>
       </tr>
     <% end %>
+    <div>
+      <%= link_to_next_page @posts, '次のページ', class: "next"%>
+    </div>
   </tbody>
-</table>
-<div>
-  <%= paginate posts %>
-</div>
+  </div>
+<!--</table>-->
+  <%#= paginate posts %>
+
