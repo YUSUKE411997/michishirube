@@ -1,5 +1,7 @@
 <h2>
-    <%= link_to "ミチシルベ", root_path %>
+    <%= link_to root_path do %>
+    <p class="logo"></p>
+    <% end %>
 </h2>
 <% if user_signed_in? %>
   <li>

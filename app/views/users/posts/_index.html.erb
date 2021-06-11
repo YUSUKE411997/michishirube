@@ -1,16 +1,15 @@
-<!--<table class="table">-->
-  <thead>
-    <tr>
-      <th></th>
-      <th>投稿種類</th>
-      <th>投稿タイトル</th>
-      <th>投稿内容</th>
-      <th>コメント数</th>
-      <th>いいね数</th>
-      <th>投稿時間</th>
-    </tr>
-  </thead>
-  <div class="jscroll">
+<thead>
+  <tr>
+    <th></th>
+    <th>投稿種類</th>
+    <th>投稿タイトル</th>
+    <th>投稿内容</th>
+    <th>コメント数</th>
+    <th>いいね数</th>
+    <th>投稿時間</th>
+  </tr>
+</thead>
+<div class="jscroll">
   <tbody>
     <% posts.each do |post| %>
       <tr>
@@ -22,16 +21,13 @@
         <td><%= link_to post.type, types_path(type: post.type) %></td>
         <td><%= link_to post.title.truncate(12), post_path(post.id) %></td>
         <td><%= post.body.truncate(25) %></td>
-        <td><%= post.comments.count %>件</td>
-        <td>💖<%= post.likes.count %></td>
+        <td><%= post.comments.size %>件</td>
+        <td>💖<%= post.likes.size %></td>
         <td><%= post_created(post) %></td>
       </tr>
     <% end %>
     <div>
-      <%= link_to_next_page @posts, '次のページ', class: "next"%>
+      <%= link_to_next_page posts, '次のページ', class: "next"%>
     </div>
   </tbody>
-  </div>
-<!--</table>-->
-  <%#= paginate posts %>
-
+</div>

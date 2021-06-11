@@ -30,3 +30,15 @@ $(document).on('turbolinks:load', function() {
     loadingHtml: '読み込み中'
   });
 });
+
+// $(document).on('turbolinks:load', function(){
+//   $('.image-top').hide().fadeIn(2800);
+// });
+
+$(document).on('turbolinks:load', function(){
+  $('.p-top').hide().fadeIn(2000);
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.p-bottom').hide().fadeIn(6000);
+});
