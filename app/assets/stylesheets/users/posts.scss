@@ -58,3 +58,29 @@
 .post-body > .row {
   border-bottom: solid 1px;
 }
+
+.post-show-top {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+}
+
+.post-show-content > strong {
+  text-align: left;
+  font-size: 28px;
+}
+
+.post-show-bottom {
+  width: 100%;
+  text-align: right;
+}
+
+.post-show-bottom > .post-show-list {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+#comment_count {
+  display: inline-block;
+}
+
