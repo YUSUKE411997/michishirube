@@ -5,14 +5,14 @@
       <h3>タグリスト</h3>
       <% @tag_lists.each do |tag_list| %>
         <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
-        <%= "#{tag_list.tag_name} (#{tag_list.posts.count})" %>
+          <%= "#{tag_list.tag_name} (#{tag_list.posts.count})" %>
         <% end %>
       <% end %>
     </div>
     <div class="row mb-5">
-    <% if user_signed_in? %>
-      <%= render 'form', post: @post %>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= render 'form', post: @post %>
+      <% end %>
     </div>
     <h2>投稿一覧</h2>
     <%= render 'index', posts: @posts %>
