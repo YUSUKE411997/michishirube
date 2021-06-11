@@ -1,8 +1,5 @@
 <div>
   <div class="container">
-    <div class="row">
-      <h1>投稿詳細ページ</h1>
-    </div>
     <div>
       <table class="table">
         <thead>
@@ -22,7 +19,7 @@
                 <%= @post.user.name %>
               <% end %>
             </td>
-            <td><%= @post.type %></td>
+            <td><%= link_to @post.type, types_path(type: @post.type) %></td>
             <td id="comment_count"><%= @post.comments.count %>件</td>
             <td>
               <div id="like_button">

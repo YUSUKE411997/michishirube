@@ -1,16 +1,21 @@
 <div>
   <div class="container">
     <div class="mb-5">
-      <h3>タグリスト</h3>
-      <% @tag_lists.each do |tag_list| %>
+      <button class="btn btn-primary tag-button">タグ▼</button>
+      <button class="btn btn-primary post-button">投稿▼</button>
+      <div class="tag-lists">
+        <% @tag_lists.each do |tag_list| %>
         <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
           <%= "#{tag_list.tag_name} (#{tag_list.posts.size})" %>
         <% end %>
       <% end %>
+      </div>
     </div>
     <div class="row mb-5">
       <% if user_signed_in? %>
+      <div class="form-page">
         <%= render 'form', post: @post %>
+      </div>
       <% end %>
     </div>
     <h2>投稿一覧</h2>

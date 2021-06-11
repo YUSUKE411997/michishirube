@@ -10,6 +10,51 @@
   padding-left: 2%;
 }
 
-.post-form {
-  text-align: center;
+.form-page {
+  text-align: left;
+  display: none;
+}
+
+.tag-lists {
+  display: none;
+}
+
+.form-left {
+  width: 100px;
+}
+
+.post-head {
+  width: 100%;
+}
+
+.post-top-list {
+  width: 12%;
+  display: inline-block;
+}
+
+.post-top-content {
+  width: 15%;
+  display: inline-block;
+}
+
+.post-bottom-content {
+  width: 15%;
+  display: inline-block;
+}
+
+.post-body {
+  width: 100%;
+}
+
+.post-bottom-list {
+  width: 12%;
+  display: inline-block;
+}
+
+.post-container {
+  border: solid 1px;
+}
+
+.post-body > .row {
+  border-bottom: solid 1px;
 }
