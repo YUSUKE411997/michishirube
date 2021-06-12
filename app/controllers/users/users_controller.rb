@@ -39,25 +39,18 @@ class Users::UsersController < ApplicationController
 
   def timeline
     followings_users = current_user.followings
-    @posts = Post.includes(:user).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
+    @posts = Post.includes(:user, :comments, :likes).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
   end
 
   def user_likes
     @user = User.find(params[:id])
-    @posts = @user.user_likes.includes(:user).page(params[:page]).order(created_at: :desc)
+    @posts = @user.user_likes.includes(:user, :likes, :comments).page(params[:page]).order(created_at: :desc)
   end
 
   def user_type
     @type_name = params[:type]
     @user = User.find(params[:id])
-    case @type_name
-      when "気ままに"
-        @posts = @user.posts.where(type: 0).page(params[:page]).order(created_at: :desc)
-      when "やってみたい"
-        @posts = @user.posts.where(type: 1).page(params[:page]).order(created_at: :desc)
-      when "やってみた"
-        @posts = @user.posts.where(type: 2).page(params[:page]).order(created_at: :desc)
-    end
+    @posts = @user.user_type_page(@type_name).page(params[:page]).order(created_at: :desc)
   end
 
   private

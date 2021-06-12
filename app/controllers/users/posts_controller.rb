@@ -2,7 +2,9 @@ class Users::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.includes(:user, :comments, :likes).page(params[:page]).order(created_at: :desc)
+    posts = Post.includes(:user)
+    @posts = posts.eager_load(:comments, :likes).page(params[:page]).order(created_at: :desc)
+    @random = posts.order("RANDOM()").limit(5)
     @post = Post.new
     @tag_lists = Tag.all.order(yomi: :desc)
   end

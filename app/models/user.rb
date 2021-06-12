@@ -43,4 +43,16 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def user_type_page(type)
+    case type
+      when "気ままに"
+        posts.where(type: 0)
+      when "やってみたい"
+        posts.where(type: 1)
+      when "やってみた"
+        posts.where(type: 2)
+    end
+  end
+  
 end
