@@ -3,7 +3,7 @@ class Users::RoomsController < ApplicationController
 
   def index
     current_rooms = UserRoom.select(:room_id).where(user_id: current_user.id)
-    @user_rooms = UserRoom.where(room_id: current_rooms).where.not(user_id: current_user.id).includes(:user, :room)
+    @user_rooms = UserRoom.eager_load(:user, room: [:messages]).where(room_id: current_rooms).where.not(user_id: current_user.id)
   end
 
   def show

@@ -2,7 +2,7 @@
   <% if i <= 3 %>
     <strong>
       <span>第<%= i %>位</span>
-      <%= link_to post.title, post_path(post.id) %>
+      <%= link_to post.title, post_path(post.id).truncate(12) %>
       ❤️<%= post.likes.count %></br>
     </strong>
   <% end %>
