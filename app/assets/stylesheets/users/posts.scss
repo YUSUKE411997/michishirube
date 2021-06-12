@@ -99,3 +99,20 @@
   display: inline-block;
   width: 19%;
 }
+
+.user-image {
+  margin: 20px auto 0;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.user-image:hover{
+  box-shadow: 15px 15px 15px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  transition-duration: 0.4s;
+}
+
+.rank-text {
+  padding: 25px 0 0 40px;
+  font-size: 20px;
+}

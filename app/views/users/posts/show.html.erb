@@ -42,7 +42,6 @@
       <div class="row">
         <%= form_with(model: [@post, @comment], remote: true) do |f| %>
           <%= render 'layouts/error', model: @comment %>
-          <%= f.label "コメント内容"%>
           <%= f.text_area :content %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :post_id, value: @post.id %>

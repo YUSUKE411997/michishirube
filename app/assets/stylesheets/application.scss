@@ -118,3 +118,26 @@ footer {
   box-shadow    : none;        /* カーソル時の影消去 */
   background    : #ffffff;     /* 文字色     */
 }
+
+.image1 {
+
+  background-image: url('slide/robert-bye-B7LQIv_ccl4-unsplash.jpg');
+}
+.image2 {
+  background-image: url('slide/priscilla-du-preez-ptA_7ODacAk-unsplash.jpg');
+}
+.image3 {
+  background-image: url('slide/chang-duong-ZshVGzJ6a_s-unsplash.jpg');
+}
+.image4 {
+  background-image: url('slide/pin-adventure-map-cXuYXpondrc-unsplash.jpg');
+}
+.image5 {
+  background-image: url('slide/christopher-beloch-P2fBIamIbQk-unsplash.jpg');
+}
+
+.image_box {
+  height: 370px;
+  width: 80%;
+  margin: 50px auto;
+}

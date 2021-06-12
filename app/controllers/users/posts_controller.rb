@@ -3,10 +3,13 @@ class Users::PostsController < ApplicationController
 
   def index
     posts = Post.includes(:user)
-    @posts = posts.eager_load(:comments, :likes).page(params[:page]).order(created_at: :desc)
+    @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
     @random = posts.order("RANDOM()").limit(5)
     @post = Post.new
     @tag_lists = Tag.all.order(yomi: :desc)
+    @lanks_0 = Post.create_ranks(0)
+    @lanks_1 = Post.create_ranks(1)
+    @lanks_2 = Post.create_ranks(2)
   end
 
   def type_index
