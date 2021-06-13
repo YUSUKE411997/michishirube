@@ -26,7 +26,7 @@ class Post < ApplicationRecord
 
   def self.create_ranks(type)
     posts_type = Post.where(type: type)
-    posts_type.sort_by {|post| post.likes.count}.reverse
+    posts_type.sort_by {|post| post.likes.size}.reverse
   end
 
 # いいね通知
@@ -45,7 +45,7 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
 
   # コメント通知
   def create_notification_comment!(current_user, comment_id)
@@ -69,7 +69,7 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
   # タグ付け機能
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
