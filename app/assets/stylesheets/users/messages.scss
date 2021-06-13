@@ -1,0 +1,36 @@
+// Place all the styles related to the users/messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.message-index {
+  background-color: #EEEEEE;
+}
+
+.message-box {
+  border-bottom: solid 1px;
+}
+
+.message-user {
+  text-align: center;
+  width: 180px;
+}
+
+.message-content {
+  margin-right: 100px;
+  width: 700px;
+  text-align: left;
+  color: #212529bf;
+  font-size: 18px;
+}
+
+.message-false {
+  color: #ff00166e;
+  font-size: 30px;
+}
+
+.message-time {
+  text-align: right;
+  width: 200px;
+  padding-top: 30px;
+}

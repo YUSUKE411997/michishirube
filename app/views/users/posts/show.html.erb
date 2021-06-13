@@ -1,0 +1,53 @@
+<div>
+  <div class="container">
+    <div class="post-show-box">
+      <div class="post-show-top">
+        <p class="post-show-list">
+          <p class="post-show-list"><%= link_to @post.type, types_path(type: @post.type) %></p>
+          <%= link_to user_path(@post.user) do %>
+            <%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg" %><br>
+            <%= @post.user.name %>
+          <% end %>
+        </p>
+      </div>
+      <div class="post-show-content">
+        <strong><%= @post.title %></strong>
+        <p><%= @post.body %></p>
+      </div>
+      <div class="post-show-bottom">
+        <i class="far fa-comments"></i>
+        <p id="comment_count"><%= @post.comments.count %>件</p>
+        <div class="post-show-list">
+          <div id="like_button">
+            <%= render 'users/likes/like', post: @post %>
+          </div>
+        </div>
+        <p class="post-show-list"><%= post_created(@post) %></p>
+        <% if @post.user == current_user %>
+          <p class="post-show-list"><%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger" %></p>
+        <% end %>
+      </div>
+      <% @post_tags.each do |post_tag| %>
+      <i class="fas fa-tags"></i>
+        <%= link_to tag_posts_path(post_tag.id) do %>
+          <%= post_tag.tag_name%>
+        <% end %>
+      <% end %>
+    </div>
+<!----------------------------------------------------下記はコメント関連の記述------------------------------------------------------------>
+    <div id="comment_area">
+      <%= render 'users/comments/comment', comments: @comments, comment: @comment %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="row">
+        <%= form_with(model: [@post, @comment], remote: true) do |f| %>
+          <%= render 'layouts/error', model: @comment %>
+          <%= f.text_area :content %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <%= f.submit 'コメントする', class: "btn btn-success" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

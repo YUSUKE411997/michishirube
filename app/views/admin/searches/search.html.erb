@@ -1,0 +1,13 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <h1>"<%= @range %>　/　<%= @word %>"　の検索結果</h1>
+    </div>
+    <% if @range == "投稿" %>
+      <%= render 'admin/posts/index', posts: @posts %>
+    <% else %>
+      <%= render 'admin/users/index', users: @users %>
+    <% end %>
+  </div>
+
+</div>

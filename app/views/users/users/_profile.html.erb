@@ -1,0 +1,45 @@
+<% if user == current_user %>
+  <div>
+    <h1 class="profile-edit">マイページ</h1>
+    <%= link_to edit_user_path(user) do %>
+      <i class="fas fa-user-edit"></i>
+    <% end %>
+  </div>
+  <button>
+    <%= link_to follows_user_path, class: "btn btn-light" do %>
+      <%= "フォロー　#{user.followings.count}" %><br>
+    <% end %>
+  </button>
+  <button>
+    <%= link_to followers_user_path, class: "btn btn-light" do %>
+      <%= "フォロワー　#{user.followers.count}" %><br>
+    <% end %>
+  </button>
+<% else %>
+  <h1><%= user.name %></h1>
+  <span id="<%= user.id %>_follow">
+    <%= render 'users/relationships/relationship', user: user %>
+  </span>
+<% end %>
+<button>
+  <%= link_to user_likes_user_path, class: "btn btn-light" do %>
+    いいね<%= user.user_likes.count %>
+  <% end %>
+</button>
+<% unless @user == current_user %>
+  <%= link_to room_path(@user.id) do %>
+  <i class="far fa-envelope"></i>
+  <% end %>
+<% end %>
+<%= render 'layouts/profile', user: user %>
+<div class="type-box">
+  <div class="show-type">
+    <%= link_to "気ままに", user_type_user_path(user, type: "気ままに"), class: "btn btn-outline-success" %>
+  </div>
+  <div class="show-type">
+    <%= link_to "やってみたい", user_type_user_path(user, type: "やってみたい"), class: "btn btn-outline-success" %>
+  </div>
+  <div class="show-type">
+    <%= link_to "やってみた", user_type_user_path(user, type: "やってみた"), class: "btn btn-outline-success" %>
+  </div>
+</div>

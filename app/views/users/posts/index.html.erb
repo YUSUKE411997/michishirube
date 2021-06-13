@@ -1,0 +1,68 @@
+<div>
+  <div class="container">
+    <div class="mb-5">
+      <div class="image_box">
+        <div id="theTarget">
+          <div class="image1">
+
+          </div>
+          <div class="image2">
+
+          </div>
+          <div class="image3">
+            <div class="rank-text">
+              <h3>やってみた</h3>
+              <%= render 'rank', lanks: @lanks_2 %>
+            </div>
+          </div>
+          <div class="image4">
+            <div class="rank-text">
+              <h3>やってみたい</h3>
+              <%= render 'rank', lanks: @lanks_1 %>
+            </div>
+          </div>
+          <div class="image5">
+            <div class="rank-text">
+              <h3>気ままに</h3>
+              <%= render 'rank', lanks: @lanks_0 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>いろんな人の投稿を見てみよう！</h3>
+      </div>
+      <% @random.each do |post| %>
+        <div class="random-post">
+          <p><%= link_to user_path(post.user) do %>
+          <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
+          <%= post.user.name.truncate(10) %>
+          <% end %>
+          </p>
+            <p><%= link_to post.type, types_path(type: post.type) %></p>
+          <p><%= link_to post.title.truncate(12), post_path(post.id) %></p>
+          <p><%= post.body.truncate(25) %></p>
+        </div>
+      <% end %>
+      <button class="btn btn-primary tag-button">タグ▼</button>
+      <button class="btn btn-primary post-button">投稿▼</button>
+      <div class="tag-lists">
+        <% @tag_lists.each do |tag_list| %>
+        <i class="fas fa-tags"></i>
+        <%= link_to tag_posts_path(tag_list.id), class: "mr-4" do %>
+          <%= "#{tag_list.tag_name} (#{tag_list.posts.size})" %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <% if user_signed_in? %>
+      <div class="form-page">
+        <%= render 'form', post: @post %>
+      </div>
+      <% end %>
+    </div>
+    <h2>投稿一覧</h2>
+    <%= render 'index', posts: @posts %>
+  </div>
+</div>

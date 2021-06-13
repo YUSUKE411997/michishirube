@@ -1,0 +1,9 @@
+<% lanks.each.with_index(1) do |post, i| %>
+  <% if i <= 3 %>
+    <strong>
+      <span>第<%= i %>位</span>
+      <%= link_to post.title, post_path(post.id).truncate(12) %>
+      ❤️<%= post.likes.size %></br>
+    </strong>
+  <% end %>
+<% end %>

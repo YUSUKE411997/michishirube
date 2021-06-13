@@ -1,0 +1,42 @@
+// Place all the styles related to the users/comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.balloon {
+position: relative;
+background-color: #ffc4c4;
+padding: 10px;
+color: #333;
+margin: 15px;
+}
+
+.balloon::before {
+content: "";
+position: absolute;
+border: 12px solid transparent;
+border-right: 12px solid #ffc4c4;
+left: -24px;
+top: 20%;
+}
+
+.balloon p {
+display: inline-block;
+}
+
+.balloon {
+  display: inline-block;
+  width: 90%;
+  margin-left: 110px;
+}
+
+.comment-user {
+  position: absolute;
+}
+
+.comment-box {
+  margin-top: 50px;
+}
+
+.comment-count {
+  text-align: right;
+}
