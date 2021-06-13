@@ -3,7 +3,7 @@
     <strong>
       <span>第<%= i %>位</span>
       <%= link_to post.title, post_path(post.id).truncate(12) %>
-      ❤️<%= post.likes.count %></br>
+      ❤️<%= post.likes.size %></br>
     </strong>
   <% end %>
 <% end %>
