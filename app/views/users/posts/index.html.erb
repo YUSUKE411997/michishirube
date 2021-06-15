@@ -1,10 +1,19 @@
 <div>
   <div class="container">
     <div class="mb-5">
+      <h2>週間ランキング</h2>
       <div class="image_box">
         <div id="theTarget">
           <div class="image1">
-
+            <div class="rank-text">
+              <h3>タグ</h3>
+              <% @tag_ranks.each.with_index(1) do |tag, i| %>
+                <strong>
+                  <span>第<%= i %>位</span>
+                  <%= link_to tag.tag_name, tag_posts_path(tag.id) %><br>
+                </strong>
+              <% end %>
+            </div>
           </div>
           <div class="image2">
 
@@ -12,19 +21,19 @@
           <div class="image3">
             <div class="rank-text">
               <h3>やってみた</h3>
-              <%= render 'rank', lanks: @lanks_2 %>
+              <%= render 'rank', ranks: @ranks_2 %>
             </div>
           </div>
           <div class="image4">
             <div class="rank-text">
               <h3>やってみたい</h3>
-              <%= render 'rank', lanks: @lanks_1 %>
+              <%= render 'rank', ranks: @ranks_1 %>
             </div>
           </div>
           <div class="image5">
             <div class="rank-text">
               <h3>気ままに</h3>
-              <%= render 'rank', lanks: @lanks_0 %>
+              <%= render 'rank', ranks: @ranks_0 %>
             </div>
           </div>
         </div>

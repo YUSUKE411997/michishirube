@@ -7,10 +7,11 @@ class Users::PostsController < ApplicationController
     @random = posts.order("RANDOM()").limit(5)
     @post = Post.new
     @tag_lists = Tag.all.order(yomi: :desc)
+    @tag_ranks = Tag.create_ranks_tag
     likes = Post.eager_load(:likes)
-    @lanks_0 = likes.create_ranks(0)
-    @lanks_1 = likes.create_ranks(1)
-    @lanks_2 = likes.create_ranks(2)
+    @ranks_0 = likes.create_ranks_type_likes(0)
+    @ranks_1 = likes.create_ranks_type_likes(1)
+    @ranks_2 = likes.create_ranks_type_likes(2)
   end
 
   def type_index
