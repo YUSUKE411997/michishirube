@@ -6,7 +6,7 @@ class Users::PostsController < ApplicationController
     @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
     @random = posts.sample(5)
     @post = Post.new
-    @tag_lists = Tag.all.order(yomi: :desc)
+    @tag_lists = Tag.all
     @tag_ranks = Tag.create_ranks_tag
     likes = Post.eager_load(:likes)
     @ranks_0 = likes.create_ranks_type_likes(0)
