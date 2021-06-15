@@ -4,7 +4,7 @@ class Users::PostsController < ApplicationController
   def index
     posts = Post.includes(:user)
     @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
-    @random = posts.order("RANDOM()").limit(5)
+    @random = posts.sample(5)
     @post = Post.new
     @tag_lists = Tag.all.order(yomi: :desc)
     @tag_ranks = Tag.create_ranks_tag
