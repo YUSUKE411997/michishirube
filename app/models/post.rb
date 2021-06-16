@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  has_many :reposts, dependent: :destroy
   belongs_to :user
 
   validates :user_id, :title, :body, :type, presence: true
