@@ -54,5 +54,6 @@ class User < ApplicationRecord
         posts.where(type: 2)
     end
   end
+
   
 end

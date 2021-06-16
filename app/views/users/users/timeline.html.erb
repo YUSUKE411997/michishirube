@@ -1,6 +1,10 @@
 <div>
   <div class="container">
-    <h1>タイムライン</h1>
+    <h2>みんながいいねした投稿を見てみよう！</h2>
+    <div class="row">
+      <%= render 'users/posts/random', random: @follow_like_post%>
+    </div>
+    <h2>タイムライン</h2>
     <%= render 'users/posts/index', posts: @posts %>
   </div>
 </div>
