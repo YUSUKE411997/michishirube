@@ -1,0 +1,18 @@
+<% random.each do |post| %>
+  <div class="random-post">
+    <p><%= link_to user_path(post.user) do %>
+    <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
+    <%= post.user.name.truncate(10) %>
+    <% end %>
+    </p>
+    <p><%= link_to post.type, types_path(type: post.type) %></p>
+    <p><%= link_to post.title.truncate(12), post_path(post.id) %></p>
+    <p><%= post.body.truncate(25) %></p>
+    <span class="random-icon">
+      <p><%= post.comments.size %></p>
+      <i class="far fa-comments"></i>
+      <p><%= post.likes.size %></p>
+      <i class="fas fa-heart"></i>
+    </span>
+  </div>
+<% end %>

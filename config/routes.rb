@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :notifications, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'
+    # get 'sort' => 'posts#sort'
   end
 
   namespace :admin do
