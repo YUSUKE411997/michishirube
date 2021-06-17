@@ -22,7 +22,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  def active_for_authentication?   #ログイン時にバリデーションを足したい場合(今回退会済みのユーザーを弾く)
+  #ログイン時、退会済みのユーザーを弾く
+  def active_for_authentication?
     super && (self.is_valid == true)
   end
 
@@ -33,7 +34,8 @@ class User < ApplicationRecord
   def self.search(word)
     where(["name LIKE?", "%#{word}%"])
   end
-
+  
+  # フォローされたら通知
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
     if temp.blank?
@@ -44,7 +46,8 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
+  
+  # タイプ別に表示
   def user_type_page(type)
     case type
       when "気ままに"

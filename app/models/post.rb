@@ -25,6 +25,7 @@ class Post < ApplicationRecord
     where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
   end
 
+  # タイプ別にいいねランキング表示（１週間ごと）
   def self.create_ranks_type_likes(type)
     posts_type = Post.joins(:likes).where(type: type, created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday))
     posts_type.sort_by {|post| post.likes.size}.reverse
