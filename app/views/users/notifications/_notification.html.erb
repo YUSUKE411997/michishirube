@@ -9,6 +9,8 @@
       <%= "あなたをフォローしました" %>
     <% when 'like' then %>
       <%= "あなたの投稿にいいねしました" %>
+    <% when "repost" then %>
+      <%= "あなたの投稿をリツイートしました" %>
     <% when 'comment' then %>
       <% if notification.post.user_id == notification.visited.id %>
         あなたの投稿

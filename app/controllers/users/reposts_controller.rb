@@ -7,6 +7,7 @@ class Users::RepostsController < ApplicationController
     if current_repost.nil?
       Repost.create(user_id: current_user.id, post_id: @post.id)
     end
+    @post.create_notification_repost!(current_user)
   end
 
   def destroy
