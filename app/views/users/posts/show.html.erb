@@ -16,21 +16,8 @@
       </div>
       <div class="post-show-bottom">
         <% if user_signed_in? %>
-          <div class="post-show-list">
-            <% if current_user.reposted?(@post.id) %>
-            
-              <p>リツイート済み</p>
-              <%= link_to post_repost_path(@post.id, @post.reposts.ids), method: :delete do %>
-                <i class="fas fa-retweet"></i>
-              <% end %>
-              <p><%= @post.reposts.count %></p>
-              
-            <% else %>
-              <p><%= link_to post_reposts_path(@post.id), method: :post do %></p>
-                <i class="fas fa-retweet"></i>
-              <% end %>
-              <p><%= @post.reposts.count %></p>
-            <% end %>
+          <div class="post-show-list repost-area">
+            <%= render 'users/reposts/repost', post: @post %>
           </div>
           <i class="far fa-comments"></i>
           <p id="comment_count"><%= @post.comments.count %>件</p>
