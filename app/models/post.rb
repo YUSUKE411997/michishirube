@@ -42,6 +42,24 @@ class Post < ApplicationRecord
         action: 'like'
         )
 
+        if notification.visitor_id == notification.visited_id
+          notification.checked = true
+        end
+        notification.save if notification.valid?
+    end
+  end
+
+  # リポスト機能
+  def create_notification_repost!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ?", current_user, user_id, id, 'repost'])
+
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        post_id: id,
+        visited_id: user_id,
+        action: 'repost'
+        )
+
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end
