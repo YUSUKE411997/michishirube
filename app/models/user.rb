@@ -70,7 +70,7 @@ class User < ApplicationRecord
   #   repost.pluck(:id)
   # end
 
-  自分がリポストしているか判別
+  # 自分がリポストしているか判別
   def reposted?(post_id)
     self.reposts.where(post_id: post_id).exists?
   end
