@@ -89,4 +89,21 @@ class Post < ApplicationRecord
     end
   end
 
+  def repost_usered?(current_user)
+    follow_user_ids = current_user.followings.select(:id)
+    self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).exists?
+  end
+
+  def repost_user_name(current_user)
+    follow_user_ids = current_user.followings.select(:id)
+    repost_user = self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).order(created_at: :desc).limit(1).pluck(:user_id)
+    user_name = User.find(repost_user).pluck(:name).first
+
+    if current_user.name == user_name
+      "あなた"
+    else
+      user_name
+    end
+  end
+
 end

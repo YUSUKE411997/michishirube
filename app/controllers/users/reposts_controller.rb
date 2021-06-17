@@ -5,7 +5,7 @@ class Users::RepostsController < ApplicationController
     current_repost = Repost.find_by(user_id: current_user.id, post_id: post.id)
 
     if current_repost.nil?
-      repost = Repost.create(user_id: current_user.id, post_id: post.id)
+      Repost.create(user_id: current_user.id, post_id: post.id)
     end
     redirect_back(fallback_location: root_path)
   end

@@ -9,10 +9,12 @@
     <p><%= link_to post.title.truncate(12), post_path(post.id) %></p>
     <p><%= post.body.truncate(25) %></p>
     <span class="random-icon">
-      <p><%= post.comments.size %></p>
+      <i class="fas fa-retweet"></i>
+      <p><%= post.reposts.size %></p>
       <i class="far fa-comments"></i>
-      <p><%= post.likes.size %></p>
+      <p><%= post.comments.size %></p>
       <i class="fas fa-heart"></i>
+      <p><%= post.likes.size %></p>
     </span>
   </div>
 <% end %>
