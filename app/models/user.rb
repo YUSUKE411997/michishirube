@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :reposts, dependent: :destroy
 
   attachment :profile_image
 
@@ -55,5 +56,24 @@ class User < ApplicationRecord
     end
   end
 
-  
+  def post_and_reposts
+    follow_user_ids = self.followings.select(:id)
+    repost_ids = Repost.where("user_id IN (:follow_user_ids) OR user_id = :user_id", follow_user_ids: follow_user_ids, user_id: self.id).select(:post_id)
+    Post.where("id IN (:repost_ids) OR user_id IN (:follow_user_ids) OR user_id = :user_id", repost_ids: repost_ids, follow_user_ids: follow_user_ids, user_id: self.id)
+
+    # post << Post.where(id: repost_ids)
+    # Post.where(user_id: follow_user, user_id: self.id)
+    #       .or(Post.where(user_id: Repost.where(user_id: follow_user.ids, user_id: self.id)))
+    #       .or(select(:post_id).from(reposts).where(user_id: follow_user.ids, user_id: self.id))
+    # bbb = Repost.select(:post_id).where(user_id: follow_user.ids, user_id: self.id)
+    # select(:id).from(Repost)
+    #     following_ids = self.following.select(:id)
+    # Post.where("user_id IN (:following_ids)
+    #             OR user_id = :user_id", following_ids: following_ids, user_id: id)
+  end
+
+  def reposted?(post_id)
+    self.reposts.where(post_id: post_id).exists?
+  end
+
 end

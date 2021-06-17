@@ -38,13 +38,10 @@ class Users::UsersController < ApplicationController
   end
 
   def timeline
-    followings_users = current_user.followings
-    @posts = Post.includes(:user, :comments, :likes).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
-    # follow_likes = []
-    # followings_users.each do |user|
-    #   follow_likes << user.user_likes
-    # end
-    # @follow_like_post = follow_likes
+    user = User.find(current_user.id)
+    followings_users = user.followings
+    # @posts = Post.includes(:user, :comments, :likes).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
+    @posts = user.post_and_reposts.page(params[:page]).order(created_at: :desc)
     followings_users_ids = followings_users.pluck(:id)
     followings_users_post_ids = Like.where(user_id: followings_users_ids).pluck(:post_id)
     @follow_like_post = Post.where(id: followings_users_post_ids, created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday)).limit(5)

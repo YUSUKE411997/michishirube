@@ -15,16 +15,34 @@
         <p><%= @post.body %></p>
       </div>
       <div class="post-show-bottom">
-        <i class="far fa-comments"></i>
-        <p id="comment_count"><%= @post.comments.count %>件</p>
-        <div class="post-show-list">
-          <div id="like_button">
-            <%= render 'users/likes/like', post: @post %>
+        <% if user_signed_in? %>
+          <div class="post-show-list">
+            <% if current_user.reposted?(@post.id) %>
+            
+              <p>リツイート済み</p>
+              <%= link_to post_repost_path(@post.id, @post.reposts.ids), method: :delete do %>
+                <i class="fas fa-retweet"></i>
+              <% end %>
+              <p><%= @post.reposts.count %></p>
+              
+            <% else %>
+              <p><%= link_to post_reposts_path(@post.id), method: :post do %></p>
+                <i class="fas fa-retweet"></i>
+              <% end %>
+              <p><%= @post.reposts.count %></p>
+            <% end %>
           </div>
-        </div>
-        <p class="post-show-list"><%= post_created(@post) %></p>
-        <% if @post.user == current_user %>
-          <p class="post-show-list"><%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger" %></p>
+          <i class="far fa-comments"></i>
+          <p id="comment_count"><%= @post.comments.count %>件</p>
+          <div class="post-show-list">
+            <div id="like_button">
+              <%= render 'users/likes/like', post: @post %>
+            </div>
+          </div>
+          <p class="post-show-list"><%= post_created(@post) %></p>
+          <% if @post.user == current_user %>
+            <p class="post-show-list"><%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger" %></p>
+          <% end %>
         <% end %>
       </div>
       <% @post_tags.each do |post_tag| %>
