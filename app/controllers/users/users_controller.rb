@@ -42,6 +42,33 @@ class Users::UsersController < ApplicationController
     followings_users = user.followings
     # @posts = Post.includes(:user, :comments, :likes).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
     @posts = user.post_and_reposts.page(params[:page]).order(created_at: :desc)
+    
+    # ここから
+    # @obj = []
+    # @obj_1 = []
+    # repost_ids = User.retwitter(current_user)
+    # reposts = Repost.where(id: repost_ids)
+    # repost_post_ids = reposts.pluck(:post_id)
+    # posts.each do |post|
+    #   # retweet されてる投稿なのか判定
+    #   if repost_post_ids.include?(post.id)
+
+    #     repost = reposts.where(post_id: post.id)
+    #     # post_clone = post.clone
+    #     # # @obj << post_clone
+    #     # post_clone.update_attribute(created_at: repost)
+    #     # byebug
+    #     # post_clone.created_at = repost
+    #     @obj_1 << repost
+
+    #   else
+    #     @obj << post
+    #   end
+    # end
+    # byebug
+    # (@obj + @obj_1).sort_by(&:created_at).reverse
+    # ここまで
+
     followings_users_ids = followings_users.pluck(:id)
     followings_users_post_ids = Like.where(user_id: followings_users_ids).pluck(:post_id)
     @follow_like_post = Post.where(id: followings_users_post_ids, created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday)).limit(5)
