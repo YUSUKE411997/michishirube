@@ -49,7 +49,7 @@ class Post < ApplicationRecord
     end
   end
 
-  # リポスト機能
+  # リポスト通知
   def create_notification_repost!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ?", current_user, user_id, id, 'repost'])
 
@@ -106,12 +106,14 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
-
+  
+  # リポストされてるか判別
   def repost_usered?(current_user)
     follow_user_ids = current_user.followings.select(:id)
     self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).exists?
   end
-
+  
+  # リツイートしたユーザーの名前を抽出
   def repost_user_name(current_user)
     follow_user_ids = current_user.followings.select(:id)
     repost_user = self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).order(created_at: :desc).limit(1).pluck(:user_id)
