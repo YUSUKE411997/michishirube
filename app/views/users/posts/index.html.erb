@@ -10,7 +10,8 @@
               <% @tag_ranks.each.with_index(1) do |tag, i| %>
                 <strong>
                   <span>第<%= i %>位</span>
-                  <%= link_to tag.tag_name, tag_posts_path(tag.id) %><br>
+                  <%= link_to tag.tag_name, tag_posts_path(tag.id) %>
+                  <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
                 </strong>
               <% end %>
             </div>
