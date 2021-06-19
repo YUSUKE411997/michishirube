@@ -5,7 +5,7 @@ class Tag < ApplicationRecord
 
   # タグのランキング機能（週間ランキング）
   def self.create_ranks_tag
-  Tag.find(TagMap.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:tag_id).order('count(tag_id)desc').limit(3).pluck(:tag_id))
+  Tag.find(TagMap.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:tag_id).order('count(tag_id)desc').pluck(:tag_id))
   end
   
 end

@@ -33,7 +33,7 @@ class Post < ApplicationRecord
 
   # リポストのランキング表示（１週間ごと）
   def self.create_ranks_repost
-    aaa = Post.find(Repost.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').limit(3).pluck(:post_id))
+    Post.find(Repost.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').pluck(:post_id))
   end
 
 # いいね通知
