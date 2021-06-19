@@ -41,7 +41,7 @@
           <p class="index-icon"><i class="fas fa-retweet"></i><%= post.reposts.size %></p>
           <p class="index-icon"><i class="far fa-comments"></i><%= post.comments.size %></p>
           <p class="index-icon"><i class="fas fa-heart"></i><%= post.likes.size %></p>
-          <p class="index-icon"><%#= time_ago_in_words(post.created_at) %>前</p>
+          <p class="index-icon"><%= time_ago_in_words(post.created_at) %>前</p>
         </div>
       </div>
     <% end %>

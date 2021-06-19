@@ -117,7 +117,7 @@ class Post < ApplicationRecord
     self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).exists?
   end
 
-  # リツイートしたユーザーの名前を抽出
+  # リポストしたユーザーの名前を抽出
   def repost_user_name(current_user)
     follow_user_ids = current_user.followings.select(:id)
     repost_user = self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).order(created_at: :desc).limit(1).pluck(:user_id)
