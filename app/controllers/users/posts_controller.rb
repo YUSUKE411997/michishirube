@@ -15,6 +15,24 @@ class Users::PostsController < ApplicationController
     @repost_ranks = Post.create_ranks_repost
   end
 
+  def ranks_show
+    @word = params[:word]
+
+    case @word
+      when "タグ"
+        @tags = Tag.create_ranks_tag
+      when "リポスト"
+        @posts = Post.create_ranks_repost
+      when "気ままに"
+        @posts = Post.eager_load(:likes).create_ranks_type_likes(0)
+      when "やってみたい"
+        @posts = Post.eager_load(:likes).create_ranks_type_likes(1)
+      when "やってみたい"
+        @posts = Post.eager_load(:likes).create_ranks_type_likes(2)
+    end
+
+  end
+
   def type_index
     @type_name = Post.find_by(type: params[:type])
     @posts = Post.includes(:user, :comments, :likes).where(type: @type_name.type).page(params[:page]).order(created_at: :desc)
@@ -33,8 +51,19 @@ class Users::PostsController < ApplicationController
        @post.save_tag(tag_list)
       redirect_to posts_path
     else
+      # @tag_lists = Tag.all
+      # @posts = Post.page(params[:page]).order(created_at: :desc)
+      posts = Post.includes(:user)
+      @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
+      @random = Post.where(created_at: Time.zone.now.all_day).sample(5)
+      @post = Post.new
       @tag_lists = Tag.all
-      @posts = Post.page(params[:page]).order(created_at: :desc)
+      @tag_ranks = Tag.create_ranks_tag
+      likes = Post.eager_load(:likes)
+      @ranks_0 = likes.create_ranks_type_likes(0)
+      @ranks_1 = likes.create_ranks_type_likes(1)
+      @ranks_2 = likes.create_ranks_type_likes(2)
+      @repost_ranks = Post.create_ranks_repost
       render :index
     end
   end

@@ -8,43 +8,52 @@
             <div class="rank-text">
               <h3>タグ</h3>
               <% @tag_ranks.each.with_index(1) do |tag, i| %>
-                <strong>
-                  <span>第<%= i %>位</span>
-                  <%= link_to tag.tag_name, tag_posts_path(tag.id) %>
-                  <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
-                </strong>
+                <% if i <= 3 %>
+                  <strong>
+                    <span>第<%= i %>位</span>
+                    <%= link_to tag.tag_name, tag_posts_path(tag.id) %>
+                    <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
+                  </strong>
+                <% end %>
               <% end %>
+              <p><%= link_to "続きを見る", ranks_show_path(word: "タグ")%></p>
             </div>
           </div>
           <div class="image2">
             <div class="rank-text">
               <h3>リポスト</h3>
               <% @repost_ranks.each.with_index(1) do |post, i| %>
-                <strong>
-                  <span>第<%= i %>位</span>
-                  <%= link_to post.title, post_path(post.id) %>
-                  <i class="fas fa-retweet"></i>
-                  <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
-                </strong>
+                <% if i <= 3 %>
+                  <strong>
+                    <span>第<%= i %>位</span>
+                    <%= link_to post.title, post_path(post.id) %>
+                    <i class="fas fa-retweet"></i>
+                    <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
+                  </strong>
+                <% end %>
               <% end %>
+              <p><%= link_to "続きを見る", ranks_show_path(word: "リポスト")%></p>
             </div>
           </div>
           <div class="image3">
             <div class="rank-text">
               <h3>やってみた</h3>
               <%= render 'rank', ranks: @ranks_2 %>
+              <p><%= link_to "続きを見る", ranks_show_path(word: "やってみた")%></p>
             </div>
           </div>
           <div class="image4">
             <div class="rank-text">
               <h3>やってみたい</h3>
               <%= render 'rank', ranks: @ranks_1 %>
+              <p><%= link_to "続きを見る", ranks_show_path(word: "やってみたい")%></p>
             </div>
           </div>
           <div class="image5">
             <div class="rank-text">
               <h3>気ままに</h3>
               <%= render 'rank', ranks: @ranks_0 %>
+              <p><%= link_to "続きを見る", ranks_show_path(word: "気ままに")%></p>
             </div>
           </div>
         </div>

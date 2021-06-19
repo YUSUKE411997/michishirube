@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :notifications, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'
+    get 'ranks_show' => 'posts#ranks_show'
     # get 'sort' => 'posts#sort'
   end
 

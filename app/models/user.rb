@@ -34,7 +34,7 @@ class User < ApplicationRecord
   def self.search(word)
     where(["name LIKE?", "%#{word}%"])
   end
-  
+
   # フォローされたら通知
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
@@ -46,7 +46,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   # タイプ別に表示
   def user_type_page(type)
     case type
@@ -58,7 +58,7 @@ class User < ApplicationRecord
         posts.where(type: 2)
     end
   end
-  
+
   # タイムラインに自分とフォローユーザーの投稿とリツイート投稿を抽出
   def post_and_reposts
     follow_user_ids = self.followings.select(:id)

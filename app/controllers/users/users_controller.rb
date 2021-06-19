@@ -42,7 +42,7 @@ class Users::UsersController < ApplicationController
     followings_users = user.followings
     # @posts = Post.includes(:user, :comments, :likes).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
     @posts = user.post_and_reposts.page(params[:page]).order(created_at: :desc)
-    
+
     # ここから
     # @obj = []
     # @obj_1 = []
