@@ -25,12 +25,16 @@ class Post < ApplicationRecord
     where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
   end
 
+  # タイプ別にいいねランキング表示（１週間ごと）
   def self.create_ranks_type_likes(type)
-    posts_type = Post.joins(:likes).where(type: type, created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday))
+    posts_type = Post.joins(:likes).where(type: type, created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day)
     posts_type.sort_by {|post| post.likes.size}.reverse
   end
 
-
+  # リポストのランキング表示（１週間ごと）
+  def self.create_ranks_repost
+    aaa = Post.find(Repost.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').limit(3).pluck(:post_id))
+  end
 
 # いいね通知
   def create_notification_like!(current_user)
@@ -49,7 +53,7 @@ class Post < ApplicationRecord
     end
   end
 
-  # リポスト機能
+  # リポスト通知
   def create_notification_repost!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ?", current_user, user_id, id, 'repost'])
 
@@ -107,11 +111,13 @@ class Post < ApplicationRecord
     end
   end
 
+  # リポストされてるか判別
   def repost_usered?(current_user)
     follow_user_ids = current_user.followings.select(:id)
     self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).exists?
   end
 
+  # リツイートしたユーザーの名前を抽出
   def repost_user_name(current_user)
     follow_user_ids = current_user.followings.select(:id)
     repost_user = self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).order(created_at: :desc).limit(1).pluck(:user_id)

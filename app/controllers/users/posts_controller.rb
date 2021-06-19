@@ -12,6 +12,7 @@ class Users::PostsController < ApplicationController
     @ranks_0 = likes.create_ranks_type_likes(0)
     @ranks_1 = likes.create_ranks_type_likes(1)
     @ranks_2 = likes.create_ranks_type_likes(2)
+    @repost_ranks = Post.create_ranks_repost
   end
 
   def type_index
