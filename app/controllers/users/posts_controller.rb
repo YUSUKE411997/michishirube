@@ -17,7 +17,6 @@ class Users::PostsController < ApplicationController
 
   def ranks_show
     @word = params[:word]
-
     case @word
       when "タグ"
         @tags = Tag.create_ranks_tag
@@ -27,10 +26,9 @@ class Users::PostsController < ApplicationController
         @posts = Post.eager_load(:likes).create_ranks_type_likes(0)
       when "やってみたい"
         @posts = Post.eager_load(:likes).create_ranks_type_likes(1)
-      when "やってみたい"
+      when "やってみた"
         @posts = Post.eager_load(:likes).create_ranks_type_likes(2)
     end
-
   end
 
   def type_index
@@ -51,8 +49,6 @@ class Users::PostsController < ApplicationController
        @post.save_tag(tag_list)
       redirect_to posts_path
     else
-      # @tag_lists = Tag.all
-      # @posts = Post.page(params[:page]).order(created_at: :desc)
       posts = Post.includes(:user)
       @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
       @random = Post.where(created_at: Time.zone.now.all_day).sample(5)

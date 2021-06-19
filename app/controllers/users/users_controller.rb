@@ -71,7 +71,7 @@ class Users::UsersController < ApplicationController
 
     followings_users_ids = followings_users.pluck(:id)
     followings_users_post_ids = Like.where(user_id: followings_users_ids).pluck(:post_id)
-    @follow_like_post = Post.where(id: followings_users_post_ids, created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday)).limit(5)
+    @follow_like_post = Post.where(id: followings_users_post_ids, created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).limit(5)
   end
 
   def user_likes

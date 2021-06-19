@@ -1,6 +1,6 @@
 <% random.each do |post| %>
   <div class="random-post">
-    <p><%= link_to user_path(post.user) do %>
+    <p class="random-user-image"><%= link_to user_path(post.user) do %>
     <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
     <%= post.user.name.truncate(10) %>
     <% end %>

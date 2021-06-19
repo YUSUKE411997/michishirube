@@ -19,8 +19,10 @@
           <div class="post-show-list repost-area">
             <%= render 'users/reposts/repost', post: @post %>
           </div>
-          <i class="far fa-comments"></i>
-          <p id="comment_count"><%= @post.comments.count %>件</p>
+          <div class="post-show-list">
+            <i class="far fa-comments"></i>
+            <p id="comment_count"><%= @post.comments.count %>件</p>
+          </div>
           <div class="post-show-list">
             <div id="like_button">
               <%= render 'users/likes/like', post: @post %>
@@ -44,7 +46,7 @@
       <%= render 'users/comments/comment', comments: @comments, comment: @comment %>
     </div>
     <% if user_signed_in? %>
-      <div class="row">
+      <div class="comment-form">
         <%= form_with(model: [@post, @comment], remote: true) do |f| %>
           <%= render 'layouts/error', model: @comment %>
           <%= f.text_area :content %>
