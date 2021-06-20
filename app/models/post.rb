@@ -112,12 +112,6 @@ class Post < ApplicationRecord
     end
   end
 
-  # リポストされてるか判別
-  def repost_usered?(current_user)
-    follow_user_ids = current_user.followings.select(:id)
-    self.reposts.where("user_id IN (:follow_user_ids) OR user_id = user_id", follow_user_ids: follow_user_ids, user_id: current_user.id).exists?
-  end
-
   # リポストしたユーザーの名前を抽出
   def repost_user_name(current_user)
     follow_user_ids = current_user.followings.select(:id)
