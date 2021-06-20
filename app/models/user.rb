@@ -60,20 +60,6 @@ class User < ApplicationRecord
     end
   end
 
-  # タイムラインに自分とフォローユーザーの投稿とリツイート投稿を抽出
-  def post_and_reposts
-    follow_user_ids = self.followings.select(:id)
-    repost_ids = Repost.where("user_id IN (:follow_user_ids) OR user_id = :user_id", follow_user_ids: follow_user_ids, user_id: self.id).select(:post_id)
-    Post.where("id IN (:repost_ids) OR user_id IN (:follow_user_ids) OR user_id = :user_id", repost_ids: repost_ids, follow_user_ids: follow_user_ids, user_id: self.id)
-  end
-
-  # 試し
-  # def self.retwitter(user)
-  #   follow_user_ids = user.followings.select(:id)
-  #   repost = Repost.where("user_id IN (:follow_user_ids) OR user_id = :user_id", follow_user_ids: follow_user_ids, user_id: user.id).select(:post_id)
-  #   repost.pluck(:id)
-  # end
-
   # 自分がリポストしているか判別
   def reposted?(post_id)
     self.reposts.where(post_id: post_id).exists?

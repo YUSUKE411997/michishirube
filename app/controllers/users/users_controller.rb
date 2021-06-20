@@ -37,43 +37,6 @@ class Users::UsersController < ApplicationController
     @users = User.find(params[:id]).followers
   end
 
-  def timeline
-    user = User.find(current_user.id)
-    followings_users = user.followings
-    # @posts = Post.includes(:user, :comments, :likes).where(user_id: followings_users).page(params[:page]).order(created_at: :desc)
-    @posts = user.post_and_reposts.page(params[:page]).order(created_at: :desc)
-
-    # ここから
-    # @obj = []
-    # @obj_1 = []
-    # repost_ids = User.retwitter(current_user)
-    # reposts = Repost.where(id: repost_ids)
-    # repost_post_ids = reposts.pluck(:post_id)
-    # posts.each do |post|
-    #   # retweet されてる投稿なのか判定
-    #   if repost_post_ids.include?(post.id)
-
-    #     repost = reposts.where(post_id: post.id)
-    #     # post_clone = post.clone
-    #     # # @obj << post_clone
-    #     # post_clone.update_attribute(created_at: repost)
-    #     # byebug
-    #     # post_clone.created_at = repost
-    #     @obj_1 << repost
-
-    #   else
-    #     @obj << post
-    #   end
-    # end
-    # byebug
-    # (@obj + @obj_1).sort_by(&:created_at).reverse
-    # ここまで
-
-    followings_users_ids = followings_users.pluck(:id)
-    followings_users_post_ids = Like.where(user_id: followings_users_ids).pluck(:post_id)
-    @follow_like_post = Post.where(id: followings_users_post_ids, created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).limit(5)
-  end
-
   def user_likes
     @user = User.find(params[:id])
     @posts = @user.user_likes.includes(:user, :likes, :comments).page(params[:page]).order(created_at: :desc)

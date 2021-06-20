@@ -1,7 +1,7 @@
 class Users::TimelinesController < ApplicationController
 
   def index
-    @timelines = Timeline.timeline_posts(current_user)
+    @timelines = Timeline.timeline_posts(current_user).page(params[:page])
     followings_users = current_user.followings
     followings_users_ids = followings_users.pluck(:id)
     followings_users_post_ids = Like.where(user_id: followings_users_ids).pluck(:post_id)
