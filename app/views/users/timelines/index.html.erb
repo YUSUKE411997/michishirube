@@ -1,5 +1,9 @@
 <div>
   <div class="container">
+    <h2>みんながいいねした投稿を見てみよう！</h2>
+    <div class="row">
+      <%= render 'users/posts/random', random: @follow_like_post%>
+    </div>
     <h1>タイムライン</h1>
     <% post_ids = [] %>
     <% @timelines.each do |timeline| %>
@@ -7,13 +11,13 @@
         <% next %>
       <% end %>
       <% post_ids << timeline.post_id %>
+      <% unless timeline.repost_id.nil? %>
+        <div class="retweet-user-name">
+          <i class="fas fa-retweet"></i>
+          <p><%= timeline.post.repost_user_name(current_user) %>がリツイート</p>
+        </div>
+      <% end %>
       <div class="row user-image">
-        <% unless timeline.repost_id.nil? %>
-          <div class="retweet-user-name">
-            <i class="fas fa-retweet"></i>
-            <p><%= timeline.post.repost_user_name(current_user) %>がリツイート</p>
-          </div>
-        <% end %>
         <p><%= link_to user_path(timeline.user) do %>
           <%= attachment_image_tag timeline.post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
           <%= timeline.post.user.name.truncate(10) %>

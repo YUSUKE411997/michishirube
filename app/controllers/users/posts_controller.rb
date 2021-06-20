@@ -50,6 +50,7 @@ class Users::PostsController < ApplicationController
        Timeline.create_timeline_post(current_user, @post.id)
       redirect_to posts_path
     else
+      # indexに返す為に記述
       posts = Post.includes(:user)
       @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
       @random = Post.where(created_at: Time.zone.now.all_day).sample(5)
