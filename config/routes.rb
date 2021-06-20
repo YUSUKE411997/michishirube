@@ -34,14 +34,12 @@ Rails.application.routes.draw do
     resources :tags do
       get 'posts', to: 'posts#tag_index'
     end
-    # resources :messages, only: [:show, :create, :destroy]
-    # resources :rooms, only: [:create, :index, :show]
+
     resources :notifications, only: [:index]
     resources :timelines, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'
     get 'ranks_show' => 'posts#ranks_show'
-    # get 'sort' => 'posts#sort'
   end
 
   namespace :admin do
