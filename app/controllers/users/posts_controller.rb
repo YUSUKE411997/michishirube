@@ -47,6 +47,7 @@ class Users::PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @post.save
        @post.save_tag(tag_list)
+       Timeline.create_timeline_post(current_user, @post.id)
       redirect_to posts_path
     else
       posts = Post.includes(:user)
