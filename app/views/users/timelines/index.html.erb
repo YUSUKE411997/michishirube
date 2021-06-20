@@ -1,0 +1,40 @@
+<div>
+  <div class="container">
+    <h2>みんながいいねした投稿を見てみよう！</h2>
+    <div class="row">
+      <%= render 'users/posts/random', random: @follow_like_post%>
+    </div>
+    <h1>タイムライン</h1>
+    <% post_ids = [] %>
+    <% @timelines.each do |timeline| %>
+      <% if post_ids.size != (post_ids - [timeline.post_id]).size %>
+        <% next %>
+      <% end %>
+      <% post_ids << timeline.post_id %>
+      <% unless timeline.repost_id.nil? %>
+        <div class="retweet-user-name">
+          <i class="fas fa-retweet"></i>
+          <p><%= timeline.post.repost_user_name(current_user) %>がリツイート</p>
+        </div>
+      <% end %>
+      <div class="row user-image">
+        <p><%= link_to user_path(timeline.user) do %>
+          <%= attachment_image_tag timeline.post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
+          <%= timeline.post.user.name.truncate(10) %>
+          <% end %>
+        </p>
+        <div class="type-title">
+          <p class="index-post-title"><%= link_to timeline.post.title.truncate(50), post_path(timeline.post.id) %></p>
+          <p class="index-post-title"><%= timeline.post.body.truncate(150) %></p>
+        </div>
+        <div class="index-icon-all">
+          <p class="index-icon"><%= link_to timeline.post.type, types_path(type: timeline.post.type) %></p>
+          <p class="index-icon"><i class="fas fa-retweet"></i><%= timeline.post.reposts.size %></p>
+          <p class="index-icon"><i class="far fa-comments"></i><%= timeline.post.comments.size %></p>
+          <p class="index-icon"><i class="fas fa-heart"></i><%= timeline.post.likes.size %></p>
+          <p class="index-icon"><%= time_ago_in_words(timeline.post.created_at) %>前</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

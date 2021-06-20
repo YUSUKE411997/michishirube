@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :reposts, dependent: :destroy
+  has_many :timelines, dependent: :destroy
 
   attachment :profile_image
 

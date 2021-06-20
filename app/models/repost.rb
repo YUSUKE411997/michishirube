@@ -1,4 +1,6 @@
 class Repost < ApplicationRecord
+  
+  has_many :timelines
   belongs_to :user
   belongs_to :post
   

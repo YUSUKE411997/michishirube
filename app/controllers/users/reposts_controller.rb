@@ -5,7 +5,9 @@ class Users::RepostsController < ApplicationController
     current_repost = Repost.find_by(user_id: current_user.id, post_id: @post.id)
 
     if current_repost.nil?
-      Repost.create(user_id: current_user.id, post_id: @post.id)
+      repost = Repost.new(user_id: current_user.id, post_id: @post.id)
+      repost.save
+      Timeline.create_timeline_repost(repost.id, current_user, repost.post_id)
     end
     @post.create_notification_repost!(current_user)
   end
