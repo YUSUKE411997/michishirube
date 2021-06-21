@@ -13,6 +13,9 @@
       <div class="jscroll">
         <div class="post-body">
           <% @posts.each.with_index(1) do |post, i| %>
+            <% if user_signed_in? && current_user.previewed?(post.id) %>
+              <p class="previews"><%= time_ago_in_words(current_user.preview_time(post.id).updated_at) %>前に閲覧</p>
+            <% end %>
             <strong>第<%= i %>位</strong>
             <div class="row user-image">
               <p><%= link_to user_path(post.user) do %>
@@ -25,7 +28,16 @@
                 <p class="index-post-title"><%= post.body.truncate(150) %></p>
               </div>
               <div class="index-icon-all">
+                <% post.tags.each.with_index(1) do |post_tag, i| %>
+                  <% if i <= 3 %>
+                    <i class="fas fa-tags"></i>
+                    <%= link_to tag_posts_path(post_tag.id) do %>
+                      <%= post_tag.tag_name.truncate(13)%>
+                    <% end %>
+                  <% end %>
+                <% end %>
                 <p class="index-icon"><%= link_to post.type, types_path(type: post.type) %></p>
+                <p class="index-icon previews"><%= post.previews.size %> Preview</p>
                 <p class="index-icon"><i class="fas fa-retweet"></i><%= post.reposts.size %></p>
                 <p class="index-icon"><i class="far fa-comments"></i><%= post.comments.size %></p>
                 <p class="index-icon"><i class="fas fa-heart"></i><%= post.likes.size %></p>

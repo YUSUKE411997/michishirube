@@ -8,7 +8,7 @@
 
     <p><%= link_to post.title.truncate(12), post_path(post.id) %></p>
     <p><%= post.body.truncate(25) %></p>
-    <p><%= link_to post.type, types_path(type: post.type) %></p>
+    <p>『<%= link_to post.type, types_path(type: post.type) %>』</p>
 
     <span class="random-icon">
       <p class="previews"><%= post.previews.size%> preview</p>
