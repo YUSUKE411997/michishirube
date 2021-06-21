@@ -1,7 +1,7 @@
 <% if current_user.reposted?(post.id) %>
-  リポスト済み
+  <span class="repost-ok">リポスト済み</span>
   <%= link_to post_repost_path(post.id, post.reposts.ids), method: :delete, remote: true do %>
-    <i class="fas fa-retweet"></i>
+    <i class="fas fa-retweet retweet-green" style = "color: green"></i>
   <% end %>
 <% else %>
   <%= link_to post_reposts_path(post.id), method: :post, remote: true do %>
