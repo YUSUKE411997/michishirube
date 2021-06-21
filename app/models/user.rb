@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :reposts, dependent: :destroy
   has_many :timelines, dependent: :destroy
+  has_many :previews, dependent: :destroy
 
   attachment :profile_image
 
@@ -63,6 +64,15 @@ class User < ApplicationRecord
   # 自分がリポストしているか判別
   def reposted?(post_id)
     self.reposts.where(post_id: post_id).exists?
+  end
+
+  def previewed?(post_id)
+    post_ids = self.posts.pluck(:id)
+    self.previews.where(post_id: post_id).where.not(post_id: post_ids).exists?
+  end
+
+  def preview_time(post_id)
+    self.previews.find_by(post_id: post_id)
   end
 
 end
