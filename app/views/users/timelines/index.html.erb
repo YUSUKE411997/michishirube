@@ -5,12 +5,6 @@
       <%= render 'users/posts/random', random: @follow_like_post%>
     </div>
     <h1>タイムライン</h1>
-    <div class="jscroll">
-      <div class="post-body">
-        <div class="timeline-area">
-          <%= render 'timeline', timelines: @timelines %>
-        </div>
-      </div>
-    </div>
+    <%= render 'timeline', timelines: @timelines %>
   </div>
 </div>
