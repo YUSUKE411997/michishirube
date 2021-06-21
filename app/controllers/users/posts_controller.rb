@@ -71,6 +71,9 @@ class Users::PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
     @post_tags = @post.tags
+    if user_signed_in?
+      Preview.create_preview(@post.id, current_user.id)
+    end
   end
 
   def destroy

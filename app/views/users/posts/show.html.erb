@@ -16,6 +16,9 @@
       </div>
       <div class="post-show-bottom">
         <% if user_signed_in? %>
+          <div class="post-show-list">
+            <p class="previews"><%= @post.previews.size %> Preview</p>
+          </div>
           <div class="post-show-list repost-area">
             <%= render 'users/reposts/repost', post: @post %>
           </div>
