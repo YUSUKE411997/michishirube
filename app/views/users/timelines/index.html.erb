@@ -34,7 +34,15 @@
               <p class="index-post-title"><%= timeline.post.body.truncate(150) %></p>
             </div>
             <div class="index-icon-all">
-              <p class="index-icon"><%= link_to timeline.post.type, types_path(type: timeline.post.type) %></p>
+              <% timeline.post.tags.each.with_index(1) do |post_tag, i| %>
+                <% if i <= 3 %>
+                  <i class="fas fa-tags"></i>
+                  <%= link_to tag_posts_path(post_tag.id) do %>
+                    <%= post_tag.tag_name.truncate(13)%>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <p class="index-icon">『<%= link_to timeline.post.type, types_path(type: timeline.post.type) %>』</p>
               <p class="index-icon previews"><%= timeline.post.previews.size %> Preview</p>
               <p class="index-icon"><i class="fas fa-retweet"></i><%= timeline.post.reposts.size %></p>
               <p class="index-icon"><i class="far fa-comments"></i><%= timeline.post.comments.size %></p>

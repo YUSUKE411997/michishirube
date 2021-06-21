@@ -13,6 +13,7 @@ class Users::PostsController < ApplicationController
     @ranks_1 = likes.create_ranks_type_likes(1)
     @ranks_2 = likes.create_ranks_type_likes(2)
     @repost_ranks = Post.create_ranks_repost
+    @preview_ranks = Post.create_ranks_preview
   end
 
   def ranks_show
@@ -22,6 +23,8 @@ class Users::PostsController < ApplicationController
         @tags = Tag.create_ranks_tag
       when "リポスト"
         @posts = Post.create_ranks_repost
+      when "preview"
+        @posts = Post.create_ranks_preview
       when "気ままに"
         @posts = Post.eager_load(:likes).create_ranks_type_likes(0)
       when "やってみたい"
