@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_074810) do
+ActiveRecord::Schema.define(version: 2021_06_20_091015) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 2021_06_07_074810) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reposts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_reposts_on_post_id"
+    t.index ["user_id"], name: "index_reposts_on_user_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,6 +108,17 @@ ActiveRecord::Schema.define(version: 2021_06_07_074810) do
     t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.integer "repost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_timelines_on_post_id"
+    t.index ["repost_id"], name: "index_timelines_on_repost_id"
+    t.index ["user_id"], name: "index_timelines_on_user_id"
   end
 
   create_table "user_rooms", force: :cascade do |t|

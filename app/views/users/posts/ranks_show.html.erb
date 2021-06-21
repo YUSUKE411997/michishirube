@@ -1,0 +1,44 @@
+<div>
+  <div class="container">
+    <h1><%= @word %>　の週間ランキング</h1>
+    <% if @word == "タグ" %>
+      <% @tags.each.with_index(1) do |tag, i| %>
+          <strong>
+            <span>第<%= i %>位</span>
+            <%= link_to tag.tag_name, tag_posts_path(tag.id) %>
+            <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
+          </strong>
+      <% end %>
+    <% else %>
+      <div class="jscroll">
+        <div class="post-body">
+          <% @posts.each.with_index(1) do |post, i| %>
+            <strong>第<%= i %>位</strong>
+            <div class="row user-image">
+              <p><%= link_to user_path(post.user) do %>
+                <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
+                <%= post.user.name.truncate(10) %>
+                <% end %>
+              </p>
+              <div class="type-title">
+                <p class="index-post-title"><%= link_to post.title.truncate(50), post_path(post.id) %></p>
+                <p class="index-post-title"><%= post.body.truncate(150) %></p>
+              </div>
+              <div class="index-icon-all">
+                <p class="index-icon"><%= link_to post.type, types_path(type: post.type) %></p>
+                <p class="index-icon"><i class="fas fa-retweet"></i><%= post.reposts.size %></p>
+                <p class="index-icon"><i class="far fa-comments"></i><%= post.comments.size %></p>
+                <p class="index-icon"><i class="fas fa-heart"></i><%= post.likes.size %></p>
+                <p class="index-icon"><%= time_ago_in_words(post.created_at) %>前</p>
+              </div>
+            </div>
+          <% end %>
+          <div>
+            <%#= link_to_next_page @posts, '次のページ', class: "next"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

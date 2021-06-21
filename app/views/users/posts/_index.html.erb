@@ -1,27 +1,23 @@
-<div class="post-head">
-    <p class="post-top-list"></p>
-    <p class="post-top-list">投稿種類</p>
-    <p class="post-top-list">投稿タイトル</p>
-    <p class="post-top-content">投稿内容</p>
-    <p class="post-top-list">コメント数</p>
-    <p class="post-top-list">いいね数</p>
-    <p class="post-top-list">投稿時間</p>
-</div>
 <div class="jscroll">
   <div class="post-body">
     <% posts.each do |post| %>
       <div class="row user-image">
-        <p class="post-bottom-list"><%= link_to user_path(post.user) do %>
-          <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
+        <p><%= link_to user_path(post.user) do %>
+          <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
           <%= post.user.name.truncate(10) %>
           <% end %>
         </p>
-        <p class="post-bottom-list"><%= link_to post.type, types_path(type: post.type) %></p>
-        <p class="post-bottom-list"><%= link_to post.title.truncate(12), post_path(post.id) %></p>
-        <p class="post-bottom-content"><%= post.body.truncate(25) %></p>
-        <p class="post-bottom-list"><%= post.comments.size %>件</p>
-        <p class="post-bottom-list">💖<%= post.likes.size %></p>
-        <p class="post-bottom-list"><%= post_created(post) %></p>
+        <div class="type-title">
+          <p class="index-post-title"><%= link_to post.title.truncate(50), post_path(post.id) %></p>
+          <p class="index-post-title"><%= post.body.truncate(150) %></p>
+        </div>
+        <div class="index-icon-all">
+          <p class="index-icon"><%= link_to post.type, types_path(type: post.type) %></p>
+          <p class="index-icon"><i class="fas fa-retweet"></i><%= post.reposts.size %></p>
+          <p class="index-icon"><i class="far fa-comments"></i><%= post.comments.size %></p>
+          <p class="index-icon"><i class="fas fa-heart"></i><%= post.likes.size %></p>
+          <p class="index-icon"><%= time_ago_in_words(post.created_at) %>前</p>
+        </div>
       </div>
     <% end %>
     <div>

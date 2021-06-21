@@ -11,19 +11,139 @@ Admin.create!(
     password: "admintest"
   )
 
-10.times do |n|
+50.times do |n|
     User.create!(
         email: "#{n + 1}@#{n + 1}",
         password: "aaaaaa",
-        name: "a#{n + 1}号"
+        name: "村人#{n + 1}号"
+        )
+    end
+
+50.times do |n|
+    Post.create!(
+        user_id: n + 1,
+        title: "気ままにテスト#{n + 1}",
+        body: "これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}",
+        type: 0
+        )
+    Timeline.create!(
+        user_id: n + 1,
+        post_id: n + 1
+        )
+        
+    Tag.create!(
+        tag_name: "野球#{n + 1}"
+        )
+    TagMap.create!(
+        tag_id: n + 1,
+        post_id: n + 1
+        )
+    end
+    
+50.times do |n|
+    Post.create!(
+        user_id: n + 1,
+        title: "やってみたいテスト#{n + 1}",
+        body: "これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}",
+        type: 1
+        )
+    Timeline.create!(
+        user_id: n + 1,
+        post_id: 50 + (n + 1)
+        )
+
+    end
+    
+50.times do |n|
+    Post.create!(
+        user_id: n + 1,
+        title: "やってみたテスト#{n + 1}",
+        body: "これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}これはテスト投稿です#{n + 1}",
+        type: 2
+        )
+    Timeline.create!(
+        user_id: n + 1,
+        post_id: 100 + (n + 1)
+        )
+
+    end
+    
+49.times do |n|
+    Relationship.create!(
+        following_id: n + 1,
+        follower_id: 50 - (n + 1)
+        )
+    end
+
+30.times do |n|
+    Like.create!(
+        user_id: n + 1,
+        post_id: 1
+        )
+    Like.create!(
+        user_id: n + 1,
+        post_id: 51
+        )
+    Like.create!(
+        user_id: n + 1,
+        post_id: 101
+        )
+    Repost.create!(
+        user_id: 10 + (n + 1),
+        post_id: 10
+        )
+    Timeline.create!(
+        post_id: 10,
+        user_id: 10 + (n + 1),
+        repost_id: n + 1
+        )
+        
+    end
+
+20.times do |n|
+    Like.create!(
+        user_id: n + 1,
+        post_id: 2
+        )
+    Like.create!(
+        user_id: n + 1,
+        post_id: 52
+        )
+    Like.create!(
+        user_id: n + 1,
+        post_id: 102
+        )
+    Repost.create!(
+        user_id: 10 + (n + 1),
+        post_id: 11
+        )
+    Timeline.create!(
+        post_id: 11,
+        user_id: 10 + (n + 1),
+        repost_id: 30 + (n + 1)
         )
     end
 
 10.times do |n|
-    Post.create!(
+    Like.create!(
         user_id: n + 1,
-        title: "テスト#{n + 1}",
-        body: "これはテスト投稿です#{n + 1}版",
-        type: 1
+        post_id: 3
+        )
+    Like.create!(
+        user_id: n + 1,
+        post_id: 53
+        )
+    Like.create!(
+        user_id: n + 1,
+        post_id: 103
+        )
+    Repost.create!(
+        user_id: 10 + (n + 1),
+        post_id: 12
+        )
+    Timeline.create!(
+        post_id: 12,
+        user_id: 10 + (n + 1),
+        repost_id:  + (n + 1)
         )
     end

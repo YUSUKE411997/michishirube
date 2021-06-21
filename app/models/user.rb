@@ -16,12 +16,15 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :reposts, dependent: :destroy
+  has_many :timelines, dependent: :destroy
 
   attachment :profile_image
 
   validates :name, presence: true
 
-  def active_for_authentication?   #ログイン時にバリデーションを足したい場合(今回退会済みのユーザーを弾く)
+  #ログイン時、退会済みのユーザーを弾く
+  def active_for_authentication?
     super && (self.is_valid == true)
   end
 
@@ -33,6 +36,7 @@ class User < ApplicationRecord
     where(["name LIKE?", "%#{word}%"])
   end
 
+  # フォローされたら通知
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
     if temp.blank?
@@ -44,6 +48,7 @@ class User < ApplicationRecord
     end
   end
 
+  # タイプ別に表示
   def user_type_page(type)
     case type
       when "気ままに"
@@ -54,5 +59,10 @@ class User < ApplicationRecord
         posts.where(type: 2)
     end
   end
-  
+
+  # 自分がリポストしているか判別
+  def reposted?(post_id)
+    self.reposts.where(post_id: post_id).exists?
+  end
+
 end

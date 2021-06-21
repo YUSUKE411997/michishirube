@@ -46,11 +46,6 @@
   width: 100%;
 }
 
-.post-bottom-list {
-  width: 12%;
-  display: inline-block;
-}
-
 .post-container {
   border: solid 1px;
 }
@@ -91,19 +86,31 @@
 
 .post-show-box {
   border: solid 2px;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 15px;
 }
 
 .random-post {
   display: inline-block;
   width: 19%;
+  border-radius: 10px;
+}
+
+.random-post:hover {
+  box-shadow: 15px 15px 15px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  transition-duration: 0.4s;
+}
+
+.random-user-image {
+  padding-left: 50px;
 }
 
 .user-image {
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   cursor: pointer;
   border-radius: 10px;
+  width: 100%;
 }
 
 .user-image:hover{
@@ -114,5 +121,48 @@
 
 .rank-text {
   padding: 25px 0 0 40px;
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.random-icon > p {
+  display: inline-block;
+}
+
+.type-title {
+  width: 93%;
+  text-align: left;
+  padding: 0 150px 0 70px;
+}
+
+.index-icon-all {
+  margin: 0 0 0 auto;
+}
+
+.index-icon {
+ padding: 0 15px 0 0;
+ display: inline-block;
+}
+
+.rank-list {
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 20px;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 5px;   /* 余白       */
+  background    : radial-gradient(#FFC7AF, #FF5F17);     /* 背景色     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 6px #666666;  /* 影の設定 */
+  border        : 1px solid #FFC7AF;    /* 枠の指定 */
+  height: 50px;
+}
+
+.rank-list:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  background    : #ffffff;     /* 文字色     */
+}
+
+.next-font {
+  width: 18%;
+  font-size: 19px;
+  margin: 10px 0 0 0 ;
 }

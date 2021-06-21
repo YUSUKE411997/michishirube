@@ -20,13 +20,13 @@ Rails.application.routes.draw do
       get :followers, on: :member
       get :user_likes, on: :member
       get :user_type, on: :member
-      get :timeline, on: :member
     end
     get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
     patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
     resources :posts, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
+      resources :reposts, only: [:create, :destroy]
     end
     resources :rooms, only: [:index, :show] do
       resource :messages, only: [:create, :destroy]
@@ -34,11 +34,12 @@ Rails.application.routes.draw do
     resources :tags do
       get 'posts', to: 'posts#tag_index'
     end
-    # resources :messages, only: [:show, :create, :destroy]
-    # resources :rooms, only: [:create, :index, :show]
+
     resources :notifications, only: [:index]
+    resources :timelines, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'
+    get 'ranks_show' => 'posts#ranks_show'
   end
 
   namespace :admin do
