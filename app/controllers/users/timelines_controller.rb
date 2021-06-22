@@ -1,4 +1,5 @@
 class Users::TimelinesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @timelines = Timeline.timeline_posts(current_user).page(params[:page])
