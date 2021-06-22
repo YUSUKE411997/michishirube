@@ -2,18 +2,19 @@ class Users::PostsController < ApplicationController
 
 
   def index
-    posts = Post.includes(:user)
-    @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
+    # posts = Post.includes(:user)
+    @posts = Post.includes(:user, :comments, :likes, :previews, :tags, :reposts).page(params[:page]).order(created_at: :desc)
     @random = Post.where(created_at: Time.zone.now.all_day).sample(5)
     @post = Post.new
-    @tag_lists = Tag.all
-    @tag_ranks = Tag.create_ranks_tag
-    likes = Post.eager_load(:likes)
+    @tag_lists = Tag.includes(:tag_maps, :posts)
+
+    likes = Post.includes(:likes)
     @ranks_0 = likes.create_ranks_type_likes(0)
     @ranks_1 = likes.create_ranks_type_likes(1)
     @ranks_2 = likes.create_ranks_type_likes(2)
     @repost_ranks = Post.create_ranks_repost
     @preview_ranks = Post.create_ranks_preview
+    @tag_ranks = Tag.create_ranks_tag
   end
 
   def ranks_show
@@ -26,11 +27,11 @@ class Users::PostsController < ApplicationController
       when "preview"
         @posts = Post.create_ranks_preview
       when "気ままに"
-        @posts = Post.eager_load(:likes).create_ranks_type_likes(0)
+        @posts = Post.includes(:likes).create_ranks_type_likes(0)
       when "やってみたい"
-        @posts = Post.eager_load(:likes).create_ranks_type_likes(1)
+        @posts = Post.includes(:likes).create_ranks_type_likes(1)
       when "やってみた"
-        @posts = Post.eager_load(:likes).create_ranks_type_likes(2)
+        @posts = Post.includes(:likes).create_ranks_type_likes(2)
     end
   end
 
