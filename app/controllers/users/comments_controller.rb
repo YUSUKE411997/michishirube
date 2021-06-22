@@ -4,11 +4,11 @@ class Users::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @post = Post.find_by(id: @comment.post_id)
-    @comments = @post.comments
+    @comments = @post.comments.includes(:user)
     if @comment.save
       @post.create_notification_comment!(current_user, @comment.id)
     else
-      render 'users/posts/show'
+      render 'error'
     end
   end
 
