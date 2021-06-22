@@ -3,12 +3,12 @@ class Users::PostsController < ApplicationController
 
   def index
     posts = Post.includes(:user)
-    @posts = posts.preload(:comments, :likes).page(params[:page]).order(created_at: :desc)
+    @posts = posts.includes(:comments, :likes, :previews, :tags, :reposts).page(params[:page]).order(created_at: :desc)
     @random = Post.where(created_at: Time.zone.now.all_day).sample(5)
     @post = Post.new
-    @tag_lists = Tag.all
+    @tag_lists = Tag.includes(:tag_maps, :posts)
     @tag_ranks = Tag.create_ranks_tag
-    likes = Post.eager_load(:likes)
+    likes = Post.includes(:likes)
     @ranks_0 = likes.create_ranks_type_likes(0)
     @ranks_1 = likes.create_ranks_type_likes(1)
     @ranks_2 = likes.create_ranks_type_likes(2)
