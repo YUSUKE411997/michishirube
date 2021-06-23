@@ -82,7 +82,6 @@ class Post < ApplicationRecord
     end
   end
 
-
   # コメント通知
   def create_notification_comment!(current_user, comment_id)
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
