@@ -21,10 +21,12 @@ class Post < ApplicationRecord
   validates :user_id, :title, :body, :type, presence: true
   validates :title, length: {maximum: 50}
 
+  # いいねしているか判別
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-
+  
+  # 投稿を検索
   def self.search(word)
     where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
   end
@@ -79,7 +81,6 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
 
   # コメント通知
   def create_notification_comment!(current_user, comment_id)

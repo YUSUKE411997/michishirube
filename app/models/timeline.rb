@@ -24,11 +24,6 @@ class Timeline < ApplicationRecord
     end
   end
 
-  # リポストを削除した時、削除
-  # def self.destroy_timeline_repost(repost_id, current_user, post_id)
-  #   repost = Timeline.find_by(repost_id: repost_id, user_id: current_user.id, post_id: post_id)
-  #   repost.destroy
-  # end
 
   def self.timeline_posts(current_user)
     follow_user_ids = current_user.followings.select(:id)

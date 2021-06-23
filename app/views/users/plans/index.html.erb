@@ -17,12 +17,15 @@
       <%= date.day %>
       <% plans.each do |plan| %>
         <% if plan.post.type == "やってみたを投稿" %>
-          <div class="plan-title-after">
+          <div class="plan-title-after mb-1">
             <p class="clear">Clear!!</p>
             <%= link_to plan.post.title, post_path(plan.post.id) %>
           </div>
         <% else %>
-          <%= link_to plan.post.title, post_path(plan.post.id) %>
+          <div class="plan-title-before mb-1">
+            <p class="lettry">Let's try!!</p>
+            <%= link_to plan.post.title, post_path(plan.post.id) %>
+          </div>
         <% end %>
       <% end %>
     <% end %>
