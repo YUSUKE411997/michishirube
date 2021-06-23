@@ -21,10 +21,12 @@ class Post < ApplicationRecord
   validates :user_id, :title, :body, :type, presence: true
   validates :title, length: {maximum: 50}
 
+  # いいねしているか判別
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-
+  
+  # 投稿を検索
   def self.search(word)
     where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
   end
