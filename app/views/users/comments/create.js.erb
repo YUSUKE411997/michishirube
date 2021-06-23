@@ -1,3 +1,4 @@
 $('#comment_area').html('<%= j(render 'users/comments/comment', comments: @comments)%>');
 $('#comment_count').html("<%= @post.comments.count %>件");
 $('#comment_content').val("");
+$('.error-message').remove()
