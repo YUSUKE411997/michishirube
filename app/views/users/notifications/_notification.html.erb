@@ -18,7 +18,7 @@
         <%= notification.post.user.name + "さんの投稿" %>
       <% end %>
       にコメントしました
-      <p><%= notification.post.title %></p>
+      <p><%= link_to notification.post.title, post_path(notification.post) %></p>
       <p><%= notification.comment.content %></p>
     <% end %>
   </strong>

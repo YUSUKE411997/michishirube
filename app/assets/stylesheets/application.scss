@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -128,12 +129,15 @@ footer {
   background-image: image-url('slide/people-2567915_1920.jpg');
 }
 .image3 {
-  background-image: image-url('slide/chang-duong-ZshVGzJ6a_s-unsplash.jpg');
+  background-image: image-url('slide/andriyko-podilnyk-Z9m8qLIXqIU-unsplash.jpg');
 }
 .image4 {
-  background-image: image-url('slide/pin-adventure-map-cXuYXpondrc-unsplash.jpg');
+  background-image: image-url('slide/chang-duong-ZshVGzJ6a_s-unsplash.jpg');
 }
 .image5 {
+  background-image: image-url('slide/pin-adventure-map-cXuYXpondrc-unsplash.jpg');
+}
+.image6 {
   background-image: image-url('slide/christopher-beloch-P2fBIamIbQk-unsplash.jpg');
 }
 
@@ -142,3 +146,4 @@ footer {
   width: 80%;
   margin: 50px auto;
 }
+

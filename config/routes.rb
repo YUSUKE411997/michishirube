@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :tags do
       get 'posts', to: 'posts#tag_index'
     end
-
+    resources :plans, only: [:index, :create, :destroy]
     resources :notifications, only: [:index]
     resources :timelines, only: [:index]
     # 下記をpostにあとでネスト

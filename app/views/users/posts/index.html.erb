@@ -1,5 +1,6 @@
 <div>
   <div class="container">
+    <%= render 'layouts/error', model: @post %>
     <div class="mb-5">
       <h2>週間ランキング</h2>
       <div class="image_box">
@@ -12,7 +13,7 @@
                   <strong class="rank-list">
                     <span>第<%= i %>位</span>
                     <%= link_to tag.tag_name.truncate(10), tag_posts_path(tag.id) %>
-                    <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
+                    <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
                   </strong>
                 <% end %>
               <% end %>
@@ -28,7 +29,7 @@
                     <span>第<%= i %>位</span>
                     <%= link_to post.title.truncate(13), post_path(post.id) %>
                     <i class="fas fa-retweet"></i>
-                    <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
+                    <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
                   </strong>
                 <% end %>
               <% end %>
@@ -37,19 +38,34 @@
           </div>
           <div class="image3">
             <div class="rank-text">
+              <h3 class="rank-preview-font">Preview</h3>
+              <% @preview_ranks.each.with_index(1) do |post, i| %>
+                <% if i <= 3 %>
+                  <strong class="rank-list">
+                    <span>第<%= i %>位</span>
+                    <%= link_to post.title.truncate(13), post_path(post.id) %>
+                    <%= post.previews.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %> Preview<br>
+                  </strong>
+                <% end %>
+              <% end %>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "preview")%></p>
+            </div>
+          </div>
+          <div class="image4">
+            <div class="rank-text">
               <h3>やってみた</h3>
               <%= render 'rank', ranks: @ranks_2 %>
               <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "やってみた")%></p>
             </div>
           </div>
-          <div class="image4">
+          <div class="image5">
             <div class="rank-text">
               <h3>やってみたい</h3>
               <%= render 'rank', ranks: @ranks_1 %>
               <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "やってみたい")%></p>
             </div>
           </div>
-          <div class="image5">
+          <div class="image6">
             <div class="rank-text">
               <h3>気ままに</h3>
               <%= render 'rank', ranks: @ranks_0 %>
@@ -85,9 +101,6 @@
       <% end %>
     </div>
     <h2>投稿一覧</h2>
-    <%#= form_with model: @post, url: sort_path, method: :get, local: true do |f| %>
-      <%#= f.select :keyword, [['投稿が新しい順', 'new'], ['いいねが多い順', 'likes']]%>
-    <%# end %>
     <%= render 'index', posts: @posts %>
   </div>
 </div>

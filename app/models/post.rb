@@ -14,9 +14,12 @@ class Post < ApplicationRecord
   has_many :tags, through: :tag_maps
   has_many :reposts, dependent: :destroy
   has_many :timelines, dependent: :destroy
+  has_many :previews, dependent: :destroy
+  has_many :plans, dependent: :destroy
   belongs_to :user
 
   validates :user_id, :title, :body, :type, presence: true
+  validates :title, length: {maximum: 50}
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
@@ -35,6 +38,11 @@ class Post < ApplicationRecord
   # リポストのランキング表示（１週間ごと）
   def self.create_ranks_repost
     Post.find(Repost.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').pluck(:post_id))
+  end
+
+  # Previewのランキング表示（１週間ごと）
+  def self.create_ranks_preview
+    Post.find(Preview.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').pluck(:post_id))
   end
 
 # いいね通知
