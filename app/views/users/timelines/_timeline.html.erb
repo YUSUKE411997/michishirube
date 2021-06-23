@@ -29,7 +29,7 @@
             <% end %>
           </p>
           <div class="type-title">
-            <p class="index-post-title"><%= link_to timeline.post.title.truncate(50), post_path(timeline.post.id) %></p>
+            <p class="index-post-title"><%= link_to timeline.post.title, post_path(timeline.post.id) %></p>
             <p class="index-post-title"><%= timeline.post.body.truncate(150) %></p>
           </div>
           <div class="index-icon-all">

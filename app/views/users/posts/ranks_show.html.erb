@@ -24,7 +24,7 @@
                 <% end %>
               </p>
               <div class="type-title">
-                <p class="index-post-title"><%= link_to post.title.truncate(50), post_path(post.id) %></p>
+                <p class="index-post-title"><%= link_to post.title, post_path(post.id) %></p>
                 <p class="index-post-title"><%= post.body.truncate(150) %></p>
               </div>
               <div class="index-icon-all">

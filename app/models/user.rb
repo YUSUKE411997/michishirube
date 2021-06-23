@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :reposts, dependent: :destroy
   has_many :timelines, dependent: :destroy
   has_many :previews, dependent: :destroy
+  has_many :plans, dependent: :destroy
+  
 
   attachment :profile_image
 
@@ -73,6 +75,10 @@ class User < ApplicationRecord
 
   def preview_time(post_id)
     self.previews.find_by(post_id: post_id)
+  end
+  
+  def planed?(current_user)
+    Plan.where(user_id: current_user.id, start_time: Time.zone.now.end_of_day..Time.current.weeks_since(1)).exists?
   end
 
 end

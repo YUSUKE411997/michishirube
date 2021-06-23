@@ -3,7 +3,7 @@
   <p><%= f.radio_button :type, "やってみたいを投稿" %>  やってみたい投稿</p>
   <p><%= f.radio_button :type, "やってみたを投稿" %>  やってみた投稿</p>
   <%= f.label "タイトル",  class: "form-left" %>
-  <%= f.text_field :title %><br>
+  <%= f.text_field :title, placeholder: "５０文字以内で入力" %><br>
   <%= f.label "内容",  class: "form-left" %>
   <%= f.text_area :body %>
   <p class="tag-sample">スペースを入力で複数のタグをつける事ができます</p>

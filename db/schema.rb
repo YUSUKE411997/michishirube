@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_134004) do
+ActiveRecord::Schema.define(version: 2021_06_23_101730) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2021_06_21_134004) do
     t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_plans_on_post_id"
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
