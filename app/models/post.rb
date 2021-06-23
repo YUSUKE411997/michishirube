@@ -15,9 +15,11 @@ class Post < ApplicationRecord
   has_many :reposts, dependent: :destroy
   has_many :timelines, dependent: :destroy
   has_many :previews, dependent: :destroy
+  has_many :plans, dependent: :destroy
   belongs_to :user
 
   validates :user_id, :title, :body, :type, presence: true
+  validates :title, length: {maximum: 50}
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?

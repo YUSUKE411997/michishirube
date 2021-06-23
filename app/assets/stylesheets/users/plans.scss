@@ -1,0 +1,30 @@
+// Place all the styles related to the users/plans controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.plan-title-after {
+  background-color: #FF6633;
+  border-radius: 3px;
+}
+
+.countdown {
+  display: inline-block;
+  color: red;
+}
+
+.clear {
+  font-size: 15px;
+  color: yellow;
+  text-align: center;
+}
+
+.fa-exclamation {
+  color: red;
+  font-size: 20px;
+  position: absolute;
+  right: 283px;
+}
+
+.countdown-box {
+  font-size: 22px;
+}
