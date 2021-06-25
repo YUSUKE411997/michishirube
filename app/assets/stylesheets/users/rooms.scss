@@ -31,12 +31,6 @@
   text-align: center;
   font-size: 22px;
   border-radius: 50%;
-
-}
-
-.message-time {
-
-  padding-top: 30px;
 }
 
 .message-fale-time {
@@ -52,7 +46,7 @@
 .message-all {
   padding: 20px 10px;
   width: 100%;
-  margin: 15px 0;
+  margin: 5px 0;
   // text-align: right;
   // font-size: 14px;
   background: #7da4cd;
@@ -148,3 +142,17 @@
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
+
+.message-details {
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.message-user-image {
+  display: inline-block;
+}
+
+.message-time {
+  font-size: 13px;
+}
+

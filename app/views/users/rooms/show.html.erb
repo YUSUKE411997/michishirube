@@ -1,11 +1,13 @@
 <div>
   <div class="container">
     <div>
-    <h2><%= @user.name %>とのメッセージ</h2>
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %>
+      <div class="message-user-image">
+        <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "profile/no_image.jpg",  size: "80x80" %>
+      </div>
+    <h2 class="message-user-image"><%= @user.name %>とのメッセージ</h2>
     </div>
     <div class="row">
-      <div class="message-all">
+      <div class="message-all message-details" id="scroll-inner">
           <% @messages.each do |message| %>
             <% if message.user_id == current_user.id %>
               <%= render 'users/messages/message', message: message %>
@@ -15,18 +17,18 @@
                   <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
                 </div>
                 <div class="chatting">
-                  <div class="says">
+                  <div class="says says-">
                     <%= message.content %>
                   </div>
-                  <p><%= message_created(message)%></p>
+                  <p class="message-time"><%= message_created(message)%></p>
                 </div>
               </div>
             <% end %>
           <% end %>
       </div>
-      <div class="message-form mt-5">
+      <div class="message-form">
         <%= form_with(model:[@room, @message], remote: true) do |f| %>
-          <%= f.text_area :content, size: '80×5' %>
+          <%= f.text_area :content, size: '100×5' %>
           <%= f.hidden_field :room_id %>
           <%= f.submit "送信", class: "btn btn-success" %>
         <% end %>
