@@ -36,12 +36,12 @@
                 <p class="index-post-title"><%= post.body.truncate(150) %></p>
                 <% end %>
               </div>
-              <div class="index-icon-all">
+              <div class="index-icon-all mt-3">
                 <% post.tags.each.with_index(1) do |post_tag, i| %>
                   <% if i <= 3 %>
                     <i class="fas fa-tags"></i>
                     <%= link_to tag_posts_path(post_tag.id) do %>
-                      <%= post_tag.tag_name.truncate(13)%>
+                      <%= post_tag.tag_name.truncate(11)%>
                     <% end %>
                   <% end %>
                 <% end %>
