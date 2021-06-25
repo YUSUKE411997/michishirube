@@ -1,42 +1,40 @@
 <div>
   <div class="container">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %>
+    <div>
     <h2><%= @user.name %>とのメッセージ</h2>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %>
+    </div>
     <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th><%= @user.name %></th>
-            <th>あなた</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="message-all">
           <% @messages.each do |message| %>
             <% if message.user_id == current_user.id %>
-              <tr>
-                <td style="text-align: right;">
-                  <%= message.content %>
-                  <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
+              <div class="mycomment text-break">
+                <p><%= message.content %></p><br>
                   <%= message_created(message)%>
-                </td>
-              </tr>
+                </div>
+
             <% else %>
-            <tr>
-              <td style="text-align: left;">
-                <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
-                <%= message.content %><br>
-                <%= message_created(message)%>
-              </td>
-            </tr>
+              <div class="balloon6 text-break">
+                <div class="faceicon">
+                  <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
+                </div>
+                <div class="chatting">
+                  <div class="says">
+                    <%= message.content %>
+                  </div>
+                  <p><%= message_created(message)%></p>
+                </div>
+              </div>
             <% end %>
           <% end %>
-        </tbody>
-      </table>
-      <%= form_with(model:[@room, @message], local: true) do |f| %>
-        <%= f.text_field :content %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "送信"%>
-      <% end %>
+      </div>
+      <div class="message-form mt-5">
+        <%= form_with(model:[@room, @message], local: true) do |f| %>
+          <%= f.text_area :content, size: '80×5' %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信", class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
