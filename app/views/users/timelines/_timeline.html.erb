@@ -29,8 +29,10 @@
             <% end %>
           </p>
           <div class="type-title">
-            <p class="index-post-title"><%= link_to timeline.post.title, post_path(timeline.post.id) %></p>
+            <%= link_to post_path(timeline.post.id), class: "text-dark" do %>
+            <p class="index-post-title"><%= timeline.post.title %></p>
             <p class="index-post-title"><%= timeline.post.body.truncate(150) %></p>
+            <% end %>
           </div>
           <div class="index-icon-all">
             <% timeline.post.tags.each.with_index(1) do |post_tag, i| %>
@@ -46,7 +48,11 @@
             <span class="repost-area<%= timeline.post.id %>">
               <%= render 'users/reposts/repost', post: timeline.post %>
             </span>
-            <p class="index-icon"><i class="far fa-comments"></i><%= timeline.post.comments.size %></p>
+            <p class="index-icon">
+              <%= link_to post_path(timeline.post.id), class: "text-dark" do %>
+                <i class="far fa-comments"></i><%= timeline.post.comments.size %>
+              <% end %>
+            </p>
             <span id="like_button_<%= timeline.post.id %>">
                 <%= render 'users/likes/like', post: timeline.post %>
             </span>
