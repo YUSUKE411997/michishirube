@@ -103,20 +103,42 @@
 }
 
 .random-user-image {
-  padding-left: 50px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.random-user-image:hover {
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  transition-duration: 0.4s;
+}
+
+.user-box {
+  height: 70px;
+  width: 70px;
+  border-radius: 5px;
+}
+
+.user-box:hover {
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  transition-duration: 0.4s;
 }
 
 .user-image {
-  margin: 10px auto 0;
-  cursor: pointer;
-  border-radius: 10px;
-  width: 100%;
+  border-radius : 10px;          /* 角丸       */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 9px;   /* 余白       */
+  background    : #FFDAB9;     /* 背景色     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #FFDAB9;    /* 枠の指定 */
 }
 
 .user-image:hover{
-  box-shadow: 15px 15px 15px rgba(0,0,0,0.5);
-  transform: translateY(-5px);
-  transition-duration: 0.4s;
+  box-shadow    : none;
+  background    : #ffffff;
 }
 
 .rank-text {
@@ -129,7 +151,7 @@
 }
 
 .type-title {
-  width: 93%;
+  width: 87%;
   text-align: left;
   padding: 0 150px 0 70px;
 }
@@ -144,16 +166,17 @@
 }
 
 .rank-list {
-  border-radius : 5%;          /* 角丸       */
+  border-radius : 10px;          /* 角丸       */
   font-size     : 20px;        /* 文字サイズ */
-  text-align    : center;      /* 文字位置   */
+  text-align    : left;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 5px;   /* 余白       */
   background    : radial-gradient(#FFC7AF, #FF5F17);     /* 背景色     */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 6px 6px 6px #666666;  /* 影の設定 */
   border        : 1px solid #FFC7AF;    /* 枠の指定 */
-  height: 50px;
+  height: 40px;
+  width: 43%;
 }
 
 .rank-list:hover {
@@ -181,4 +204,35 @@
 
 .repost-ok {
   color: green;
+}
+
+.ranking {
+  width: 100%;
+  font-size: 30px;
+}
+
+.preview-box {
+  width: 100%;
+}
+
+.fa-crown {
+  color: #FFD700;
+}
+
+.random-title {
+font-size: 20px;
+}
+
+.random-type {
+  font-size: 14px;
+}
+
+.rank-tag {
+  font-size: 25px;
+  margin-right: 7%;
+}
+
+.title-font {
+  font-size: 19px;
+  text-shadow: 1px 1px 1px #808080;
 }

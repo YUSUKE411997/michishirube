@@ -25,6 +25,22 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
+h2 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
+h3 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
+h4 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
 header {
   width: 100%;
   height: 140px;
@@ -117,8 +133,8 @@ footer {
 }
 
 .header-button:hover {
-  box-shadow    : none;        /* カーソル時の影消去 */
-  background    : #ffffff;     /* 文字色     */
+  box-shadow    : none;
+  background    : #ffffff;
 }
 
 .image1 {

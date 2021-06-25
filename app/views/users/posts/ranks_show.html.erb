@@ -1,31 +1,38 @@
 <div>
   <div class="container">
-    <h1><%= @word %>　の週間ランキング</h1>
+
+    <h1 class="mb-5 mt-5"><%= @word %>　週間ランキング</h1>
     <% if @word == "タグ" %>
-      <% @tags.each.with_index(1) do |tag, i| %>
+      <div class="tag-container">
+        <% @tags.each.with_index(1) do |tag, i| %>
           <strong>
-            <span>第<%= i %>位</span>
+            <span class="rank-tag">第<%= i %>位</span>
+            <i class="fas fa-tags"></i>
             <%= link_to tag.tag_name, tag_posts_path(tag.id) %>
             <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).count %><br>
           </strong>
-      <% end %>
+        <% end %>
+      </div>
     <% else %>
       <div class="jscroll">
         <div class="post-body">
           <% @posts.each.with_index(1) do |post, i| %>
-            <% if user_signed_in? && current_user.previewed?(post.id) %>
-              <p class="previews"><%= time_ago_in_words(current_user.preview_time(post.id).updated_at) %>前に閲覧</p>
-            <% end %>
-            <strong>第<%= i %>位</strong>
+
             <div class="row user-image">
-              <p><%= link_to user_path(post.user) do %>
+              <% if user_signed_in? && current_user.previewed?(post.id) %>
+                <div class="preview-box">
+                  <p class="previews"><%= time_ago_in_words(current_user.preview_time(post.id).updated_at) %>前に閲覧</p>
+                </div>
+              <% end %>
+            <strong class="ranking">第<%= i %>位</strong>
+              <p class="user-box"><%= link_to user_path(post.user) do %>
                 <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
                 <%= post.user.name.truncate(10) %>
                 <% end %>
               </p>
               <div class="type-title">
                 <%= link_to post_path(post.id), class: "text-dark" do %>
-                <p class="index-post-title"><%= post.title %></p>
+                <strong class="index-post-title title-font"><%= post.title %></strong>
                 <p class="index-post-title"><%= post.body.truncate(150) %></p>
                 <% end %>
               </div>
