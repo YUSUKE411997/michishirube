@@ -89,3 +89,11 @@ $(document).on('turbolinks:load', function () {
     hidePrevious : false
   });
 });
+
+document.addEventListener("turbolinks:load", () => {
+    function scrollToEnd() {
+        const messageDetails = document.getElementById('scroll-inner');
+        messageDetails.scrollTop = messageDetails.scrollHeight;
+    }
+    scrollToEnd()
+})

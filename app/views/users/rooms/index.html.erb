@@ -11,7 +11,9 @@
       </div>
       <% if user_room.room.messages.blank? %>
       <div class="message-content">
-        <p>メッセージのやりとりはありません</p>
+        <%= link_to room_path(user_room.user), class: "text-dark" do %>
+          <p>メッセージのやりとりはありません</p>
+        <% end %>
       </div>
       <% else %>
       <!--<div class="message-box">-->

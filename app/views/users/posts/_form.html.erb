@@ -9,5 +9,5 @@
   <%= f.label "タグ",  class: "form-left" %>
   <%= f.text_field :tag_name, size: "50x10", placeholder: "スペースを入力で複数のタグをつける事ができます"  %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit '送信' %>
+  <%= f.submit '送信', class: "btn btn-success" %>
 <% end %>
