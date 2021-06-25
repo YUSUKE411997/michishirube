@@ -2,7 +2,7 @@
   <div class="container">
     <%= render 'layouts/error', model: @post %>
     <div class="mb-5">
-      <h2>週間ランキング</h2>
+      <h1><i class="fas fa-crown"></i>週間ランキング<i class="fas fa-crown"></i></h1>
       <div class="image_box">
         <div id="theTarget">
           <div class="image1">
@@ -10,11 +10,11 @@
               <h3>タグ</h3>
               <% @tag_ranks.each.with_index(1) do |tag, i| %>
                 <% if i <= 3 %>
-                  <strong class="rank-list">
+                  <div class="rank-list mb-2">
                     <span>第<%= i %>位</span>
                     <%= link_to tag.tag_name.truncate(10), tag_posts_path(tag.id) %>
                     <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
-                  </strong>
+                  </div>
                 <% end %>
               <% end %>
               <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "タグ")%></p>
@@ -25,12 +25,12 @@
               <h3>リポスト</h3>
               <% @repost_ranks.each.with_index(1) do |post, i| %>
                 <% if i <= 3 %>
-                  <strong class="rank-list">
+                  <div class="rank-list mb-2">
                     <span>第<%= i %>位</span>
                     <%= link_to post.title.truncate(13), post_path(post.id) %>
                     <i class="fas fa-retweet"></i>
                     <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
-                  </strong>
+                  </div>
                 <% end %>
               <% end %>
               <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "リポスト")%></p>
@@ -41,11 +41,11 @@
               <h3 class="rank-preview-font">Preview</h3>
               <% @preview_ranks.each.with_index(1) do |post, i| %>
                 <% if i <= 3 %>
-                  <strong class="rank-list">
+                  <div class="rank-list mb-2">
                     <span>第<%= i %>位</span>
                     <%= link_to post.title.truncate(13), post_path(post.id) %>
                     <%= post.previews.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %> Preview<br>
-                  </strong>
+                  </div>
                 <% end %>
               <% end %>
               <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "preview")%></p>
@@ -100,7 +100,6 @@
       </div>
       <% end %>
     </div>
-    <h2>投稿一覧</h2>
     <%= render 'index', posts: @posts %>
   </div>
 </div>

@@ -1,24 +1,30 @@
 <div>
-  <div class="container message-index">
+  <div class="container">
     <h1>メッセージ</h1>
-    <table>
     <% @user_rooms.each do |user_room| %>
-    <tr class="message-box">
-      <td class="message-user">
+    <div class="room-box row mt-3">
+      <div class="room-user">
         <%= link_to user_path(user_room.user) do %>
           <%= attachment_image_tag user_room.user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %><br>
           <%= user_room.user.name %>
         <% end %>
-      </td>
+      </div>
       <% if user_room.room.messages.blank? %>
-        <td>メッセージのやりとりはありません</td>
+      <div class="message-content">
+        <p>メッセージのやりとりはありません</p>
+      </div>
       <% else %>
-        <td class="message-content"><%= link_to room_path(user_room.user) do %><%= (user_room.room.messages.last).content %><% end %><td>
-        <td class="message-false"><%= user_room.room.messages.where(checked: false).where.not(user: current_user).size %></td>
-        <td class="message-time"><%= time_ago_in_words(user_room.room.messages.last.created_at) %>前</td>
+      <!--<div class="message-box">-->
+        <div class="message-content">
+          <%= link_to room_path(user_room.user) do %><%= (user_room.room.messages.last).content %><% end %>
+        </div>
+        <div class="message-fale-time">
+          <p class="message-false"><%= user_room.room.messages.where(checked: false).where.not(user: current_user).size %></p>
+          <p class="message-time"><%= time_ago_in_words(user_room.room.messages.last.created_at) %>前</p>
+        </div>
+      <!--</div>-->
       <% end %>
-    </tr>
+    </div>
     <% end %>
-    </table>
   </div>
 </div>

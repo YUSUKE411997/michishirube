@@ -1,4 +1,4 @@
-<div class="mb-5">
+<div class="mb-2 notification-box">
   <strong>
     <%= attachment_image_tag notification.visitor, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
     <%= link_to user_path(notification.visitor_id) do %>
@@ -6,23 +6,23 @@
     <% end %>さんが
     <% case notification.action %>
     <% when 'follow' then %>
-      <%= "あなたをフォローしました" %>
+      あなたをフォロー<i class="fas fa-user"></i>しました
     <% when 'like' then %>
-      <%= "あなたの投稿にいいねしました" %>
+      あなたの投稿にいいね<i class="fas fa-heart"></i>しました
     <% when "repost" then %>
-      <%= "あなたの投稿をリツイートしました" %>
+      あなたの投稿をリツイート<i class="fas fa-retweet retweet-green" style = "color: green"></i>しました
     <% when 'comment' then %>
       <% if notification.post.user_id == notification.visited.id %>
         あなたの投稿
       <% else %>
         <%= notification.post.user.name + "さんの投稿" %>
       <% end %>
-      にコメントしました
-      <p><%= link_to notification.post.title, post_path(notification.post) %></p>
-      <p><%= notification.comment.content %></p>
+      にコメント<i class="far fa-comments"></i>しました
+      <p class="notification-title"><%= link_to notification.post.title, post_path(notification.post) %></p>
+      <p><%= notification.comment.content.truncate(200) %></p>
     <% end %>
   </strong>
-  <div>
+  <div class="time-ago">
     <%= time_ago_in_words(notification.created_at) %>前
   </div>
 </div>

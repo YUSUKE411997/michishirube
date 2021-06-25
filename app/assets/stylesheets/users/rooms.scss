@@ -1,3 +1,45 @@
 // Place all the styles related to the users/rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.room-box {
+  border-bottom: solid 1px;
+  width: 100%;
+}
+
+.room-user {
+ text-align: center;
+ width: 10%;
+}
+
+.message-content {
+  margin-right: 100px;
+  width: 70%;
+  text-align: left;
+  color: #212529bf;
+  font-size: 18px;
+  display: inline-block;
+  margin: 30px 0 0 10%;
+}
+
+.message-false {
+  color: white;
+  background-color: #00FF3B;
+  width: 30%;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 50%;
+
+}
+
+.message-time {
+
+  padding-top: 30px;
+}
+
+.message-fale-time {
+  width: 10%;
+  text-align: right;
+}
