@@ -35,7 +35,9 @@ Rails.application.routes.draw do
       get 'posts', to: 'posts#tag_index'
     end
     resources :plans, only: [:index, :create, :destroy]
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index] do
+    end
+    delete 'notifications' => 'notifications#destroy_all', as: :destroy_all
     resources :timelines, only: [:index]
     # 下記をpostにあとでネスト
     get 'types' => 'posts#type_index'

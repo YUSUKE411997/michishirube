@@ -1,6 +1,9 @@
 <div>
   <div class="container">
     <h1>通知</h1>
+    <div class="notifications-destroy">
+      <%= link_to "全ての通知を削除", destroy_all_path, method: :delete, class: "btn btn-danger"  %>
+    </div>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render notifications %>
