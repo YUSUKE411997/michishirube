@@ -8,11 +8,7 @@
       <div class="message-all">
           <% @messages.each do |message| %>
             <% if message.user_id == current_user.id %>
-              <div class="mycomment text-break">
-                <p><%= message.content %></p><br>
-                  <%= message_created(message)%>
-                </div>
-
+              <%= render 'users/messages/message', message: message %>
             <% else %>
               <div class="balloon6 text-break">
                 <div class="faceicon">
@@ -29,7 +25,7 @@
           <% end %>
       </div>
       <div class="message-form mt-5">
-        <%= form_with(model:[@room, @message], local: true) do |f| %>
+        <%= form_with(model:[@room, @message], remote: true) do |f| %>
           <%= f.text_area :content, size: '80×5' %>
           <%= f.hidden_field :room_id %>
           <%= f.submit "送信", class: "btn btn-success" %>
