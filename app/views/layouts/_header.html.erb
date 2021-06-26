@@ -1,58 +1,66 @@
-<h2>
-    <%= link_to root_path do %>
-    <p class="logo"></p>
+<div class="row header-box">
+  <div class="logo">
+<%= link_to root_path do %>
+    <%= image_tag 'logo.jpg' %>
     <% end %>
-</h2>
+</div>
 <% if user_signed_in? %>
-  <li class="header-button">
-    <%= link_to "マイページ", user_path(current_user.id) %>
-  </li>
-  <li class="header-button">
-    <%= link_to "タイムライン", timelines_path %>
-  </li>
-  <li class="header-button">
-    <%= link_to "投稿一覧", posts_path %>
-  </li>
-  <li class="header-button">
-    <%= link_to "メッセージ", rooms_path %>
-    <span class="header-message"><%= messages_false_count %></span>
-  </li>
-  <li class="header-button">
-    <% if unchecked_notifications.any? %>
-      <%= link_to notifications_path do %>
-        通知
-        <span class="notification-count"><%= unchecked_notifications.count %></span>
+  <div class="header-area">
+    <li class="header-button">
+      <%= link_to "マイページ", user_path(current_user.id) %>
+    </li>
+    <li class="header-button">
+      <%= link_to "タイムライン", timelines_path %>
+    </li>
+    <li class="header-button">
+      <%= link_to "投稿一覧", posts_path %>
+    </li>
+    <li class="header-button">
+      <%= link_to "メッセージ", rooms_path %>
+      <span class="header-message"><%= messages_false_count %></span>
+    </li>
+    <li class="header-button">
+      <% if unchecked_notifications.any? %>
+        <%= link_to notifications_path do %>
+          通知
+          <span class="notification-count"><%= unchecked_notifications.count %></span>
+        <% end %>
+      <% else %>
+        <%= link_to notifications_path do %>
+          通知
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to notifications_path do %>
-        通知
-      <% end %>
-    <% end %>
-  </li>
-  <li class="header-button">
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </li>
-  <div>
-    <%= render 'layouts/search' %>
+    </li>
+    <li class="header-button">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </li>
+    <div>
+      <%= render 'layouts/search' %>
+    </div>
   </div>
 <% elsif admin_signed_in? %>
-  <li class="header-button">
-    <%= link_to "ユーザー一覧", admin_users_path %>
-  </li>
-  <li class="header-button">
-    <%= link_to "投稿一覧", admin_posts_path %>
-  </li>
-  <li class="header-button">
-    <%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %>
-  </li>
-  <div>
-    <%= render 'layouts/admin_search' %>
+  <div class="header-area">
+    <li class="header-button">
+      <%= link_to "ユーザー一覧", admin_users_path %>
+    </li>
+    <li class="header-button">
+      <%= link_to "投稿一覧", admin_posts_path %>
+    </li>
+    <li class="header-button">
+      <%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %>
+    </li>
+    <div>
+      <%= render 'layouts/admin_search' %>
+    </div>
   </div>
 <% else %>
-  <li class="header-button">
-    <%= link_to "投稿一覧", posts_path %>
-  </li>
-  <div>
-    <%= render 'layouts/search' %>
+  <div class="header-area">
+    <li class="header-button">
+      <%= link_to "投稿一覧", posts_path %>
+    </li>
+    <div>
+      <%= render 'layouts/search' %>
+    </div>
   </div>
 <% end %>
+</div>
