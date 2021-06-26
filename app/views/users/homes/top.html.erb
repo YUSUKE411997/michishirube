@@ -1,4 +1,6 @@
-<%= flash[:notice] %>
+<div class="flash-sign-in">
+  <%= flash[:notice] %>
+</div>
 <% unless user_signed_in? %>
 <div class="sign_modal_wrapper"></div>
 <div class="sign_modal">
