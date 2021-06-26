@@ -3,10 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .image-top {
-  background: radial-gradient(rgba(100, 0, 150, .3), rgba(20, 100, 100, .6)),
-  image-url('top/photo-1529156069898-49953e39b3ac.jpg');
+  background: radial-gradient(rgba(100, 0, 150, .3), rgba(#9999FF, .3)),
+  image-url('top/chang-duong-Sj0iMtq_Z4w-unsplasha.jpg');
   width: 100%;
-  height: 830px;
+  height: 105vh;
+  object-fit: none;
 }
 
 .p-top {
@@ -22,6 +23,7 @@
   font-size: 35px;
   font-family: "Hannari";
   display: inline-block;
+  padding-left: 20px;
 }
 
 .top-text {
@@ -59,7 +61,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  margin: 100px auto 0;
+  margin: 30px auto 0;
   border: 1px solid #eee;
   display: none;
   text-align: right;
@@ -78,11 +80,12 @@
 
 .button-area {
   text-align: center;
-  background-color: white;
-  height: 15%;
+  background: linear-gradient(-135deg, #9999FF, #6633CC);
+  height: 17%;
   width: 50%;
-  margin: 8.9% auto 0 auto;
+  margin: 1% auto 0 auto;
   border-radius: 100px;
+  opacity: 0.6;
 }
 
 .sign_button {
@@ -90,6 +93,11 @@
   width: 24%;
   font-size: 13px;
   margin-top: 4%;
+}
+
+.sign-in-font {
+  color: white;
+  padding-top: 17px;
 }
 
 // ボタン
@@ -104,7 +112,7 @@
   appearance: none;
   border: 0;
   background: transparent;
-  color: #e55743;
+  color: #FFFF00;
   text-transform: uppercase;
   letter-spacing: .25em;
   outline: none;

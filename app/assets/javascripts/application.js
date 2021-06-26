@@ -101,7 +101,7 @@ $(function() {
   });
 });
 
-$(document).on('click', '.sign_modal_wrapper, .fa_wrapper', function() {
+$(document).on('click', '.sign_modal_wrapper, .fa_wrapper, .button', function() {
     $('.sign_modal_wrapper').hide();
     $('.sign_modal').hide();
     $('.sign_modal_content').hide();
