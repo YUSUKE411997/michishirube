@@ -1,6 +1,6 @@
 <%= flash[:notice] %>
+<% unless user_signed_in? %>
 <div class="sign_modal_wrapper"></div>
-
 <div class="sign_modal">
   <span class="fa_wrapper"><i class="fas fa-times"></i></span>
   <div class="sign_up_modal sign_modal_content">
@@ -59,10 +59,12 @@
     </form>
   </div>
 </div>
+<% end %>
 
 <div class="image-top">
   <p class="p-top">仲間を作って</p><br>
   <p class="p-bottom">やりたいことを見つけよう</p>
+  <% unless user_signed_in? %>
   <div class="button-area">
     <div class="sign_button sign_up_button">
       <button class="button">
@@ -80,4 +82,5 @@
     </div>
     <p class="sign-in-font">[ログインして投稿したり、みんなをフォローしてみよう]</p>
   </div>
+  <% end %>
 </div>
