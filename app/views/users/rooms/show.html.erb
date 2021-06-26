@@ -17,7 +17,7 @@
                   <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
                 </div>
                 <div class="chatting">
-                  <div class="says says-">
+                  <div class="says says-none">
                     <%= message.content %>
                   </div>
                   <p class="message-time"><%= message_created(message)%></p>

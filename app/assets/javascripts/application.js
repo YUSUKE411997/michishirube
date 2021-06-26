@@ -53,6 +53,7 @@ $(document).on('turbolinks:load', (function() {
   $('.post-button').on('click', function(event) {
     $(this).toggleClass('active');
     $('.form-page').fadeToggle();
+    $('#theTarget').fadeToggle();
     event.preventDefault();
   });
 }));
@@ -97,3 +98,11 @@ document.addEventListener("turbolinks:load", () => {
     }
     scrollToEnd()
 })
+
+// $(function(){
+//   $(document).on('click', '.post-button', function(){
+//     $('.form-modal-wrapper').show();
+//     $('.form-page').show();
+//   });
+// });
+
