@@ -81,13 +81,13 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-document.addEventListener("turbolinks:load", () => {
-    function scrollToEnd() {
-        const messageDetails = document.getElementById('scroll-inner');
-        messageDetails.scrollTop = messageDetails.scrollHeight;
-    }
-    scrollToEnd()
-})
+// document.addEventListener("turbolinks:load", () => {
+//     function scrollToEnd() {
+//         const messageDetails = document.getElementById('scroll-inner');
+//         messageDetails.scrollTop = messageDetails.scrollHeight;
+//     }
+//     scrollToEnd();
+// });
 
 $(function() {
   $(document).on('click', '.sign_button', function() {
@@ -105,4 +105,4 @@ $(document).on('click', '.sign_modal_wrapper, .fa_wrapper, .button', function() 
     $('.sign_modal_wrapper').hide();
     $('.sign_modal').hide();
     $('.sign_modal_content').hide();
-})
+});
