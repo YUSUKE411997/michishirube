@@ -1,3 +1,35 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-user-id {
+  width: 10%;
+}
+
+.admin-user-image {
+  width: 15%;
+}
+
+.admin-user-name {
+  width: 48%;
+}
+
+.admin-user-post {
+  width: 10%;
+}
+
+.admin-user-status {
+  width: 17%;
+}
+
+.admin-status-true {
+  color: green;
+}
+
+.admin-status-false {
+  color: red;
+}
+
+.admin-edit-status {
+  margin-left: 200px;
+}

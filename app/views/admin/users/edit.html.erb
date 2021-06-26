@@ -1,41 +1,41 @@
 <div>
   <div class="container">
-    <h1><%= @user.name%>の編集画面</h1>
-    <div class="row">
-      <div>
-        <%= form_with model: [:admin,@user], local: true do |f| %>
-          <div class="row form-group">
-            <%= f.label "プロフィール画像" %>
-            <%= f.attachment_field :profile_image %>
-          </div>
-          <div class="row form-group">
-            <%= f.label "名前orニックネーム" %>
-            <%= f.text_field :name %>
-          </div>
-          <div class="row form-group">
-            <%= f.label "年齢" %>
-            <%= f.text_field :age %>
-          </div>
-          <div class="row form-group">
-            <%= f.label "職業" %>
-            <%= f.text_field :profession %>
-          </div>
-          <div class="row form-group">
-            <%= f.label "自己紹介" %>
-            <%= f.text_area :introduction %>
-          </div>
-          <%= f.label "ユーザーステータス" %>
-          <div class="row form-group">
-            <%= f.label "有効" %>
-            <%= f.radio_button :is_valid, true %>
-            <%= f.label "退会" %>
-            <%= f.radio_button :is_valid, false %>
-          </div>
-          <div class="row form-group">
-            <%= f.submit '送信', class: "btn btn-success" %>
-          </div>
-        <% end %>
-      </div>
+    <h1>プロフィール編集</h1>
+    <div>
+      <%= form_with model: @user, local: true do |f| %>
+        <div class="row form-group ">
+          <%= f.label "プロフィール画像", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.attachment_field :profile_image, class: "form-control-sm col-4 offset-1" %>
+        </div>
+        <div class="row form-group">
+          <%= f.label "名前orニックネーム", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_field :name, class: "form-control-sm col-4 offset-1" %>
+        </div>
+        <div class="row form-group">
+          <%= f.label "年齢", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_field :age, class: "form-control-sm col-4 offset-1" %>
+        </div>
+        <div class="row form-group">
+          <%= f.label "職業", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_field :profession, class: "form-control-sm col-4 offset-1" %>
+        </div>
+        <div class="row form-group">
+          <%= f.label "自己紹介", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.text_area :introduction, class: "col-4 offset-1" %>
+        </div>
+        <div class="form-group admin-edit-status">
+          <%= f.label "有効" %>
+          <%= f.radio_button :is_valid, true %>
+          <%= f.label "退会", class: "ml-5" %>
+          <%= f.radio_button :is_valid, false %>
+        </div>
+        <div class="row form-group">
+          <%= f.submit '送信', class: "btn btn-success col-1 offset-6" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+
+

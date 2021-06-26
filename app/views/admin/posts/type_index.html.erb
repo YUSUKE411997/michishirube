@@ -1,29 +1,6 @@
-<div>
+<div class="container">
   <div class="container">
-    <h1>投稿種類ページ</h1>
+    <h1><%= @type_name %> ページ</h1>
   </div>
-  <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ユーザー名</th>
-            <th>投稿種類</th>
-            <th>タイトル</th>
-            <th>投稿内容</th>
-            <th>投稿日時</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td><%= post.user.name %></td>
-              <td><%= post.type %></td>
-              <td><%= link_to post.title, admin_post_path(post) %></td>
-              <td><%= post.body %></td>
-              <td><%= post_created(post) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+  <%= render 'admin/posts/index', posts: @posts %>
 </div>
