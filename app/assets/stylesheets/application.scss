@@ -25,10 +25,26 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
+h2 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
+h3 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
+h4 {
+  text-shadow: 3px 3px 3px #808080;
+}
+
 header {
   width: 100%;
   height: 140px;
-  padding: 15px;
+  padding: 0 15px 0 0;
   // background: linear-gradient(-135deg, #BAD3FF, #0099FF);
   background-color: white;
 }
@@ -44,18 +60,6 @@ body {
   min-height: 100vh;
 }
 
-.logo {
-  background-image: image-url('cooltext386397971327508.png');
-  width: 30%;
-  height: 35px;
-  padding: 20px 0 0 40px;
-}
-
-header > h2 {
-  display: inline-block;
-  width: 40%;
-}
-
 header > li{
   display: inline-block;
   margin-right: 20px;
@@ -63,7 +67,7 @@ header > li{
 
 .search-form {
   text-align: right;
-  padding: 10px 50px 0 0;
+  padding: 1% 2% 0 0;
 }
 
 .notification-count {
@@ -113,12 +117,13 @@ footer {
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
   border        : 2px solid #FFDAB9;    /* 枠の指定 */
-  width: 7.7%;
+  width: 12%;
+  margin: 4% 10px 0 0;
 }
 
 .header-button:hover {
-  box-shadow    : none;        /* カーソル時の影消去 */
-  background    : #ffffff;     /* 文字色     */
+  box-shadow    : none;
+  background    : #ffffff;
 }
 
 .image1 {
@@ -147,3 +152,16 @@ footer {
   margin: 50px auto;
 }
 
+.header-area {
+  text-align: right;
+  display: inline-block;
+  width: 80%;
+}
+
+.header-box {
+  width: 100%;
+}
+
+.logo {
+  width: 20%;
+}

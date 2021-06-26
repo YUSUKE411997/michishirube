@@ -1,3 +1,4 @@
+
 <% random.each do |post| %>
   <div class="random-post">
     <p class="random-user-image"><%= link_to user_path(post.user) do %>
@@ -5,10 +6,11 @@
     <%= post.user.name.truncate(10) %>
     <% end %>
     </p>
-
-    <p><%= link_to post.title.truncate(12), post_path(post.id) %></p>
-    <p><%= post.body.truncate(25) %></p>
-    <p>『<%= link_to post.type, types_path(type: post.type) %>』</p>
+    <%= link_to post_path(post.id), class: "text-dark" do %>
+    <p class="random-title"><%= post.title.truncate(12) %></p>
+    <p><%= post.body.truncate(45) %></p>
+    <% end %>
+    <p class="random-type">『<%= link_to post.type, types_path(type: post.type) %>』</p>
 
     <span class="random-icon">
       <p class="previews"><%= post.previews.size%> preview</p>

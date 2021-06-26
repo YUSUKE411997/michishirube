@@ -1,3 +1,158 @@
 // Place all the styles related to the users/rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.room-box {
+  border-bottom: solid 1px;
+  width: 100%;
+}
+
+.room-user {
+ text-align: center;
+ width: 10%;
+}
+
+.message-content {
+  margin-right: 100px;
+  width: 70%;
+  text-align: left;
+  color: #212529bf;
+  font-size: 18px;
+  display: inline-block;
+  margin: 30px 0 0 10%;
+}
+
+.message-false {
+  color: white;
+  background-color: #00FF3B;
+  width: 30%;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 50%;
+}
+
+.message-fale-time {
+  width: 10%;
+  text-align: right;
+}
+
+.message-user {
+  text-align: center;
+  font-size: 20px;
+}
+
+.message-all {
+  padding: 20px 10px;
+  width: 100%;
+  margin: 5px 0;
+  // text-align: right;
+  // font-size: 14px;
+  background: #7da4cd;
+}
+
+.my-message {
+  width: 100%;
+  text-align: right;
+}
+
+.you-message {
+  width: 100%;
+  text-align: left;
+}
+
+.message-form {
+  width: 100%;
+  text-align: right;
+}
+
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.balloon6 .faceicon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.balloon6 .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 60%;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+.mycomment {
+  margin: 10px 0;
+  text-align: right;
+}
+
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 60%;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+  text-align: left;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.message-details {
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.message-user-image {
+  display: inline-block;
+}
+
+.message-time {
+  font-size: 13px;
+}
+

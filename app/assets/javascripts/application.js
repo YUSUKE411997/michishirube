@@ -31,10 +31,6 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-// $(document).on('turbolinks:load', function(){
-//   $('.image-top').hide().fadeIn(2800);
-// });
-
 $(document).on('turbolinks:load', function(){
   $('.p-top').hide().fadeIn(2000);
 });
@@ -43,16 +39,11 @@ $(document).on('turbolinks:load', function(){
   $('.p-bottom').hide().fadeIn(6000);
 });
 
-// $(document).on('turbolinks:load', function() {
-//     $(this).click(function(){
-//         $('.form-page').toggleClass("active");
-//     });
-// });
-
 $(document).on('turbolinks:load', (function() {
   $('.post-button').on('click', function(event) {
     $(this).toggleClass('active');
     $('.form-page').fadeToggle();
+    $('#theTarget').fadeToggle();
     event.preventDefault();
   });
 }));
@@ -89,3 +80,29 @@ $(document).on('turbolinks:load', function () {
     hidePrevious : false
   });
 });
+
+document.addEventListener("turbolinks:load", () => {
+    function scrollToEnd() {
+        const messageDetails = document.getElementById('scroll-inner');
+        messageDetails.scrollTop = messageDetails.scrollHeight;
+    }
+    scrollToEnd()
+})
+
+$(function() {
+  $(document).on('click', '.sign_button', function() {
+    $('.sign_modal_wrapper').show();
+    $('.sign_modal').show();
+    if ($(this).hasClass('sign_up_button')) {
+      $('.sign_up_modal').show();
+    } else {
+      $('.sign_in_modal').show();
+    }
+  });
+});
+
+$(document).on('click', '.sign_modal_wrapper, .fa_wrapper, .button', function() {
+    $('.sign_modal_wrapper').hide();
+    $('.sign_modal').hide();
+    $('.sign_modal_content').hide();
+})

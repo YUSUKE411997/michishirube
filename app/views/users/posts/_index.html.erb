@@ -1,25 +1,30 @@
 <div class="jscroll">
   <div class="post-body">
     <% posts.each do |post| %>
-      <% if user_signed_in? && current_user.previewed?(post.id) %>
-        <p class="previews"><%= time_ago_in_words(current_user.preview_time(post.id).updated_at) %>前に閲覧</p>
-      <% end %>
+
       <div class="row user-image">
-        <p><%= link_to user_path(post.user) do %>
+        <% if user_signed_in? && current_user.previewed?(post.id) %>
+          <div class="preview-box">
+            <p class="previews"><%= time_ago_in_words(current_user.preview_time(post.id).updated_at) %>前に閲覧</p>
+          </div>
+        <% end %>
+        <p class="user-box"><%= link_to user_path(post.user) do %>
           <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
           <%= post.user.name.truncate(10) %>
           <% end %>
         </p>
         <div class="type-title">
-          <p class="index-post-title"><%= link_to post.title, post_path(post.id) %></p>
-          <p class="index-post-title"><%= post.body.truncate(150) %></p>
+          <%= link_to post_path(post.id), class: "text-dark" do %>
+          <strong class="index-post-title title-font"><%= post.title %></strong>
+          <p class="index-post-title mt-3"><%= post.body.truncate(150) %></p>
+          <% end %>
         </div>
-        <div class="index-icon-all">
+        <div class="index-icon-all mt-3">
           <% post.tags.each.with_index(1) do |post_tag, i| %>
             <% if i <= 3 %>
               <i class="fas fa-tags"></i>
               <%= link_to tag_posts_path(post_tag.id) do %>
-                <%= post_tag.tag_name.truncate(13) %>
+                <%= post_tag.tag_name.truncate(11) %>
               <% end %>
             <% end %>
           <% end %>
@@ -28,7 +33,11 @@
           <span class="repost-area<%= post.id %>">
             <%= render 'users/reposts/repost', post: post %>
           </span>
-          <p class="index-icon"><i class="far fa-comments"></i><%= post.comments.size %></p>
+          <p class="index-icon">
+            <%= link_to post_path(post.id), class: "text-dark" do %>
+              <i class="far fa-comments"></i><%= post.comments.size %>
+            <% end %>
+          </p>
           <span id="like_button_<%= post.id %>">
               <%= render 'users/likes/like', post: post %>
           </span>

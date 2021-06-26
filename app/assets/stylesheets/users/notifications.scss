@@ -1,3 +1,29 @@
 // Place all the styles related to the users/notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notification-box {
+  background-color: 	#FFFFCC;
+  border-radius: 10px;
+  padding: 13px;
+}
+
+.notification-box:hover {
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  transition-duration: 0.4s;
+}
+
+.time-ago {
+  text-align: right;
+}
+
+.notification-title {
+  font-size: 20px;
+}
+
+.notifications-destroy {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 20px;
+}

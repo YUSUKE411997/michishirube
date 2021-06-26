@@ -1,42 +1,38 @@
 <div>
   <div class="container">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "profile/no_image.jpg",  size: "100x100" %>
-    <h2><%= @user.name %>とのメッセージ</h2>
+    <div>
+      <div class="message-user-image">
+        <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "profile/no_image.jpg",  size: "80x80" %>
+      </div>
+    <h2 class="message-user-image"><%= @user.name %>とのメッセージ</h2>
+    </div>
     <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th><%= @user.name %></th>
-            <th>あなた</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="message-all message-details" id="scroll-inner">
           <% @messages.each do |message| %>
             <% if message.user_id == current_user.id %>
-              <tr>
-                <td style="text-align: right;">
-                  <%= message.content %>
-                  <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %><br>
-                  <%= message_created(message)%>
-                </td>
-              </tr>
+              <%= render 'users/messages/message', message: message %>
             <% else %>
-            <tr>
-              <td style="text-align: left;">
-                <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
-                <%= message.content %><br>
-                <%= message_created(message)%>
-              </td>
-            </tr>
+              <div class="balloon6 text-break">
+                <div class="faceicon">
+                  <%= attachment_image_tag message.user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
+                </div>
+                <div class="chatting">
+                  <div class="says says-none">
+                    <%= message.content %>
+                  </div>
+                  <p class="message-time"><%= message_created(message)%></p>
+                </div>
+              </div>
             <% end %>
           <% end %>
-        </tbody>
-      </table>
-      <%= form_with(model:[@room, @message], local: true) do |f| %>
-        <%= f.text_field :content %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "送信"%>
-      <% end %>
+      </div>
+      <div class="message-form">
+        <%= form_with(model:[@room, @message], remote: true) do |f| %>
+          <%= f.text_area :content, size: '100×5' %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信", class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

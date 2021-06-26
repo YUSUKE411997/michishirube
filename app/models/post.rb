@@ -25,7 +25,7 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-  
+
   # 投稿を検索
   def self.search(word)
     where(["title LIKE? OR body LIKE?" , "%#{word}%", "%#{word}%"])
@@ -33,18 +33,18 @@ class Post < ApplicationRecord
 
   # タイプ別にいいねランキング表示（１週間ごと）
   def self.create_ranks_type_likes(type)
-    posts_type = Post.joins(:likes).where(type: type, created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day)
+    posts_type = Post.joins(:likes).where(type: type, created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).limit(10)
     posts_type.sort_by {|post| post.likes.size}.reverse
   end
 
   # リポストのランキング表示（１週間ごと）
   def self.create_ranks_repost
-    Post.find(Repost.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').pluck(:post_id))
+    Post.find(Repost.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).limit(10).order('count(post_id)desc').pluck(:post_id))
   end
 
   # Previewのランキング表示（１週間ごと）
   def self.create_ranks_preview
-    Post.find(Preview.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).order('count(post_id)desc').pluck(:post_id))
+    Post.find(Preview.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group(:post_id).limit(10).order('count(post_id)desc').pluck(:post_id))
   end
 
 # いいね通知
