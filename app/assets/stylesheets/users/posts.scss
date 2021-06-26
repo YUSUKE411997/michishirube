@@ -10,11 +10,6 @@
   padding-left: 2%;
 }
 
-.form-page {
-  text-align: left;
-  display: none;
-}
-
 .tag-lists {
   display: none;
 }
@@ -235,4 +230,37 @@ font-size: 20px;
 .title-font {
   font-size: 19px;
   text-shadow: 1px 1px 1px #808080;
+}
+
+// .form-modal-wrapper {
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+//   background-color: black;
+//   opacity: .7;
+//   display: none;
+// }
+
+.form-page {
+  position: fixed;
+  right: 0px;
+  bottom: 280px;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: 9;
+  opacity: 0.99;
+  text-align: center;
+  padding-top: 23%;
+}
+
+.post-button {
+  position: fixed;
+  right: 10px;
+  top: 20px;
+  z-index: 10;
 }
