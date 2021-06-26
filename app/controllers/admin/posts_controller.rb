@@ -6,12 +6,13 @@ class Admin::PostsController < ApplicationController
   end
 
   def type_index
-    type_name = Post.find_by(type: params[:type])
-    @posts = Post.where(type: type_name.type).includes(:user)
+    @type_name = params[:type]
+    @posts = Post.includes(:user).where(type: @type_name).page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @post = Post.find(params[:id])
+    @post_tags = @post.tags
     @comments = @post.comments.includes(:user)
   end
 

@@ -1,3 +1,20 @@
 // Place all the styles related to the admin/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.admin-comment-name {
+  width: 10%;
+}
+
+.admin-comment-content {
+  width: 65%;
+}
+
+.admin-comment-created {
+  width: 10%;
+}
+
+.admin-comment-destroy {
+  width: 15%;
+}

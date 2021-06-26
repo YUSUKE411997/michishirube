@@ -2,22 +2,24 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ユーザーID</th>
-        <th>ユーザー名</th>
-        <th>投稿数</th>
-        <th>ユーザーステータス</th>
+        <th class="admin-user-id">ユーザーID</th>
+        <th class="admin-user-image">プロフィール画像</th>
+        <th class="admin-user-name">ユーザー名</th>
+        <th class="admin-user-post">投稿数</th>
+        <th class="admin-user-status">ユーザーステータス</th>
       </tr>
     </thead>
     <tbody>
       <% users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= link_to user.name, admin_user_path(user) %></td>
-        <td><%= user.posts.count %></td>
+        <td class="admin-user-id"><%= user.id %></td>
+        <td class="admin-user-image"><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %></td>
+        <td class="admin-user-name"><%= link_to user.name, admin_user_path(user) %></td>
+        <td class="admin-user-post"><%= user.posts.count %></td>
         <% if user.is_valid == true %>
-          <td>有効会員</td>
+          <td class="admin-user-status admin-status-true">有効会員</td>
         <% else %>
-          <td>退会済み</td>
+          <td class="admin-user-status admin-status-false">退会済み</td>
         <% end %>
       </tr>
       <% end %>
