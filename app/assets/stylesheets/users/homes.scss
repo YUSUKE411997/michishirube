@@ -38,3 +38,135 @@
   width: 33%;
   text-align: center;
 }
+
+.sign_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: .7;
+  display: none;
+}
+
+.sign_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.sign_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.fa_wrapper {
+  cursor: pointer;
+  margin: 3px 3px 0 0;
+}
+
+
+.button-area {
+  text-align: center;
+  background-color: white;
+  height: 15%;
+  width: 50%;
+  margin: 8.9% auto 0 auto;
+  border-radius: 100px;
+}
+
+.sign_button {
+  display: inline-block;
+  width: 24%;
+  font-size: 13px;
+  margin-top: 4%;
+}
+
+// ボタン
+.button {
+
+  --offset: 10px;
+  --border-size: 2px;
+
+  display: block;
+  position: relative;
+  padding: 1.5em 3em;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #e55743;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background .8s ease;
+
+  &:hover {
+    background: rgba(100, 0, 0, .03);
+  }
+
+  &__horizontal,
+  &__vertical {
+    position: absolute;
+    top: var(--horizontal-offset, 0);
+    right: var(--vertical-offset, 0);
+    bottom: var(--horizontal-offset, 0);
+    left: var(--vertical-offset, 0);
+    transition: transform .8s ease;
+    will-change: transform;
+
+    &::before {
+      content: '';
+      position: absolute;
+      border: inherit;
+    }
+  }
+
+  &__horizontal {
+    --vertical-offset: calc(var(--offset) * -1);
+    border-top: var(--border-size) solid currentcolor;
+    border-bottom: var(--border-size) solid currentcolor;
+
+    &::before {
+      top: calc(var(--vertical-offset) - var(--border-size));
+      bottom: calc(var(--vertical-offset) - var(--border-size));
+      left: calc(var(--vertical-offset) * -1);
+      right: calc(var(--vertical-offset) * -1);
+    }
+  }
+
+  &:hover &__horizontal {
+    transform: scaleX(0);
+  }
+
+  &__vertical {
+    --horizontal-offset: calc(var(--offset) * -1);
+    border-left: var(--border-size) solid currentcolor;
+    border-right: var(--border-size) solid currentcolor;
+
+    &::before {
+      top: calc(var(--horizontal-offset) * -1);
+      bottom: calc(var(--horizontal-offset) * -1);
+      left: calc(var(--horizontal-offset) - var(--border-size));
+      right: calc(var(--horizontal-offset) - var(--border-size));
+    }
+  }
+
+  &:hover &__vertical {
+    transform: scaleY(0);
+  }
+
+}
