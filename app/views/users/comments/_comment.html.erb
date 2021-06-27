@@ -6,7 +6,7 @@
         <% if user_signed_in? && current_user.name == comment.user.name%>
           <%= "あなた" %>
         <% else %>
-          <%= comment.user.name %>
+          <%= comment.user.name.truncate(9) %>
         <% end %>
       <% end %>
     </div>

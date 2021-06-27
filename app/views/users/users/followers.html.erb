@@ -8,10 +8,9 @@
         <thead>
           <tr>
             <th>ユーザー名</th>
-            <th>自己紹介</th>
-            <th>投稿数</th>
             <th>フォロー数</th>
             <th>フォロワー数</th>
+            <th>投稿数</th>
             <th></th>
             <th></th>
           </tr>
@@ -25,10 +24,9 @@
                 <%= user.name %>
               <% end %>
             </td>
-            <td><%= truncate(user.introduction, length:25) %></td>
-            <td><%= user.posts.count %></td>
             <td><%= user.followings.count %>人</td>
             <td><%= user.followers.count %>人</td>
+            <td><%= user.posts.count %></td>
             <td><%= link_to "メッセージ", room_path(user.id), class: "btn btn-primary"%></td>
             <% if user != current_user %>
               <% if user.followed_by?(current_user) %>

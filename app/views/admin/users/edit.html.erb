@@ -2,7 +2,8 @@
   <div class="container">
     <h1>プロフィール編集</h1>
     <div>
-      <%= form_with model: @user, local: true do |f| %>
+      <%= form_with model: [:admin,@user], local: true do |f| %>
+        <%= render 'layouts/error', model: @user %>
         <div class="row form-group ">
           <%= f.label "プロフィール画像", class: "col-form-label col-form-label-sm col-2" %>
           <%= f.attachment_field :profile_image, class: "form-control-sm col-4 offset-1" %>
