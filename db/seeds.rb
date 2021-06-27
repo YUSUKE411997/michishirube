@@ -30,16 +30,8 @@ Admin.create!(
         user_id: n + 1,
         post_id: n + 1
         )
-        
-    Tag.create!(
-        tag_name: "野球#{n + 1}"
-        )
-    TagMap.create!(
-        tag_id: n + 1,
-        post_id: n + 1
-        )
     end
-    
+
 50.times do |n|
     Post.create!(
         user_id: n + 1,
@@ -51,9 +43,13 @@ Admin.create!(
         user_id: n + 1,
         post_id: 50 + (n + 1)
         )
+    Plan.create!(
+        user_id: n + 1,
+        post_id: 50 + (n + 1)
+        )
 
     end
-    
+
 50.times do |n|
     Post.create!(
         user_id: n + 1,
@@ -65,9 +61,14 @@ Admin.create!(
         user_id: n + 1,
         post_id: 100 + (n + 1)
         )
+    Plan.create!(
+        user_id: n + 1,
+        post_id: 100 + (n + 1),
+        start_time: Post.find(100 + (n + 1)).created_at
+        )
 
     end
-    
+
 49.times do |n|
     Relationship.create!(
         following_id: n + 1,
@@ -75,6 +76,15 @@ Admin.create!(
         )
     end
 
+ Tag.create!(
+        tag_name: "エンジニア"
+        )
+Tag.create!(
+        tag_name: "プログラミング"
+        )
+Tag.create!(
+        tag_name: "Rails"
+        )
 30.times do |n|
     Like.create!(
         user_id: n + 1,
@@ -97,7 +107,15 @@ Admin.create!(
         user_id: 10 + (n + 1),
         repost_id: n + 1
         )
-        
+    Preview.create!(
+        user_id: n + 1,
+        post_id: 150
+        )
+   
+    TagMap.create!(
+        tag_id: 1,
+        post_id: n + 1
+        )
     end
 
 20.times do |n|
@@ -122,6 +140,15 @@ Admin.create!(
         user_id: 10 + (n + 1),
         repost_id: 30 + (n + 1)
         )
+    Preview.create!(
+        user_id: n + 1,
+        post_id: 149
+        )
+    
+    TagMap.create!(
+        tag_id: 2,
+        post_id: 30 + (n + 1)
+        )
     end
 
 10.times do |n|
@@ -145,5 +172,14 @@ Admin.create!(
         post_id: 12,
         user_id: 10 + (n + 1),
         repost_id:  + (n + 1)
+        )
+    Preview.create!(
+        user_id: n + 1,
+        post_id: 148
+        )
+    
+    TagMap.create!(
+        tag_id: 3,
+        post_id: 50 + (n + 1)
         )
     end
