@@ -14,12 +14,17 @@
 
     <span class="random-icon">
       <p class="previews"><%= post.previews.size%> preview</p>
-      <i class="fas fa-retweet"></i>
-      <p><%= post.reposts.size %></p>
-      <i class="far fa-comments"></i>
-      <p><%= post.comments.size %></p>
-      <i class="fas fa-heart"></i>
-      <p><%= post.likes.size %></p>
+      <span class="repost-area<%= post.id %>">
+        <%= render 'users/reposts/repost', post: post %>
+      </span>
+      <%= link_to post_path(post.id), class: "text-dark" do %>
+        <i class="far fa-comments"></i>
+        <strong><%= post.comments.size %></strong>
+      <% end %>
+      <span id="like_button_<%= post.id %>">
+        <%= render 'users/likes/like', post: post %>
+      </span>
+      <p class="index-icon"><%= time_ago_in_words(post.created_at) %>前</p>
     </span>
   </div>
 <% end %>
