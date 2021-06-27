@@ -2,23 +2,23 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ユーザー名</th>
-        <th>投稿種類</th>
-        <th>タイトル</th>
-        <th>投稿内容</th>
-        <th>コメント数</th>
-        <th>投稿日時</th>
+        <th class="admin-post-name">ユーザー名</th>
+        <th class="admin-post-type">投稿種類</th>
+        <th class="admin-post-title">タイトル</th>
+        <th class="admin-post-body">投稿内容</th>
+        <th class="admin-post-comment">コメント数</th>
+        <th class="admin-post-created">投稿日時</th>
       </tr>
     </thead>
     <tbody>
       <% posts.each do |post| %>
         <tr>
-          <td><%= post.user.name %></td>
-          <td><%= link_to post.type, admin_types_path(type: post.type) %></td>
-          <td><%= link_to post.title, admin_post_path(post) %></td>
-          <td><%= post.body %></td>
-          <td><%= post.comments.count %>件</td>
-          <td><%= post_created(post) %></td>
+          <td class="admin-post-name"><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
+          <td class="admin-post-type"><%= link_to post.type, admin_types_path(type: post.type) %></td>
+          <td class="admin-post-title"><%= link_to post.title.truncate(25), admin_post_path(post) %></td>
+          <td class="admin-post-body"><%= post.body.truncate(150) %></td>
+          <td class="admin-post-comment"><%= post.comments.count %>件</td>
+          <td class="admin-post-created"><%= post_created(post) %></td>
         </tr>
       <% end %>
     </tbody>

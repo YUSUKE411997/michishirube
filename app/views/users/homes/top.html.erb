@@ -1,4 +1,6 @@
-<%= flash[:notice] %>
+<div class="flash-sign-in">
+  <%= flash[:notice] %>
+</div>
 <% unless user_signed_in? %>
 <div class="sign_modal_wrapper"></div>
 <div class="sign_modal">
@@ -18,13 +20,13 @@
 
       <div class="field">
         <label for="user_password">パスワード</label>
-        <em>(6 characters minimum)</em>
+        <em>6文字以上</em>
         <br>
         <input autocomplete="new-password" type="password" name="user[password]" id="user_password">
       </div>
 
       <div class="field">
-        <label for="user_password_confirmation">Password confirmation</label><br>
+        <label for="user_password_confirmation">確認の為、再度入力お願いします</label><br>
         <input autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation">
       </div>
 

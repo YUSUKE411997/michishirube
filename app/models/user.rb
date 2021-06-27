@@ -20,22 +20,24 @@ class User < ApplicationRecord
   has_many :timelines, dependent: :destroy
   has_many :previews, dependent: :destroy
   has_many :plans, dependent: :destroy
-  
+
 
   attachment :profile_image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 50}
+  validates :profession, length: {maximum: 20}
+  validates :introduction, length: {maximum: 1000}
 
   #ログイン時、退会済みのユーザーを弾く
   def active_for_authentication?
     super && (self.is_valid == true)
   end
-  
+
   # フォロー済みか判別
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
-  
+
   # admin側のユーザー検索
   def self.search(word)
     where(["name LIKE?", "%#{word}%"])
@@ -69,18 +71,18 @@ class User < ApplicationRecord
   def reposted?(post_id)
     self.reposts.where(post_id: post_id).exists?
   end
-  
+
   # 投稿を閲覧したことがあるか判別
   def previewed?(post_id)
     post_ids = self.posts.pluck(:id)
     self.previews.where(post_id: post_id).where.not(post_id: post_ids).exists?
   end
-  
+
   # 閲覧した時刻を出す為に、検索
   def preview_time(post_id)
     self.previews.find_by(post_id: post_id)
   end
-  
+
   # １週間以内にやってみたい投稿をカレンダーに登録したか判別
   def planed?(current_user)
     Plan.where(user_id: current_user.id, start_time: Time.zone.now.end_of_day..Time.current.weeks_since(1)).exists?

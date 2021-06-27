@@ -1,9 +1,9 @@
 <div class="row header-box">
   <div class="logo">
-<%= link_to root_path do %>
-    <%= image_tag 'logo.jpg' %>
+    <%= link_to root_path,data: {"turbolinks"=>false} do %>
+      <%= image_tag 'logo.jpg' %>
     <% end %>
-</div>
+  </div>
 <% if user_signed_in? %>
   <div class="header-area">
     <li class="header-button">

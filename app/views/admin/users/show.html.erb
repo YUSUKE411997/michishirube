@@ -6,17 +6,17 @@
     <div>
       <%= render 'layouts/profile', user: @user %>
         <% if @user.is_valid == true %>
-              <th>有効会員</th>
-            <% else %>
-              <th>退会済み</th>
-            <% end %>
-      
+          <th class="admin-status-true">有効会員</th>
+        <% else %>
+          <th class="admin-status-false">退会済み</th>
+        <% end %>
       <div class="row">
-        <%= link_to "#{@user.name}のプロフィールを編集する", edit_admin_user_path(@user) %>
+        <%= link_to "#{@user.name}のプロフィールを編集する", edit_admin_user_path(@user), class: "btn btn-success" %>
       </div>
       <div class="row">
-        <%= link_to "ユーザー一覧ページに戻る", admin_users_path %>
+        <%= link_to "ユーザー一覧ページに戻る", admin_users_path, class: "btn btn-primary mt-2" %>
       </div>
+      <%= render 'admin/posts/index', posts: @posts %>
     </div>
   </div>
 </div>

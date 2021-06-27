@@ -2,12 +2,12 @@
   <p><%= f.radio_button :type, "気ままに投稿" %>  気ままに投稿</p>
   <p><%= f.radio_button :type, "やってみたいを投稿" %>  やってみたい投稿</p>
   <p><%= f.radio_button :type, "やってみたを投稿" %>  やってみた投稿</p>
-  <%= f.label "タイトル",  class: "form-left" %>
-  <%= f.text_field :title, size: "80x10", placeholder: "５０文字以内で入力" %><br>
-  <%= f.label "内容",  class: "form-left" %>
-  <%= f.text_area :body, size: "80x7" %></br>
-  <%= f.label "タグ",  class: "form-left" %>
-  <%= f.text_field :tag_name, size: "80x10", placeholder: "スペースを入力で複数のタグをつける事ができます"  %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit '送信', class: "btn btn-success" %>
+  <%#= f.label "タイトル",  class: "form-left" %>
+  <%= f.text_field :title, size: "81", placeholder: "タイトル  ５０文字以内", class: "mb-2" %><br>
+  <%#= f.label "内容",  class: "form-left" %>
+  <%= f.text_area :body, size: "80x7", placeholder: "内容  1,000文字以内", class: "mb-2" %></br>
+  <%#= f.label "タグ",  class: "form-left" %>
+  <%= f.text_field :tag_name, size: "81", placeholder: "タグ　スペースを入力で複数可", class: "mb-2"  %>
+  <%= f.hidden_field :user_id, value: current_user.id %><br>
+  <%= f.submit '投稿', class: "btn btn-success" %>
 <% end %>

@@ -8,18 +8,31 @@
 
 .profile-table {
   width: 100%;
-  text-align: center;
   margin-top: 10px;
+}
+
+.profile-left {
+  width: 48%;
+  display: inline-block;
+  text-align: center;
+}
+
+.profile-right {
+  width: 48%;
+  display: inline-block;
+  text-align: center;
+}
+
+.profile-span {
+  border-bottom: solid 1px;
+  font-size: 20px;
 }
 
 .image-name {
   width: 100%;
-  height: 250px;
+  height: 280px;
   background-color: white;
   border-radius: 50px;
-}
-.profile-span {
-  display: block;
 }
 
 .profile_image {
@@ -27,6 +40,7 @@
 }
 
 .profile-edit {
+  width: 85%;
   display: inline-block;
 }
 
@@ -44,20 +58,25 @@
 
 .fa-envelope {
   font-size: 70px;
-  margin-left: 40%;
-  color: #A4C6FF;
+  // margin-left: 40%;
+  color: #0033FF;
 }
 
+
+
 .fa-calendar-alt {
-  margin-left: 68%;
-  font-size: 35px;
+  font-size: 45px;
   color: #0033FF;
   padding-right: 30px;
+  // width: 45%;
+  text-align: right;
 }
 
 .fa-user-edit {
-  font-size: 35px;
+  font-size: 45px;
   color: #0033FF;
 }
 
-
+.introduction {
+  border-bottom: solid 1px;
+}

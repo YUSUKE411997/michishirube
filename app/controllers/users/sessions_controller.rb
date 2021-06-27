@@ -14,6 +14,7 @@ class Users::SessionsController < Devise::SessionsController
       end
     else
       flash[:notice] = "必須項目を入力してください"
+      redirect_to root_path
     end
   end
 
