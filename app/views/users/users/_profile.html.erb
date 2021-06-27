@@ -1,5 +1,4 @@
 <% if user == current_user %>
-
   <div>
     <h1 class="profile-edit">マイページ</h1>
     <%= link_to plans_path do %>
@@ -23,7 +22,6 @@
     <% end %>
   </button>
 <% else %>
-  <h1><%= user.name %></h1>
   <span id="<%= user.id %>_follow">
     <%= render 'users/relationships/relationship', user: user %>
   </span>
@@ -35,7 +33,7 @@
 </button>
 <% unless @user == current_user %>
   <%= link_to room_path(@user.id) do %>
-  <i class="far fa-envelope"></i>
+  <i class="far fa-envelope pl-5"></i>
   <% end %>
 <% end %>
 <%= render 'layouts/profile', user: user %>

@@ -1,11 +1,28 @@
 <div class="profile-table">
   <div class="image-name">
-    <span class="profile-span profile-image pt-3"><%= attachment_image_tag user, :profile_image, :fill, 180, 180, fallback: "profile/no_image.jpg", size: "180x180" %></span>
-    <span class="profile-span pt-2"><%= user.name %></span>
+    <div class="profile-left">
+      <p class="profile-image pt-3"><%= attachment_image_tag user, :profile_image, :fill, 180, 180, fallback: "profile/no_image.jpg", size: "180x180" %></p>
+    </div>
+    <div class="profile-right">
+      <p class="profile-span pt-2"><strong><%= user.name %></strong></p>
+      <% if user.age.present? %>
+        <p class="profile-span"><%= user.age %>才</p>
+      <% else %>
+        <p class="profile-span">未設定</p>
+      <% end %>
+      <% if user.profession.present? %>
+        <p class="profile-span"><%= user.profession %></p>
+      <% else %>
+        <p class="profile-span">未設定</p>
+      <% end %>
+    </div>
   </div>
-  <% if user.age.present? %>
-    <span class="profile-span"><%= user.age %>才</span>
-  <% end %>
-  <span class="profile-span"><%= user.profession %></span>
-  <span class="profile-span"><%= user.introduction %></span>
+  <div class="introduction-box">
+    <h4 class="mt-2">自己紹介</h4>
+    <% if user.introduction.present? %>
+      <p class="introduction mt-3 mb-3"><%= user.introduction %></p>
+    <% else %>
+      <p class="profile-span">未設定</p>
+    <% end %>
+  </div>
 </div>

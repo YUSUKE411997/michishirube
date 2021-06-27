@@ -3,25 +3,26 @@
     <h1>プロフィール編集</h1>
     <div>
       <%= form_with model: @user, local: true do |f| %>
+        <%= render 'layouts/error', model: @user %>
         <div class="row form-group ">
           <%= f.label "プロフィール画像", class: "col-form-label col-form-label-sm col-2" %>
           <%= f.attachment_field :profile_image, class: "form-control-sm col-4 offset-1" %>
         </div>
         <div class="row form-group">
-          <%= f.label "名前orニックネーム", class: "col-form-label col-form-label-sm col-2" %>
+          <%= f.label "名前orニックネーム", placeholder: "50文字以内で入力して下さい", class: "col-form-label col-form-label-sm col-2" %>
           <%= f.text_field :name, class: "form-control-sm col-4 offset-1" %>
         </div>
         <div class="row form-group">
           <%= f.label "年齢", class: "col-form-label col-form-label-sm col-2" %>
-          <%= f.text_field :age, class: "form-control-sm col-4 offset-1" %>
+          <%= f.number_field :age, min: 1, max: 100 ,class: "form-control-sm col-4 offset-1" %>
         </div>
         <div class="row form-group">
           <%= f.label "職業", class: "col-form-label col-form-label-sm col-2" %>
-          <%= f.text_field :profession, class: "form-control-sm col-4 offset-1" %>
+          <%= f.text_field :profession, placeholder: "20文字以内で入力して下さい", class: "form-control-sm col-4 offset-1" %>
         </div>
         <div class="row form-group">
           <%= f.label "自己紹介", class: "col-form-label col-form-label-sm col-2" %>
-          <%= f.text_area :introduction, class: "col-4 offset-1" %>
+          <%= f.text_area :introduction, placeholder: "１,０００文字以内で入力して下さい", size: "60x8", class: "col-4 offset-1" %>
         </div>
         <div class="row form-group">
           <%= f.submit '送信', class: "btn btn-success col-1 offset-6" %>

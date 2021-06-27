@@ -13,6 +13,8 @@ ja:
         password: パスワード
         email: メールアドレス
         name: 名前またはニックネーム
+        profession: 職業
+        introduction: 自己紹介文
 
   devise:
     confirmations:

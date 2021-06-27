@@ -13,7 +13,7 @@
     <tbody>
       <% posts.each do |post| %>
         <tr>
-          <td class="admin-post-name"><%= post.user.name %></td>
+          <td class="admin-post-name"><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
           <td class="admin-post-type"><%= link_to post.type, admin_types_path(type: post.type) %></td>
           <td class="admin-post-title"><%= link_to post.title.truncate(25), admin_post_path(post) %></td>
           <td class="admin-post-body"><%= post.body.truncate(150) %></td>
