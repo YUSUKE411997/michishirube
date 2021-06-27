@@ -15,3 +15,4 @@ class Users::LikesController < ApplicationController
     like.destroy
   end
 end
+
