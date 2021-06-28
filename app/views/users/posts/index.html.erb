@@ -22,7 +22,7 @@
                   </div>
                 <% end %>
               <% end %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "タグ")%></p>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "タグ")%></p>
             </div>
           </div>
           <div class="image2">
@@ -38,7 +38,7 @@
                   </div>
                 <% end %>
               <% end %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "リポスト")%></p>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "リポスト")%></p>
             </div>
           </div>
           <div class="image3">
@@ -53,28 +53,28 @@
                   </div>
                 <% end %>
               <% end %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "preview")%></p>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "preview")%></p>
             </div>
           </div>
           <div class="image4">
             <div class="rank-text">
               <h3>やってみた</h3>
               <%= render 'rank', ranks: @ranks_2 %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "やってみた")%></p>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "やってみた")%></p>
             </div>
           </div>
           <div class="image5">
             <div class="rank-text">
               <h3>やってみたい</h3>
               <%= render 'rank', ranks: @ranks_1 %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "やってみたい")%></p>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "やってみたい")%></p>
             </div>
           </div>
           <div class="image6">
             <div class="rank-text">
               <h3>気ままに</h3>
               <%= render 'rank', ranks: @ranks_0 %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_path(word: "気ままに")%></p>
+              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "気ままに")%></p>
             </div>
           </div>
         </div>

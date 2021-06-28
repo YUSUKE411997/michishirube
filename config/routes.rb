@@ -13,35 +13,32 @@ Rails.application.routes.draw do
 
   scope module: :users do
     root to: 'homes#top'
-    get 'search' => 'searches#search'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
       get :user_likes, on: :member
       get :user_type, on: :member
+      get :destroy_confirm, on: :member
+      patch :withdraw, on: :member
     end
-    get 'users/:id/destroy_confirm' => 'users#destroy_confirm', as: :destroy_confirm
-    patch 'users/:id/withdraw' => 'users#withdraw', as: :withdraw
     resources :posts, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
       resources :reposts, only: [:create, :destroy]
+      get :type_index, on: :collection
+      get :ranks_show, on: :collection
     end
     resources :rooms, only: [:index, :show] do
       resource :messages, only: [:create, :destroy]
     end
-    resources :tags do
-      get 'posts', to: 'posts#tag_index'
+    resources :notifications, only: [:index] do
+      delete :destroy_all, on: :collection
     end
     resources :plans, only: [:index, :create, :destroy]
-    resources :notifications, only: [:index] do
-    end
-    delete 'notifications' => 'notifications#destroy_all', as: :destroy_all
     resources :timelines, only: [:index]
-    # 下記をpostにあとでネスト
-    get 'types' => 'posts#type_index'
-    get 'ranks_show' => 'posts#ranks_show'
+    get 'tags/:tag_id/posts' => 'posts#tag_index', as: :tag_posts
+    get 'search' => 'searches#search'
   end
 
   namespace :admin do
@@ -49,8 +46,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
+      get :type_index, on: :collection
     end
-    get 'types' => 'posts#type_index'
   end
 
 end

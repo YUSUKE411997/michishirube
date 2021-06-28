@@ -7,5 +7,6 @@ class CreatePlans < ActiveRecord::Migration[5.2]
       t.datetime :start_time
       t.timestamps
     end
+    add_index :plans, [:user_id, :post_id], unique: true
   end
 end
