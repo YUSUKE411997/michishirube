@@ -39,7 +39,7 @@
               <strong><%= post.comments.size %></strong>
             <% end %>
           </p>
-          <span id="like_button_<%= post.id %>">
+          <span class="like_button_<%= post.id %>">
               <%= render 'users/likes/like', post: post %>
           </span>
           <p class="index-icon"><%= time_ago_in_words(post.created_at) %>前</p>
