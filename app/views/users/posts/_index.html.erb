@@ -28,7 +28,7 @@
               <% end %>
             <% end %>
           <% end %>
-          <p class="index-icon">『<%= link_to post.type, types_path(type: post.type) %>』</p>
+          <p class="index-icon">『<%= link_to post.type, type_index_posts_path(type: post.type) %>』</p>
           <p class="index-icon previews"><%= post.previews.size %> Preview</p>
           <span class="repost-area<%= post.id %>">
             <%= render 'users/reposts/repost', post: post %>
