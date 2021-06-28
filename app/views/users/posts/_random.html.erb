@@ -10,7 +10,7 @@
     <p class="random-title"><%= post.title.truncate(12) %></p>
     <p><%= post.body.truncate(45) %></p>
     <% end %>
-    <p class="random-type">『<%= link_to post.type, types_path(type: post.type) %>』</p>
+    <p class="random-type">『<%= link_to post.type, type_index_posts_path(type: post.type) %>』</p>
 
     <span class="random-icon">
       <p class="previews"><%= post.previews.size%> preview</p>

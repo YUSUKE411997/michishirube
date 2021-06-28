@@ -15,7 +15,7 @@
       </div>
       <div class="post-show-bottom">
         <div class="post-show-list">
-        <%= link_to @post.type, types_path(type: @post.type) %>
+        <%= link_to @post.type, type_index_posts_path(type: @post.type) %>
         </div>
         <div class="post-show-list">
           <p class="previews"><%= @post.previews.size %> Preview</p>

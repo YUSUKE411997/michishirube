@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -37,12 +39,15 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
     t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
-    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.text "content", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_plans_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_plans_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
@@ -89,7 +95,9 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
     t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_previews_on_post_id"
     t.index ["user_id", "post_id"], name: "index_previews_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_previews_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -100,11 +108,12 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
   end
 
   create_table "reposts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_reposts_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_reposts_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_reposts_on_user_id"
   end
 
@@ -114,8 +123,8 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
   end
 
   create_table "tag_maps", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_tag_maps_on_post_id"
@@ -140,11 +149,12 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
   end
 
   create_table "user_rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_user_rooms_on_room_id"
+    t.index ["user_id", "room_id"], name: "index_user_rooms_on_user_id_and_room_id", unique: true
     t.index ["user_id"], name: "index_user_rooms_on_user_id"
   end
 

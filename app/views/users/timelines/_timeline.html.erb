@@ -46,7 +46,7 @@
                 <% end %>
               <% end %>
             <% end %>
-            <p class="index-icon">『<%= link_to timeline.post.type, types_path(type: timeline.post.type) %>』</p>
+            <p class="index-icon">『<%= link_to timeline.post.type, type_index_posts_path(type: timeline.post.type) %>』</p>
             <p class="index-icon previews"><%= timeline.post.previews.size %> Preview</p>
             <span class="repost-area<%= timeline.post.id %>">
               <%= render 'users/reposts/repost', post: timeline.post %>
