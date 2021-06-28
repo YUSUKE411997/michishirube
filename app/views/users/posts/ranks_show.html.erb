@@ -55,16 +55,13 @@
                     <i class="far fa-comments"></i><%= post.comments.size %>
                   <% end %>
                 </p>
-                <span id="like_button_<%= post.id %>">
+                <span class="like_button_<%= post.id %>">
                     <%= render 'users/likes/like', post: post %>
                 </span>
                 <p class="index-icon"><%= time_ago_in_words(post.created_at) %>前</p>
               </div>
             </div>
           <% end %>
-          <div>
-            <%#= link_to_next_page @posts, '次のページ', class: "next"%>
-          </div>
         </div>
       </div>
     <% end %>
