@@ -3,6 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :reject_user, only: [:create]
 
+
   protected
 
   def reject_user
@@ -12,10 +13,16 @@ class Users::SessionsController < Devise::SessionsController
         flash[:notice] = "退会済みです"
         redirect_to root_path
       end
+
+      unless @user.valid_password?(params[:user][:password])
+        flash[:notice] = "ログインに失敗しました"
+        redirect_to root_path
+      end
     else
-      flash[:notice] = "必須項目を入力してください"
+      flash[:notice] = "ログインに失敗しました"
       redirect_to root_path
     end
+
   end
 
   # before_action :configure_sign_in_params, only: [:create]
