@@ -16,15 +16,15 @@
         <% end %>
       </div>
       <% else %>
-      <!--<div class="message-box">-->
         <div class="message-content">
-          <%= link_to room_path(user_room.user) do %><%= (user_room.room.messages.last).content %><% end %>
+          <%= link_to room_path(user_room.user), class: "text-dark" do %>
+            <%= (user_room.room.messages.last).content %>
+          <% end %>
         </div>
         <div class="message-fale-time">
           <p class="message-false"><%= user_room.room.messages.where(checked: false).where.not(user: current_user).size %></p>
           <p class="message-time"><%= time_ago_in_words(user_room.room.messages.last.created_at) %>前</p>
         </div>
-      <!--</div>-->
       <% end %>
     </div>
     <% end %>
