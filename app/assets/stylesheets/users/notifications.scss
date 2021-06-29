@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .notification-box {
-  background-color: 	#FFFFCC;
+  background-color: 	white;
   border-radius: 10px;
   padding: 13px;
 }
@@ -26,4 +26,14 @@
   width: 100%;
   text-align: right;
   margin-bottom: 20px;
+}
+
+.notification-post-content {
+  margin-left: 8%;
+  background-color: #EEEEEE;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 20px;
+  opacity: 0.6;
 }

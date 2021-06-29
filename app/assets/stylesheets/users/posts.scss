@@ -125,15 +125,14 @@
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 9px;   /* 余白       */
-  background    : #FFDAB9;     /* 背景色     */
+  background    : #ffffff;     /* 背景色     */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #FFDAB9;    /* 枠の指定 */
 }
 
 .user-image:hover{
   box-shadow    : none;
-  background    : #ffffff;
+  background    : #FFDAB9;
 }
 
 .rank-text {
@@ -160,27 +159,31 @@
  display: inline-block;
 }
 
+.rank-back {
+  width: 50%;
+  opacity: 0.9;
+}
+
 .rank-list {
-  border-radius : 10px;          /* 角丸       */
-  font-size     : 20px;        /* 文字サイズ */
-  text-align    : left;      /* 文字位置   */
-  cursor        : pointer;     /* カーソル   */
-  padding       : 5px;   /* 余白       */
-  background    : radial-gradient(#FFC7AF, #FF5F17);     /* 背景色     */
-  transition    : .3s;         /* なめらか変化 */
-  box-shadow    : 6px 6px 6px #666666;  /* 影の設定 */
-  border        : 1px solid #FFC7AF;    /* 枠の指定 */
-  height: 40px;
-  width: 43%;
+  padding: 0.6em 0.88em;
+  background: linear-gradient(to right, #e66465 50%, #fff 50%);
+  background-size: 200% 100.5%;
+  background-position: right bottom;
+  font: 19px 'Montserrat';
+  color: #020202;
+  border-left: 0.20em solid #e66465;
+  border-color: none;
+  box-shadow: 3px 3px 2px rgba(0,0,0,0.08);
+  transition: all .5s ease-out;
 }
 
 .rank-list:hover {
-  box-shadow    : none;        /* カーソル時の影消去 */
-  background    : #ffffff;     /* 文字色     */
+  background-position: left bottom;
+  color: white;
 }
 
 .next-font {
-  width: 18%;
+  width: 50%;
   font-size: 19px;
   margin: 10px 0 0 0 ;
 }
@@ -263,4 +266,8 @@ font-size: 20px;
   right: 10px;
   top: 20px;
   z-index: 10;
+}
+
+.many-post {
+  text-align: center;
 }

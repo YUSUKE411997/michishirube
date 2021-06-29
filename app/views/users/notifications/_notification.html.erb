@@ -8,18 +8,35 @@
     <% when 'follow' then %>
       あなたをフォロー<i class="fas fa-user"></i>しました
     <% when 'like' then %>
-      あなたの投稿にいいね<i class="fas fa-heart"></i>しました
+      あなたの投稿にいいね<i class="fas fa-heart"></i>しました<br>
+      <div class="notification-post-content">
+        <%= link_to post_path(notification.post.id), class: "text-dark" do %>
+          <strong class="index-post-title title-font"><%= notification.post.title %></strong>
+          <p class="index-post-title mt-3"><%= notification.post.body.truncate(150) %></p>
+        <% end %>
+      </div>
     <% when "repost" then %>
-      あなたの投稿をリツイート<i class="fas fa-retweet retweet-green" style = "color: green"></i>しました
+      あなたの投稿をリツイート<i class="fas fa-retweet retweet-green" style = "color: #00DD00"></i>しました<br>
+      <div class="notification-post-content">
+        <%= link_to post_path(notification.post.id), class: "text-dark" do %>
+          <strong class="index-post-title title-font"><%= notification.post.title %></strong>
+          <p class="index-post-title mt-3"><%= notification.post.body.truncate(150) %></p>
+        <% end %>
+      </div>
     <% when 'comment' then %>
       <% if notification.post.user_id == notification.visited.id %>
         あなたの投稿
       <% else %>
         <%= notification.post.user.name + "さんの投稿" %>
       <% end %>
-      にコメント<i class="far fa-comments"></i>しました
-      <p class="notification-title"><%= link_to notification.post.title, post_path(notification.post) %></p>
-      <p><%= notification.comment.content.truncate(200) %></p>
+      にコメント<i class="far fa-comments"></i>しました<br>
+      <div class="notification-post-content">
+        <%= link_to post_path(notification.post.id), class: "text-dark" do %>
+          <strong class="index-post-title title-font"><%= notification.post.title %></strong>
+          <p class="index-post-title mt-3"><%= notification.post.body.truncate(150) %></p>
+        <% end %>
+        <p><i class="far fa-comments fa-2x"></i><%= notification.comment.content.truncate(200) %></p>
+      </div>
     <% end %>
   </strong>
   <div class="time-ago">
