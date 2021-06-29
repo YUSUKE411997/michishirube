@@ -125,15 +125,14 @@
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 9px;   /* 余白       */
-  background    : #FFDAB9;     /* 背景色     */
+  background    : #ffffff;     /* 背景色     */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #FFDAB9;    /* 枠の指定 */
 }
 
 .user-image:hover{
   box-shadow    : none;
-  background    : #ffffff;
+  background    : #FFDAB9;
 }
 
 .rank-text {
@@ -161,7 +160,6 @@
 }
 
 .rank-back {
-  // background-color: white;
   width: 50%;
   opacity: 0.9;
 }
@@ -270,3 +268,6 @@ font-size: 20px;
   z-index: 10;
 }
 
+.many-post {
+  text-align: center;
+}
