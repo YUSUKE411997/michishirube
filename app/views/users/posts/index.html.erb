@@ -12,69 +12,82 @@
         <div id="theTarget">
           <div class="image1">
             <div class="rank-text">
-              <h3>タグ</h3>
-              <% @tag_ranks.each.with_index(1) do |tag, i| %>
-                <% if i <= 3 %>
-                  <div class="rank-list mb-2">
-                    <span>第<%= i %>位</span>
-                    <%= link_to tag.tag_name.truncate(10), tag_posts_path(tag.id) %>
-                    <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
-                  </div>
+              <div class="rank-back">
+                <h3>タグ</h3>
+                <% @tag_ranks.each.with_index(1) do |tag, i| %>
+                  <% if i <= 3 %>
+                    <div class="rank-list mb-2">
+                      <strong>第<%= i %>位</strong>
+                      <%= link_to tag.tag_name.truncate(13), tag_posts_path(tag.id) %>
+                      <i class="fas fa-tags show-tag"></i>
+                      <%= tag.tag_maps.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "タグ")%></p>
+                <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "タグ")%></p>
+              </div>
             </div>
           </div>
           <div class="image2">
             <div class="rank-text">
-              <h3>リポスト</h3>
-              <% @repost_ranks.each.with_index(1) do |post, i| %>
-                <% if i <= 3 %>
-                  <div class="rank-list mb-2">
-                    <span>第<%= i %>位</span>
-                    <%= link_to post.title.truncate(13), post_path(post.id) %>
-                    <i class="fas fa-retweet"></i>
-                    <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
-                  </div>
+              <div class="rank-back">
+                <h3>リポスト</h3>
+                <% @repost_ranks.each.with_index(1) do |post, i| %>
+                  <% if i <= 3 %>
+                    <div class="rank-list mb-2">
+                      <strong>第<%= i %>位</strong>
+                      <%= link_to post.title.truncate(13), post_path(post.id) %>
+                      <i class="fas fa-retweet"></i>
+                      <%= post.reposts.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %><br>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "リポスト")%></p>
+                <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "リポスト")%></p>
+              </div>
             </div>
           </div>
           <div class="image3">
             <div class="rank-text">
-              <h3 class="rank-preview-font">Preview</h3>
-              <% @preview_ranks.each.with_index(1) do |post, i| %>
-                <% if i <= 3 %>
-                  <div class="rank-list mb-2">
-                    <span>第<%= i %>位</span>
-                    <%= link_to post.title.truncate(13), post_path(post.id) %>
-                    <%= post.previews.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %> Preview<br>
-                  </div>
+              <div class="rank-back">
+                <h3 class="rank-preview-font">Preview</h3>
+                <% @preview_ranks.each.with_index(1) do |post, i| %>
+                  <% if i <= 3 %>
+                    <div class="rank-list mb-2">
+                      <strong>第<%= i %>位</strong>
+                      <%= link_to post.title.truncate(13), post_path(post.id) %>
+                      <%= post.previews.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).size %> Preview<br>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "preview")%></p>
+                <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "preview")%></p>
+              </div>
             </div>
           </div>
           <div class="image4">
             <div class="rank-text">
-              <h3>やってみた</h3>
-              <%= render 'rank', ranks: @ranks_2 %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "やってみた")%></p>
+              <div class="rank-back">
+                <h3>やってみた</h3>
+                <%= render 'rank', ranks: @ranks_2 %>
+                <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "やってみた")%></p>
+              </div>
             </div>
           </div>
           <div class="image5">
             <div class="rank-text">
-              <h3>やってみたい</h3>
-              <%= render 'rank', ranks: @ranks_1 %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "やってみたい")%></p>
+              <div class="rank-back">
+                <h3>やってみたい</h3>
+                <%= render 'rank', ranks: @ranks_1 %>
+                <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "やってみたい")%></p>
+              </div>
             </div>
           </div>
           <div class="image6">
             <div class="rank-text">
-              <h3>気ままに</h3>
-              <%= render 'rank', ranks: @ranks_0 %>
-              <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "気ままに")%></p>
+              <div class="rank-back">
+                <h3>気ままに</h3>
+                <%= render 'rank', ranks: @ranks_0 %>
+                <p class="next-font rank-list"><%= link_to "＞＞続きを見る", ranks_show_posts_path(word: "気ままに")%></p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 <% ranks.each.with_index(1) do |post, i| %>
   <% if i <= 3 %>
     <div class="rank-list mb-2">
-      <span>第<%= i %>位</span>
-      <%= link_to post.title, post_path(post.id).truncate(12) %>
+      <strong>第<%= i %>位</strong>
+      <%= link_to post.title.truncate(13), post_path(post.id) %>
       ❤️<%= post.likes.size %></br>
     </div>
   <% end %>

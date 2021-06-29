@@ -160,18 +160,26 @@
  display: inline-block;
 }
 
+.rank-back {
+  background-color: white;
+  width: 50%;
+  opacity: 0.9;
+}
+
 .rank-list {
   border-radius : 10px;          /* 角丸       */
   font-size     : 20px;        /* 文字サイズ */
   text-align    : left;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 5px;   /* 余白       */
-  background    : radial-gradient(#FFC7AF, #FF5F17);     /* 背景色     */
-  transition    : .3s;         /* なめらか変化 */
+  background    : radial-gradient(#FF9933, #FF4F50);     /* 背景色     */
+  transition    : .1s;         /* なめらか変化 */
   box-shadow    : 6px 6px 6px #666666;  /* 影の設定 */
   border        : 1px solid #FFC7AF;    /* 枠の指定 */
   height: 40px;
-  width: 43%;
+  width: 95%;
+  margin: 0 auto;
+
 }
 
 .rank-list:hover {
@@ -180,9 +188,9 @@
 }
 
 .next-font {
-  width: 18%;
+  width: 50%;
   font-size: 19px;
-  margin: 10px 0 0 0 ;
+  margin: 10px 0 0 10px ;
 }
 
 .previews {
@@ -264,3 +272,4 @@ font-size: 20px;
   top: 20px;
   z-index: 10;
 }
+

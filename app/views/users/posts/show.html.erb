@@ -28,7 +28,7 @@
           <p id="comment_count"><%= @post.comments.count %>件</p>
         </div>
         <div class="post-show-list">
-          <div id="like_button_<%= @post.id %>">
+          <div class="like_button_<%= @post.id %>">
             <%= render 'users/likes/like', post: @post %>
           </div>
         </div>
