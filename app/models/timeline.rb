@@ -31,4 +31,16 @@ class Timeline < ApplicationRecord
 
   end
 
+  # リポストしたユーザーの名前を抽出
+  def repost_user_name(current_user)
+    
+    user_name = self.user.name
+
+    if current_user.name == user_name
+      "あなた"
+    else
+      user_name
+    end
+  end
+
 end
