@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_06_23_101730) do
     t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
   end
 
   create_table "timelines", force: :cascade do |t|

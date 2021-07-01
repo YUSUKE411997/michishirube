@@ -2,6 +2,8 @@ class Tag < ApplicationRecord
 
   has_many :tag_maps, dependent: :destroy
   has_many :posts, through: :tag_maps
+  
+  validates :tag_name, uniqueness: true
 
   # タグのランキング機能（週間ランキング）
   def self.create_ranks_tag
