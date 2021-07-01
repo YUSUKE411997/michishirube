@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <% else %>
-        <div class="message-content">
+        <div class="message-content text-break">
           <%= link_to room_path(user_room.user), class: "text-dark" do %>
             <%= (user_room.room.messages.last).content %>
           <% end %>

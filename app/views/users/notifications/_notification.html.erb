@@ -30,7 +30,7 @@
         <%= notification.post.user.name + "さんの投稿" %>
       <% end %>
       にコメント<i class="far fa-comments"></i>しました<br>
-      <div class="notification-post-content">
+      <div class="notification-post-content text-break">
         <%= link_to post_path(notification.post.id), class: "text-dark" do %>
           <strong class="index-post-title title-font"><%= notification.post.title %></strong>
           <p class="index-post-title mt-3"><%= notification.post.body.truncate(150) %></p>
