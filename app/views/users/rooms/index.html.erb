@@ -18,7 +18,7 @@
       <% else %>
         <div class="message-content text-break">
           <%= link_to room_path(user_room.user), class: "text-dark" do %>
-            <%= (user_room.room.messages.last).content %>
+            <%= (user_room.room.messages.last).content.truncate(190) %>
           <% end %>
         </div>
         <div class="message-fale-time">

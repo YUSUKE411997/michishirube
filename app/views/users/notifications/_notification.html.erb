@@ -2,7 +2,7 @@
   <strong>
     <%= attachment_image_tag notification.visitor, :profile_image, :fill, 50, 50, fallback: "profile/no_image.jpg",  size: "50x50" %>
     <%= link_to user_path(notification.visitor_id) do %>
-    <%= notification.visitor.name %>
+      <%= notification.visitor.name %>
     <% end %>さんが
     <% case notification.action %>
     <% when 'follow' then %>
