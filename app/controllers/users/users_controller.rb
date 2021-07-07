@@ -1,6 +1,7 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :whithdraw, :destroy_confirm]
+  before_action :ensure_normal_user, only: [:edit, :destroy_confirm, :withdraw]
 
   def show
     @user = User.find(params[:id])
@@ -60,7 +61,13 @@ class Users::UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to root_path
+      redirect_to root_path, notice: "他のユーザーの編集は行えません"
+    end
+  end
+
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, notice: 'ゲストユーザーはプロフィール編集と退会はできません'
     end
   end
 
