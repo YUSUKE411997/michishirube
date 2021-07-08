@@ -83,6 +83,7 @@
       </button>
     </div>
     <p class="sign-in-font">[ログインして投稿したり、みんなをフォローしてみよう]</p>
+    <p class="guest"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "text-dark" %></p>
   </div>
   <% end %>
 </div>

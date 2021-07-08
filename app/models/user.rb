@@ -88,4 +88,15 @@ class User < ApplicationRecord
     Plan.where(user_id: current_user.id, start_time: Time.zone.now.end_of_day..Time.current.weeks_since(1)).exists?
   end
 
+  # ゲストログイン機能
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+      user.age = 99
+      user.profession = "ゲスト"
+      user.introduction = "ゲストユーザーです。よろしくお願いします。"
+    end
+  end
+
 end
