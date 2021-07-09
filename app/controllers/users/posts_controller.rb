@@ -51,7 +51,7 @@ class Users::PostsController < ApplicationController
        @post.save_tag(tag_list)
        Plan.create_plan(current_user, @post)
        Timeline.create_timeline_post(current_user, @post.id)
-      redirect_to posts_path
+       redirect_to posts_path
     else
       # indexに返す為に記述
       @posts = Post.includes(:user, :comments, :likes, :previews, :tags, :reposts).page(params[:page]).order(created_at: :desc)
