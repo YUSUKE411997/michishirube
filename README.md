@@ -8,7 +8,7 @@
 レスポンシブ非対応の為、PC推奨
 
 
-### テーマを選んだ理由
+### 制作理由
 身近の友人や知人からよく「やりたい事がわからない」「やりたい事があるけど行動できない」と耳にします。  とある調査では約40％の若者がやりたい事が見つからないという結果になっております。  
 実際に私自身も卒業してから、本当にやりたい事ってなんだろうと考えておりました。  そこで私自身の経験も踏まえて話すと
 やりたい事を見つける方法は「実際に経験する事」だと私は思います。  その経験するというハードルを下げるにはモデルケースを周りに増やす事だと思います。
@@ -43,6 +43,17 @@ https://docs.google.com/spreadsheets/d/1moCRso_14LOik8zKSRHhCpA4BTvvg0H9Cz1Mh5PU
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1uhcw/edit#gid=0
 
+##使用技術
+・Ruby 2.6.3  
+・Ruby on Rails 5.2.5  
+・MySQL 5.7.22  
+・Nginx  
+・Puma  
+・AWS  
+  ○VPC  
+  ○EC2  
+  ○RDS  
+・RSpec  
 
 ## 開発環境
 - OS：Linux(CentOS)
