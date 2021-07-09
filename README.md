@@ -44,16 +44,16 @@ https://docs.google.com/spreadsheets/d/1moCRso_14LOik8zKSRHhCpA4BTvvg0H9Cz1Mh5PU
 https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1uhcw/edit#gid=0
 
 ##使用技術
--Ruby 2.6.3  
--Ruby on Rails 5.2.5  
--MySQL 5.7.22  
--Nginx  
--Puma  
--AWS  
-  -VPC  
-  -EC2  
-  -RDS  
--RSpec  
+- Ruby 2.6.3  
+- Ruby on Rails 5.2.5  
+- MySQL 5.7.22  
+- Nginx  
+- Puma  
+- AWS  
+  - VPC  
+  - EC2  
+  - RDS  
+- RSpec  
 
 ## 開発環境
 - OS：Linux(CentOS)
