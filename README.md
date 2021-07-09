@@ -29,10 +29,7 @@
 気持ちに共感を得て欲しい時  
 
 ## 設計書
-画面設計  
-https://docs.google.com/spreadsheets/d/1qb8cQ797p0gBcYPZbN4am8_QPEv4iGqZg2l5kxim7Kk/edit#gid=0  
-画面遷移図  
-https://app.diagrams.net/#G16LJ8hLYMzaWq36eX9KiscTcziwP0PGkE  
+
 ER図  
 https://app.diagrams.net/#G1rOGHc2UKksl_D3d_kBm3OAD1G2Wjui7l  
 テーブル定義書  
@@ -40,8 +37,6 @@ https://docs.google.com/spreadsheets/d/1PTFXG8k77SbmS_9Tf4PwPwYl3NyCmDTP-uYDQjlg
 詳細設計  
 https://docs.google.com/spreadsheets/d/1moCRso_14LOik8zKSRHhCpA4BTvvg0H9Cz1Mh5PUmG4/edit#gid=1691749220  
 
-## チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1uhcw/edit#gid=0
 
 ## 使用技術
 - Ruby 2.6.3  
@@ -79,12 +74,10 @@ https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1u
 - タイムライン機能（自分とフォローしたユーザー）
   - 投稿表示
   - リツイート・いいねされた投稿
-- ランキング機能
-  - １週間ごとにランキング（タグ・リツイート・プレビュー・投稿のいいね数（３種類の投稿））
+- ランキング機能（週間ランキングでタグ・リツイート・プレビュー・投稿のいいね数（３種類の投稿））
 - ページング機能
   - 無限スクロール（Ajax）
 - N+1問題（bullet）
-
 
 その他の機能は下記URLをご確認お願いします
 https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1uhcw/edit#gid=0
