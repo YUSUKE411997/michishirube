@@ -15,7 +15,7 @@
           <!--自分がリツイートしている場合は除外-->
               <div class="retweet-user-name">
                 <i class="fas fa-retweet"></i>
-                <p><%= timeline.repost_user_name(current_user) %>がリツイート</p>
+                <p><%= timeline.repost_user_name(current_user) %>がリポスト</p>
               </div>
             <% end %>
               <% if current_user.previewed?(timeline.post.id) %>

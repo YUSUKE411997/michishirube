@@ -87,3 +87,76 @@
   </div>
   <% end %>
 </div>
+
+<div>
+  <div class="mr-5 ml-5">
+    <div class="row mt-5 mb-5 top-about-box">
+      <div class="col-6 top-image-box">
+        <%= image_tag 'about/ranking.jpg', class: "top-image1"%>
+      </div>
+      <div class="col-6">
+        <div class="top-text-box">
+          <h2 class="about-title">ランキング</h2>
+          <strong>
+            ６種類の週間ランキングがあります。<br>
+            どんな投稿が人気なのかチェックしてみよう！
+          </strong>
+          <div class="top-text-link pt-3">
+            <%= link_to "さっそくチェックしてみる", posts_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 top-about-box">
+      <div class="col-6">
+        <div class="top-text-box">
+          <h2 class="about-title">投稿</h2>
+          <strong>
+            気ままに投稿・やってみたい投稿・やってみた投稿<br>
+            の３種類の投稿種類があります。<br>
+            それぞれ自分の目的にあった投稿種類で投稿しよう！
+          </strong>
+        </div>
+      </div>
+      <div class="col-6 top-image-box">
+        <%= image_tag 'about/form.jpg', class: "top-image1"%>
+      </div>
+    </div>
+
+    <div class="row mb-5 top-about-box">
+      <div class="col-6 top-image-box">
+        <%= image_tag 'about/carendar.jpg', class: "top-image1"%>
+      </div>
+      <div class="col-6">
+        <div class="top-text-box">
+          <h2 class="about-title">カレンダー</h2>
+          <strong>
+            やってみたい投稿で投稿してみたら<br>
+            カレンダーで日程を決めて挑戦してみよう！<br>
+            やってみた投稿で投稿した場合は<br>
+            自動でカレンダーに反映されます。
+          </strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5 top-about-box">
+      <div class="col-6">
+        <div class="top-text-box">
+          <h2 class="about-title">タイムライン</h2>
+          <strong>
+            フォローしたユーザーの投稿と<br>
+            リツイート・いいねした投稿は<br>
+            タイムラインで確認できます。<br>
+            気になったユーザーをフォローしてみよう！
+          </strong>
+        </div>
+      </div>
+      <div class="col-6 top-image-box">
+        <%= image_tag 'about/timeline.jpg', class: "top-image1"%>
+      </div>
+    </div>
+
+  </div>
+</div>
