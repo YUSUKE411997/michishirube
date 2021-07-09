@@ -55,6 +55,15 @@ https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1u
   - RDS  
 - RSpec  
 
+## 機能一覧  
+- ユーザー認証・管理者認証（devise）
+  - ゲストログイン
+  - ユーザー認証（Ajax）
+- 管理機能
+  - 会員編集（退会・編集）
+  - 投稿削除
+- 
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
