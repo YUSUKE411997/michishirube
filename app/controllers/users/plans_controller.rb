@@ -23,9 +23,6 @@ class Users::PlansController < ApplicationController
     redirect_to plans_path
   end
 
-  def destroy
-  end
-
   private
 
   def plan_params

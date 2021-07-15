@@ -6,9 +6,6 @@ class Users::MessagesController < ApplicationController
     @message.save
   end
 
-  def destroy
-  end
-
   private
 
   def message_params
