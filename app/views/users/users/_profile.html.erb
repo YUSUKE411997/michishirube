@@ -21,6 +21,11 @@
       <%= "フォロワー　#{user.followers.count}" %><br>
     <% end %>
   </button>
+  <button>
+  <%= link_to user_previews_user_path, class: "btn btn-light" do %>
+    閲覧履歴
+  <% end %>
+</button>
 <% else %>
   <span id="<%= user.id %>_follow">
     <%= render 'users/relationships/relationship', user: user %>

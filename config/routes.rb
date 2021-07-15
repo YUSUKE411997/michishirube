@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :followers, on: :member
       get :user_likes, on: :member
       get :user_type, on: :member
+      get :user_previews, on: :member
       get :destroy_confirm, on: :member
       patch :withdraw, on: :member
     end
@@ -33,12 +34,12 @@ Rails.application.routes.draw do
       get :ranks_show, on: :collection
     end
     resources :rooms, only: [:index, :show] do
-      resource :messages, only: [:create, :destroy]
+      resource :messages, only: [:create]
     end
     resources :notifications, only: [:index] do
       delete :destroy_all, on: :collection
     end
-    resources :plans, only: [:index, :create, :destroy]
+    resources :plans, only: [:index, :create]
     resources :timelines, only: [:index]
     get 'tags/:tag_id/posts' => 'posts#tag_index', as: :tag_posts
     get 'search' => 'searches#search'

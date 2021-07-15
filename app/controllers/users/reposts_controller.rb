@@ -18,7 +18,6 @@ class Users::RepostsController < ApplicationController
     current_repost = current_user.reposts.find_by(post_id: @post.id)
 
     if current_repost.present?
-      # Timeline.destroy_timeline_repost(current_repost.id, current_user, @post.id)
       current_repost.destroy
     end
   end

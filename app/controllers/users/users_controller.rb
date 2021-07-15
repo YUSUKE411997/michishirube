@@ -52,6 +52,10 @@ class Users::UsersController < ApplicationController
     @posts = @user.user_type_page(@type_name).page(params[:page]).order(created_at: :desc)
   end
 
+  def user_previews
+    @previews = current_user.previews.page(params[:page]).order(updated_at: :desc)
+  end
+
   private
 
   def user_params
