@@ -92,4 +92,4 @@ https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1u
 
 
 ## 使用素材
-- O-DAN
+- O-DAN(画像)
