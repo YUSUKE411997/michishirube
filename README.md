@@ -1,6 +1,8 @@
 
 # MICHI SHIRU　（ミチシル）　　
-若者の将来の道を切り開く、ミチシルベとなるようなサイト
+若者の将来の道を切り開く、ミチシルベとなるようなサイト  
+
+<img width="1440" alt="posts_page" src="https://user-images.githubusercontent.com/79978603/126873997-9ec238ab-e5a3-4708-b67c-dd6c7ed9e38b.png">
 
 ## サイト概要
 将来やりたい事がわからない人や、あるけど不安で行動に移せない人、行動に移せた人達が  
