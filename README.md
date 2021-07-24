@@ -61,7 +61,6 @@ https://docs.google.com/spreadsheets/d/1moCRso_14LOik8zKSRHhCpA4BTvvg0H9Cz1Mh5PU
   - リツイート機能（Ajax）
   - タグ機能
 - フォロー機能（Ajax）
-- 検索機能
 - 通知機能（いいね・コメント・リツイート・フォロー・メッセージ）
 - メッセージ機能（Ajax）
 - カレンダー機能（simple_calendar）
@@ -73,8 +72,6 @@ https://docs.google.com/spreadsheets/d/1moCRso_14LOik8zKSRHhCpA4BTvvg0H9Cz1Mh5PU
   - 投稿表示
   - リツイート・いいねされた投稿
 - ランキング機能（週間ランキングでタグ・リツイート・プレビュー・投稿のいいね数（３種類の投稿））
-- ページング機能
-  - 無限スクロール（Ajax）
 - N+1問題（bullet）
 
 その他の機能は下記URLをご確認お願いします
