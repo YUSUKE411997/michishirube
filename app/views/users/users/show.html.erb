@@ -2,6 +2,10 @@
   <div class="container pt-2">
     <%= render 'profile', user: @user %>
     <h4>全ての投稿</h4>
-    <%= render 'users/posts/index', posts: @posts %>
+    <% if @posts.blank? %>
+      <p>投稿はありません</p>
+    <% else %>
+      <%= render 'users/posts/index', posts: @posts %>
+    <% end %>
   </div>
 </div>

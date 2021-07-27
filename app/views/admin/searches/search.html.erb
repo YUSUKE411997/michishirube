@@ -3,10 +3,14 @@
     <div class="row">
       <h1>"<%= @range %>　/　<%= @word %>"　の検索結果</h1>
     </div>
-    <% if @range == "投稿" %>
-      <%= render 'admin/posts/index', posts: @posts %>
+    <% if @posts.blank? || @users.blank? %>
+      <h5>検索結果はありません</h5>
     <% else %>
-      <%= render 'admin/users/index', users: @users %>
+      <% if @range == "投稿" %>
+        <%= render 'admin/posts/index', posts: @posts %>
+      <% else %>
+        <%= render 'admin/users/index', users: @users %>
+      <% end %>
     <% end %>
   </div>
 

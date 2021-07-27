@@ -14,13 +14,18 @@ class Users::PlansController < ApplicationController
   def create
     plan = Plan.new(plan_params)
     plan_check = current_user.plans.find_by(user_id: plan.user_id, post_id: plan.post_id)
-    if plan_check.present?
-      plan_check.destroy
-      plan.save
+    if plan.start_time.blank?
+      flash[:notice] = "※日付を設定してください"
+      redirect_to plans_path
     else
-      plan.save
+      if plan_check.present?
+        plan_check.destroy
+        plan.save
+      else
+        plan.save
+      end
+      redirect_to plans_path
     end
-    redirect_to plans_path
   end
 
   private

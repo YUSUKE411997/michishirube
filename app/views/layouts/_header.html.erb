@@ -6,59 +6,93 @@
   </div>
 <% if user_signed_in? %>
   <div class="header-area">
-    <li class="header-button">
-      <%= link_to "マイページ", user_path(current_user.id) %>
-    </li>
-    <li class="header-button">
-      <%= link_to "タイムライン", timelines_path %>
-    </li>
-    <li class="header-button">
-      <%= link_to "投稿一覧", posts_path %>
-    </li>
-    <li class="header-button">
-      <%= link_to "メッセージ", rooms_path %>
-      <% if messages_false_count != 0 %>
-        <span class="header-message"><%= messages_false_count %></span>
-      <% end %>
-    </li>
-    <li class="header-button">
-      <%= link_to notifications_path do %>
-          通知
+
+    <%= link_to user_path(current_user.id) do %>
+      <li class="header-button">
+        マイページ
+      </li>
+    <% end %>
+
+    <%= link_to timelines_path do %>
+      <li class="header-button">
+        タイムライン
+      </li>
+    <% end %>
+
+    <%= link_to posts_path do %>
+      <li class="header-button">
+        投稿一覧
+      </li>
+    <% end %>
+
+    <%= link_to rooms_path do %>
+      <li class="header-button">
+        メッセージ
+        <% if messages_false_count != 0 %>
+          <span class="header-message"><%= messages_false_count %></span>
         <% end %>
-      <% if unchecked_notifications.any? %>
+      </li>
+    <% end %>
+
+    <%= link_to notifications_path do %>
+      <li class="header-button">
+        通知
+        <% if unchecked_notifications.any? %>
           <span class="notification-count"><%= unchecked_notifications.count %></span>
-      <% end %>
-    </li>
-    <li class="header-button">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    </li>
+        <% end %>
+      </li>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <li class="header-button">
+        ログアウト
+      </li>
+    <% end %>
+
     <div>
       <%= render 'layouts/search' %>
     </div>
+
   </div>
 <% elsif admin_signed_in? %>
   <div class="header-area">
-    <li class="header-button">
-      <%= link_to "ユーザー一覧", admin_users_path %>
-    </li>
-    <li class="header-button">
-      <%= link_to "投稿一覧", admin_posts_path %>
-    </li>
-    <li class="header-button">
-      <%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %>
-    </li>
+
+    <%= link_to admin_users_path do %>
+      <li class="header-button">
+        ユーザー一覧
+      </li>
+    <% end %>
+
+    <%= link_to admin_posts_path do %>
+      <li class="header-button">
+        投稿一覧
+      </li>
+    <% end %>
+
+    <%= link_to destroy_admin_session_path, method: :delete do %>
+      <li class="header-button">
+        ログアウト
+      </li>
+    <% end %>
+
     <div>
       <%= render 'layouts/admin_search' %>
     </div>
+
   </div>
 <% else %>
   <div class="header-area">
-    <li class="header-button">
-      <%= link_to "投稿一覧", posts_path %>
-    </li>
+
+    <%= link_to posts_path do %>
+      <li class="header-button">
+        投稿一覧
+      </li>
+    <% end %>
+
     <div>
       <%= render 'layouts/search' %>
     </div>
+
   </div>
 <% end %>
 </div>
