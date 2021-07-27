@@ -1,6 +1,10 @@
 <div>
   <div class="container">
-    <h2>"<%= @word %>" の検索結果</h2>
-    <%= render 'users/posts/index', posts: @posts %>
+    <h2 class="mb-4">"<%= @word %>" の検索結果</h2>
+    <% if @posts.blank? %>
+      <h5>投稿はありません</h5>
+    <% else %>
+      <%= render 'users/posts/index', posts: @posts %>
+    <% end %>
   </div>
 </div>
