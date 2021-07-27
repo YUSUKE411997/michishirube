@@ -1,16 +1,19 @@
 <div>
   <div class="container">
+    <div>
+      <p class="plan-flash"><%= flash[:notice] %></p>
+    </div>
     <h1>マイカレンダー</h1>
-    <h2 class="mb-5">やってみたい投稿から日程を決めてやってみよう！</h2>
+    <p class="plan-comment mb-4">やってみたい投稿から日程を決めてやってみよう！</p>
 
     <% @notification_plans.each do |plan| %>
-    <div class="row countdown-box">
-      <% if plan.post.type != "やってみたいを投稿" %>
-      <% next %>
-      <% end %>
-      <%= link_to plan.post.title, post_path(plan.post.id) %>
-      <p class="countdown ml-3">残り<%= time_ago_in_words(plan.start_time) %>！</p>
-    </div>
+      <div class="row countdown-box">
+        <% if plan.post.type != "やってみたいを投稿" %>
+        <% next %>
+        <% end %>
+        <%= link_to plan.post.title, post_path(plan.post.id) %>
+        <p class="countdown ml-3">残り<%= time_ago_in_words(plan.start_time) %>！</p>
+      </div>
     <% end %>
 
     <%= month_calendar(events: @plans) do |date, plans| %>
@@ -33,19 +36,19 @@
       <div class="col-12 mb-5">
         <h5>新しく日程を決める</h5>
         <%= form_with model: @plan, local: true do |f| %>
-        <%= f.collection_select(:post_id, @posts_new, :id, :title)%>
-        <%= f.date_field :start_time %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit '登録する' %>
+          <%= f.collection_select(:post_id, @posts_new, :id, :title)%>
+          <%= f.date_field :start_time %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit '登録する' %>
         <% end %>
       </div>
       <div class="col-12">
         <h5>日程を変更する</h5>
         <%= form_with model: @plan, local: true do |f| %>
-        <%= f.collection_select(:post_id, @posts_done, :id, :title, size: 10) %>
-        <%= f.date_field :start_time %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit '予定を変更する' %>
+          <%= f.collection_select(:post_id, @posts_done, :id, :title, size: 10) %>
+          <%= f.date_field :start_time %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit '予定を変更する' %>
         <% end %>
       </div>
     </div>
