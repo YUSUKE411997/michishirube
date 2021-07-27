@@ -7,9 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-    email: "admin@test.com",
-    password: "admintest"
-  )
+        email: "admin@test.com",
+        password: "admintest"
+        )
+
+User.create!(
+        email: "test@test.com",
+        password: "testtest",
+        name: "テストユーザー"
+        )
 
 50.times do |n|
     User.create!(
@@ -111,7 +117,7 @@ Tag.create!(
         user_id: n + 1,
         post_id: 150
         )
-   
+
     TagMap.create!(
         tag_id: 1,
         post_id: n + 1
@@ -144,7 +150,7 @@ Tag.create!(
         user_id: n + 1,
         post_id: 149
         )
-    
+
     TagMap.create!(
         tag_id: 2,
         post_id: 30 + (n + 1)
@@ -177,7 +183,7 @@ Tag.create!(
         user_id: n + 1,
         post_id: 148
         )
-    
+
     TagMap.create!(
         tag_id: 3,
         post_id: 50 + (n + 1)
