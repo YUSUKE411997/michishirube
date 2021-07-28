@@ -79,15 +79,15 @@ describe "ログイン後のテスト" do
     end
   end
 
-  before do
-    visit posts_path
-  end
-  context "リツイート機能" do
-    it "投稿をリツイートできるか" do
-      expect {
-      first('.fa-retweet').click
-      }.to change { Repost.count }.by(1)
-    end
-  end
+  # before do
+  #   visit posts_path
+  # end
+  # context "リツイート機能" do
+  #   it "投稿をリツイートできるか" do
+  #     expect {
+  #     first('.fa-retweet').click
+  #     }.to change { Repost.count }.by(1)
+  #   end
+  # end
 
 end
