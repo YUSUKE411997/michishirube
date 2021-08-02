@@ -9,7 +9,7 @@
           </div>
         <% end %>
         <p class="user-box">
-          <%= link_to user_path(post.user) do %>
+          <%= link_to user_path(post.user), class: "user-box-link" do %>
             <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, fallback: "profile/no_image.jpg",  size: "70x70" %><br>
             <%= post.user.name.truncate(10) %>
           <% end %>
