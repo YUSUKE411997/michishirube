@@ -1,13 +1,13 @@
 <% if user == current_user %>
   <div>
     <h1 class="profile-edit">マイページ</h1>
-    <%= link_to plans_path do %>
+    <%= link_to plans_path, class: "plan-link" do %>
       <i class="far fa-calendar-alt"></i>
       <% if current_user.planed?(current_user) %>
         <i class="fas fa-exclamation"></i>
       <% end %>
     <% end %>
-    <%= link_to edit_user_path(user) do %>
+    <%= link_to edit_user_path(user), class: "edit-link" do %>
       <i class="fas fa-user-edit"></i>
     <% end %>
   </div>

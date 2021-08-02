@@ -93,11 +93,7 @@
         </div>
       </div>
       <button class="btn btn-primary tag-button">タグ一覧▼</button>
-      <% if user_signed_in? %>
-        <a class="post-button" href="#">
-          <i class="fas fa-plus-circle fa-4x"></i>
-        </a>
-      <% end %>
+      
       <div class="tag-lists">
         <% @tag_lists.each do |tag_list| %>
         <i class="fas fa-tags"></i>
@@ -115,6 +111,9 @@
     </div>
     <div class="row">
       <% if user_signed_in? %>
+      <a class="post-button" href="#">
+        <i class="fas fa-plus-circle fa-4x"></i>
+      </a>
       <div class="form-modal-wrapper"></div>
       <div class="form-page">
         <%= render 'form', post: @post %>

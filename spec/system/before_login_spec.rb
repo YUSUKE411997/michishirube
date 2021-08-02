@@ -34,18 +34,22 @@ describe 'ユーザーログイン前のテスト' do
     end
 
     context "ログインのテスト" do
-      # it "新規登録はできるか" do
-      #   fill_in "user[name]", with: "テスト"
-      #   fill_in "user[email]", with: "rspec@rspec"
-      #   fill_in "user[password]", with: "rspecrspec"
-      #   fill_in "user[password_confirmation]", with: "rspecrspec"
-      #   click_button "Sign up"
-      #   expect(current_path).to eq posts_path
-      # end
+      it "新規登録はできるか" do
+        within(".sign_up_modal") do
+          fill_in "user[name]", with: "テスト"
+          fill_in "user[email]", with: "rspec@rspec"
+          fill_in "user[password]", with: "rspecrspec"
+          fill_in "user[password_confirmation]", with: "rspecrspec"
+          click_button "Sign up"
+        end
+        expect(current_path).to eq posts_path
+      end
       it 'ログインできるか' do
+        within(".sign_in_modal") do
         fill_in "user[email]", with: user.email
         fill_in "user[password]", with: user.password
         click_button "Log in"
+        end
         expect(current_path).to eq posts_path
       end
     end
