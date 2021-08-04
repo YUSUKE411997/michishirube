@@ -88,6 +88,5 @@ https://docs.google.com/spreadsheets/d/1VG5Y7x8891qPpJAbR8QjmZ2yJOvPXqECHvnybG1u
 - Nginx, puma
 - Github action
 
-
 ## 使用素材
 - O-DAN(画像)
