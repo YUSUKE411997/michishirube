@@ -242,16 +242,26 @@ describe "ログイン後のテスト" do
     end
   end
 
+  # context "いいね機能" do
+  #   it "いいねを押していいねが増えるか" do
+  #     visit post_path(post.id)
+  #     expect {
+  #     find(".fa-heart").click
+  #     sleep 0.5
+  #     }.to change { Like.count }.by(1)
+  #   end
+  # end
 
-  context "リツイート機能" do
-    it "投稿をリツイートできるか" do
-      # expect {
-        # visit post_path(1)
-        # first('.fa-retweet').click
-        # sleep 1.0
-      # }.to change { Repost.count }.by(1)
-    end
-  end
+
+  # context "リツイート機能" do
+  #   it "投稿をリツイートできるか" do
+  #     expect {
+  #       visit post_path(1)
+  #       first('.fa-retweet').click
+  #       sleep 1.0
+  #     }.to change { Repost.count }.by(1)
+  #   end
+  # end
 
 
 end
