@@ -16,9 +16,9 @@ describe 'ユーザーログイン前のテスト' do
       it '投稿一覧のリンクがあるか' do
         expect(page).to have_link '投稿一覧', href: posts_path
       end
-      # it '新規登録のリンクがあるか' do
-      #   expect(page).to have_button 'Sign up'
-      # end
+      it '新規登録のリンクがあるか' do
+        expect(page).to have_button 'Sign up'
+      end
       it 'ログインのリンクがあるか' do
         expect(page).to have_button 'Log in'
       end
@@ -54,6 +54,7 @@ describe 'ユーザーログイン前のテスト' do
       end
     end
   end
+  
 
   describe "投稿一覧画面のテスト" do
     context '投稿一覧画面の表示' do
@@ -78,6 +79,7 @@ describe 'ユーザーログイン前のテスト' do
         expect(page).to have_content post.type
       end
     end
+    
 
     context "投稿詳細画面のテスト" do
       before do
