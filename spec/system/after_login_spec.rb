@@ -138,7 +138,7 @@ describe "ログイン後のテスト" do
     it "コメントを送信できるか" do
       visit post_path(1)
       fill_in "comment[content]", with: "テストコメント"
-      # click_button "コメントする"
+      click_button "コメントする"
     end
   end
 
@@ -164,10 +164,10 @@ describe "ログイン後のテスト" do
       click_on "タイムライン"
       expect(current_path).to eq timelines_path
     end
-    # it "投稿は表示されるか" do
-    #   click_on "タイムライン"
-    #   expect(page).to have_content user.name
-    # end
+    it "投稿は表示されるか" do
+      click_on "タイムライン"
+      expect(page).to have_content user.name
+    end
   end
 
 
@@ -188,10 +188,10 @@ describe "ログイン後のテスト" do
         visit room_path(2)
        }.to change { Room.count }.by(1)
     end
-    # it "メッセージが送信できるか" do
-    #   visit room_path(2)
-    #   expect(page).to have_content "送信"
-    # end
+    it "メッセージが送信できるか" do
+      visit room_path(2)
+      expect(page).to have_content "送信"
+    end
   end
 
 
@@ -242,26 +242,26 @@ describe "ログイン後のテスト" do
     end
   end
 
-  # context "いいね機能" do
-  #   it "いいねを押していいねが増えるか" do
-  #     visit post_path(post.id)
-  #     expect {
-  #     find(".fa-heart").click
-  #     sleep 0.5
-  #     }.to change { Like.count }.by(1)
-  #   end
-  # end
+  context "いいね機能" do
+    it "いいねを押していいねが増えるか" do
+      visit post_path(post.id)
+      expect {
+      find(".fa-heart").click
+      sleep 0.5
+      }.to change { Like.count }.by(1)
+    end
+  end
 
 
-  # context "リツイート機能" do
-  #   it "投稿をリツイートできるか" do
-  #     expect {
-  #       visit post_path(1)
-  #       first('.fa-retweet').click
-  #       sleep 1.0
-  #     }.to change { Repost.count }.by(1)
-  #   end
-  # end
+  context "リツイート機能" do
+    it "投稿をリツイートできるか" do
+      expect {
+        visit post_path(1)
+        first('.fa-retweet').click
+        sleep 1.0
+      }.to change { Repost.count }.by(1)
+    end
+  end
 
 
 end
